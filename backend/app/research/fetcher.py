@@ -21,6 +21,7 @@ import trafilatura
 from tenacity import retry, retry_if_exception_type, stop_after_attempt, wait_exponential
 
 from ..config import settings
+from .cache import DiskCache
 from .models import FetchedDocument, text_hash
 
 log = logging.getLogger(__name__)
@@ -77,9 +78,19 @@ class Fetcher:
             follow_redirects=True, timeout=settings.request_timeout_seconds,
         )
         self._limiter = DomainRateLimiter(settings.min_seconds_between_requests_per_domain)
+        self._cache = DiskCache("fetch")
 
     # ------------------------------------------------------------------ public
     def fetch(self, url: str, crawl_delay: float | None = None) -> FetchedDocument:
+        cached = self._cache.get(url)
+        if cached is not None:
+            return FetchedDocument.model_validate(cached)
+        doc = self._fetch_live(url, crawl_delay)
+        if doc.fetch_status == "ok":
+            self._cache.set(url, doc.model_dump(mode="json"))
+        return doc
+
+    def _fetch_live(self, url: str, crawl_delay: float | None = None) -> FetchedDocument:
         host = urlsplit(url).netloc.lower()
         self._limiter.wait(host, crawl_delay)
         try:

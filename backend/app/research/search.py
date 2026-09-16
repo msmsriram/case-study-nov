@@ -15,6 +15,7 @@ from typing import Protocol
 from tenacity import retry, retry_if_exception_type, stop_after_attempt, wait_exponential
 
 from ..config import settings
+from .cache import DiskCache
 from .models import SearchResult
 
 log = logging.getLogger(__name__)
@@ -133,11 +134,25 @@ def get_search_provider() -> SearchProvider:
         return _provider
 
 
+_cache = DiskCache("search")
+
+
+def _cached_search(provider: SearchProvider, q: str, max_results: int) -> list[SearchResult]:
+    key = f"{provider.name}|{max_results}|{q.lower().strip()}"
+    hit = _cache.get(key)
+    if hit is not None:
+        return [SearchResult.model_validate(r) for r in hit]
+    rows = provider.search(q, max_results)
+    if rows:
+        _cache.set(key, [r.model_dump(mode="json") for r in rows])
+    return rows
+
+
 def search_many(queries: list[str], max_results: int = 8, workers: int = 3) -> dict[str, list[SearchResult]]:
     """Run several queries; provider-level rate gate keeps us polite."""
     provider = get_search_provider()
     if provider.name == "ddgs":
         workers = min(workers, 2)  # keyless engines throttle aggressively
     with ThreadPoolExecutor(max_workers=workers) as ex:
-        results = list(ex.map(lambda q: provider.search(q, max_results), queries))
+        results = list(ex.map(lambda q: _cached_search(provider, q, max_results), queries))
     return dict(zip(queries, results))

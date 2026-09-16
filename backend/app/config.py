@@ -27,6 +27,8 @@ class Settings(BaseSettings):
     max_text_chars: int = 60_000
     max_pdf_pages: int = 40
     robots_unreachable_policy: Literal["deny", "allow"] = "deny"
+    # Re-use search results / fetched pages younger than this. 0 = always live (production).
+    research_cache_ttl_hours: float = 0
 
     # --- LLM (Groq) -------------------------------------------------------
     groq_api_key: str | None = None
@@ -44,6 +46,8 @@ class Settings(BaseSettings):
     max_results_per_query: int = 6
     max_documents_per_run: int = 24
     max_passage_tokens_per_document: int = 1200
+    max_claims_per_document: int = 8
+    verify_batch_size: int = 6
 
     cache_dir: Path = BACKEND_DIR / ".cache"
     data_dir: Path = BACKEND_DIR / "data"

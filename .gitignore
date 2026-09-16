@@ -6,3 +6,4 @@ __pycache__/
 backend/samples/*.json
 backend/.cache/
 node_modules/
+backend/scripts/explore_ollama.py

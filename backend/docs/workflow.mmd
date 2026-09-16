@@ -9,13 +9,25 @@ graph TD;
 	search(search)
 	crawl_check(crawl_check)
 	fetch(fetch)
+	extract_claims(extract_claims)
+	collect_claims(collect_claims)
+	fact_check(fact_check)
+	detect_conflicts(detect_conflicts)
+	gap_analysis(gap_analysis)
 	__end__([<p>__end__</p>]):::last
 	__start__ --> plan;
+	collect_claims -.-> fact_check;
+	collect_claims -.-> gap_analysis;
 	crawl_check --> fetch;
+	detect_conflicts --> gap_analysis;
+	extract_claims --> collect_claims;
+	fact_check --> detect_conflicts;
+	fetch -.-> extract_claims;
+	fetch -.-> gap_analysis;
 	plan --> search;
 	search -.-> __end__;
 	search -.-> crawl_check;
-	fetch --> __end__;
+	gap_analysis --> __end__;
 	classDef default fill:#f2f0ff,line-height:1.2
 	classDef first fill-opacity:0
 	classDef last fill:#bfb6fc
