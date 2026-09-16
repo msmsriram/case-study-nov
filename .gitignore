@@ -1,0 +1,8 @@
+case_venv/
+.env
+__pycache__/
+*.pyc
+.pytest_cache/
+backend/samples/*.json
+backend/.cache/
+node_modules/
