@@ -28,8 +28,27 @@ class Settings(BaseSettings):
     max_pdf_pages: int = 40
     robots_unreachable_policy: Literal["deny", "allow"] = "deny"
 
+    # --- LLM (Groq) -------------------------------------------------------
+    groq_api_key: str | None = None
+    # Free tier: 8K tokens/min *per model*, so volume work goes to the small model
+    # and judgement work (planning, verification, answering) to the large one.
+    groq_model_planner: str = "openai/gpt-oss-120b"
+    groq_model_extractor: str = "openai/gpt-oss-20b"
+    groq_model_checker: str = "openai/gpt-oss-120b"
+    groq_model_answer: str = "openai/gpt-oss-120b"
+    groq_tpm_budget: int = 7000          # stay under the 8000 TPM ceiling
+    groq_max_retries: int = 4
+
+    # --- Research budget per run ---------------------------------------------
+    max_queries_per_run: int = 14
+    max_results_per_query: int = 6
+    max_documents_per_run: int = 24
+    max_passage_tokens_per_document: int = 1200
+
     cache_dir: Path = BACKEND_DIR / ".cache"
+    data_dir: Path = BACKEND_DIR / "data"
 
 
 settings = Settings()
 settings.cache_dir.mkdir(parents=True, exist_ok=True)
+settings.data_dir.mkdir(parents=True, exist_ok=True)

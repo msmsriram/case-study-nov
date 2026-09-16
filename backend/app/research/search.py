@@ -43,24 +43,36 @@ class _RateGate:
 
 
 class DDGSProvider:
+    """Keyless metasearch. One client per call (the shared client is not thread-safe under
+    load) and a backend ladder: if one engine returns nothing, the next is tried."""
     name = "ddgs"
+    _BACKENDS = ("auto", "duckduckgo", "yahoo", "startpage")
 
     def __init__(self):
         from ddgs import DDGS  # lazy import
-        self._ddgs = DDGS()
-        self._gate = _RateGate(1.5)
+        self._DDGS = DDGS
+        self._gate = _RateGate(1.2)
 
-    @retry(stop=stop_after_attempt(3), wait=wait_exponential(min=2, max=12),
-           retry=retry_if_exception_type(Exception), reraise=True)
     def _raw(self, query: str, max_results: int) -> list[dict]:
-        self._gate.wait()
-        return self._ddgs.text(query, max_results=max_results, safesearch="moderate") or []
+        last: Exception | None = None
+        for backend in self._BACKENDS:
+            self._gate.wait()
+            try:
+                rows = self._DDGS().text(query, max_results=max_results, safesearch="moderate", backend=backend)
+                if rows:
+                    return rows
+            except Exception as e:  # noqa: BLE001
+                last = e
+                log.debug("ddgs backend %s failed for %r: %s", backend, query, e)
+        if last:
+            raise last
+        return []
 
     def search(self, query: str, max_results: int = 8) -> list[SearchResult]:
         try:
             rows = self._raw(query, max_results)
         except Exception as e:  # noqa: BLE001
-            log.warning("ddgs failed for %r: %s", query, e)
+            log.warning("ddgs failed for %r after all backends: %s", query, e)
             return []
         out: list[SearchResult] = []
         for i, r in enumerate(rows):
@@ -124,6 +136,8 @@ def get_search_provider() -> SearchProvider:
 def search_many(queries: list[str], max_results: int = 8, workers: int = 3) -> dict[str, list[SearchResult]]:
     """Run several queries; provider-level rate gate keeps us polite."""
     provider = get_search_provider()
+    if provider.name == "ddgs":
+        workers = min(workers, 2)  # keyless engines throttle aggressively
     with ThreadPoolExecutor(max_workers=workers) as ex:
         results = list(ex.map(lambda q: provider.search(q, max_results), queries))
     return dict(zip(queries, results))

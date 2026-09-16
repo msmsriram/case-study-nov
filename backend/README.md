@@ -62,6 +62,47 @@ The foundation every agent builds on. Three separate responsibilities, in a fixe
 - **Rate limiting is per domain** (1 s floor, or robots crawl-delay if larger), with
   retry/backoff on 429 and 5xx, and hard caps on bytes and extracted characters.
 
+## Layer 2: Workflow (`app/graph/`) and LLM access (`app/llm.py`)
+
+```bash
+cd backend
+python scripts/test_graph.py "Nairobi, Kenya"     # streams progress, prints plan + stats
+```
+
+**Graph** (`app/graph/builder.py`, LangGraph 1.2): `START → plan → search → crawl_check → fetch → …`
+The diagram is regenerated to `docs/workflow.mmd` on every test run. Search, crawlability
+and fetch are separate nodes on purpose: the crawlability decision is an explicit gate in
+the workflow, not a helper hidden inside a fetch function. Nodes stream progress with
+`get_stream_writer`, so the API can push stage updates to the UI.
+
+**State** (`app/graph/state.py`): one `ResearchState` per run. Keyed collections
+(`search_results`, `crawl_decisions`, `documents`, keyed by normalised URL) use a dict-merge
+reducer; lists (`claims`, `verifications`, `errors`) use `operator.add`, so parallel fan-out
+nodes never overwrite each other. Pydantic models in state are whitelisted for checkpoint
+serialisation (`ALLOWED_STATE_TYPES`).
+
+**Planner** (`nodes/planner.py`): one structured call to the large model. The six
+intelligence categories are fixed by the programme's needs; the model adapts *queries* to the
+city (admin region, aliases, national surveys, local bodies) and records its assumptions.
+Query hygiene strips typographic punctuation, de-duplicates and guarantees the city name.
+
+**Fetch prioritisation** (`nodes/research.py`): when the per-run document cap binds,
+government and intergovernmental sources go first, then academic, NGO, reference/news,
+commercial; ties broken by how many queries surfaced the URL.
+
+**LLM layer** (`app/llm.py`): Groq, routed by role.
+
+| Role | Model | Why |
+|---|---|---|
+| planner | `openai/gpt-oss-120b` | judgement, once per run |
+| extractor | `openai/gpt-oss-20b` | volume work: one call per document |
+| checker | `openai/gpt-oss-120b` | independent of the extractor by construction |
+| answer | `openai/gpt-oss-120b` | synthesis with citations |
+
+The free tier allows ~8K tokens/min **per model**. `TokenBudget` is a per-model sliding
+window that blocks a call until it fits; usage is accumulated per role. All calls use strict
+JSON-schema structured output. Set `GROQ_MODEL_*` in `.env` to re-route.
+
 ### Known limitations of this layer
 
 - No JavaScript rendering. SPA-only pages come back as `empty` or `low` quality.

@@ -6,6 +6,7 @@ It is deliberately synchronous and thread-pooled: simple to reason about, easy t
 from __future__ import annotations
 
 import logging
+import threading
 from concurrent.futures import ThreadPoolExecutor
 from dataclasses import dataclass, field
 
@@ -38,20 +39,28 @@ class ResearchBatch:
 
 _checker: CrawlabilityChecker | None = None
 _fetcher: Fetcher | None = None
+_lock = threading.Lock()
 
 
-def _components() -> tuple[CrawlabilityChecker, Fetcher]:
-    global _checker, _fetcher
-    if _checker is None:
-        _checker = CrawlabilityChecker()
-    if _fetcher is None:
-        _fetcher = Fetcher()
-    return _checker, _fetcher
+def get_checker() -> CrawlabilityChecker:
+    global _checker
+    with _lock:
+        if _checker is None:
+            _checker = CrawlabilityChecker()
+        return _checker
+
+
+def get_fetcher() -> Fetcher:
+    global _fetcher
+    with _lock:
+        if _fetcher is None:
+            _fetcher = Fetcher()
+        return _fetcher
 
 
 def research_queries(queries: list[str], *, max_results_per_query: int = 8,
                      max_fetch: int | None = None, workers: int = 6) -> ResearchBatch:
-    checker, fetcher = _components()
+    checker, fetcher = get_checker(), get_fetcher()
     stats = ResearchStats(queries=len(queries))
 
     # 1. search (deduplicate across queries, remember which queries surfaced each URL)
