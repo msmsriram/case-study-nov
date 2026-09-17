@@ -65,9 +65,12 @@ def classify_source_tier(url: str) -> SourceTier:
     sld = labels[-2] if len(labels) >= 3 else ""
     if any(h in host for h in _INTERGOV_HOSTS):
         return "intergovernmental"
+    # literature databases first: pubmed / PMC live on a .gov domain but are academic sources
+    if any(h in host for h in _ACADEMIC_HOSTS):
+        return "academic"
     if labels[-1] in ("gov", "mil") or sld in ("gov", "go", "gob", "gouv", "govt", "nic", "gc"):
         return "government"
-    if labels[-1] == "edu" or sld in ("edu", "ac") or any(h in host for h in _ACADEMIC_HOSTS):
+    if labels[-1] == "edu" or sld in ("edu", "ac"):
         return "academic"
     if "wikipedia.org" in host or "wikidata.org" in host:
         return "reference"

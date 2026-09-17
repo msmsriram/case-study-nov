@@ -1,0 +1,704 @@
+──────────────────────────────────────────────────────────── Run 2ecddc76: Nairobi, Kenya ────────────────────────────────────────────────────────────
+   0.0s planning          Planning research for Nairobi, Kenya
+INFO app.llm: llm planner/ollama:gpt-oss:120b 5.4s tokens=2198
+   5.4s planning          6 categories, 12 queries
+   5.4s node done: plan
+   5.4s searching         Searching the web with 12 queries
+  12.2s searching         72 results, 69 unique sources via {'serper': 72}
+  12.2s node done: search
+  12.2s checking_sources  Checking crawl permission for 69 sources
+  30.9s checking_sources  37 permitted, 32 not permitted
+         7 HTTP 403 on probe
+         1 HTTP 406 on probe
+         9 platform terms prohibit automated extraction
+        13 robots.txt unreachable; conservative policy denies crawl
+         1 robots.txt disallows this path
+         1 blocks automated access; use publisher/DOI instead
+  30.9s node done: crawl_check
+  30.9s extracting        Fetching 24 of 37 permitted sources
+WARNING pypdf._reader: Ignoring wrong pointing object 7 0 (offset 0)
+WARNING pypdf._reader: Ignoring wrong pointing object 9 0 (offset 0)
+WARNING pypdf._reader: Ignoring wrong pointing object 20 0 (offset 0)
+WARNING pypdf._reader: Ignoring wrong pointing object 22 0 (offset 0)
+WARNING pypdf._reader: Ignoring wrong pointing object 30 0 (offset 0)
+WARNING pypdf._reader: Ignoring wrong pointing object 186 0 (offset 0)
+WARNING pypdf._reader: Ignoring wrong pointing object 188 0 (offset 0)
+WARNING pypdf._reader: Ignoring wrong pointing object 190 0 (offset 0)
+WARNING pypdf._reader: Ignoring wrong pointing object 192 0 (offset 0)
+WARNING pypdf._reader: Ignoring wrong pointing object 197 0 (offset 0)
+WARNING pypdf._reader: Ignoring wrong pointing object 199 0 (offset 0)
+WARNING pypdf._reader: Ignoring wrong pointing object 201 0 (offset 0)
+WARNING pypdf._reader: Ignoring wrong pointing object 225 0 (offset 0)
+WARNING pypdf._reader: Ignoring wrong pointing object 227 0 (offset 0)
+WARNING pypdf._reader: Ignoring wrong pointing object 235 0 (offset 0)
+WARNING pypdf._reader: Ignoring wrong pointing object 237 0 (offset 0)
+WARNING pypdf._reader: Ignoring wrong pointing object 242 0 (offset 0)
+WARNING pypdf._reader: Ignoring wrong pointing object 250 0 (offset 0)
+WARNING pypdf._reader: Ignoring wrong pointing object 252 0 (offset 0)
+WARNING pypdf._reader: Ignoring wrong pointing object 254 0 (offset 0)
+WARNING pypdf._reader: Ignoring wrong pointing object 259 0 (offset 0)
+WARNING pypdf._reader: Ignoring wrong pointing object 261 0 (offset 0)
+WARNING pypdf._reader: Ignoring wrong pointing object 283 0 (offset 0)
+WARNING pypdf._reader: Ignoring wrong pointing object 285 0 (offset 0)
+WARNING pypdf._reader: Ignoring wrong pointing object 290 0 (offset 0)
+WARNING pypdf._reader: Ignoring wrong pointing object 301 0 (offset 0)
+WARNING pypdf._reader: Ignoring wrong pointing object 310 0 (offset 0)
+WARNING pypdf._reader: Ignoring wrong pointing object 312 0 (offset 0)
+WARNING pypdf._reader: Ignoring wrong pointing object 314 0 (offset 0)
+WARNING pypdf._reader: Ignoring wrong pointing object 319 0 (offset 0)
+WARNING pypdf._reader: Ignoring wrong pointing object 328 0 (offset 0)
+WARNING pypdf._reader: Ignoring wrong pointing object 330 0 (offset 0)
+WARNING pypdf._reader: Ignoring wrong pointing object 341 0 (offset 0)
+WARNING pypdf._reader: Ignoring wrong pointing object 343 0 (offset 0)
+WARNING pypdf._reader: Ignoring wrong pointing object 349 0 (offset 0)
+WARNING pypdf._reader: Ignoring wrong pointing object 351 0 (offset 0)
+WARNING pypdf._reader: Ignoring wrong pointing object 375 0 (offset 0)
+WARNING pypdf._reader: Ignoring wrong pointing object 381 0 (offset 0)
+WARNING pypdf._reader: Ignoring wrong pointing object 383 0 (offset 0)
+WARNING pypdf._reader: Ignoring wrong pointing object 391 0 (offset 0)
+WARNING pypdf._reader: Ignoring wrong pointing object 415 0 (offset 0)
+WARNING pypdf._reader: Ignoring wrong pointing object 426 0 (offset 0)
+WARNING pypdf._reader: Ignoring wrong pointing object 441 0 (offset 0)
+WARNING pypdf._reader: Ignoring wrong pointing object 443 0 (offset 0)
+WARNING pypdf._reader: Ignoring wrong pointing object 448 0 (offset 0)
+WARNING pypdf._reader: Ignoring wrong pointing object 450 0 (offset 0)
+WARNING pypdf._reader: Ignoring wrong pointing object 461 0 (offset 0)
+WARNING pypdf._reader: Ignoring wrong pointing object 466 0 (offset 0)
+WARNING pypdf._reader: Ignoring wrong pointing object 468 0 (offset 0)
+WARNING pypdf._reader: Ignoring wrong pointing object 480 0 (offset 0)
+WARNING pypdf._reader: Ignoring wrong pointing object 485 0 (offset 0)
+WARNING pypdf._reader: Ignoring wrong pointing object 502 0 (offset 0)
+WARNING pypdf._reader: Ignoring wrong pointing object 504 0 (offset 0)
+WARNING pypdf._reader: Ignoring wrong pointing object 506 0 (offset 0)
+WARNING pypdf._reader: Ignoring wrong pointing object 508 0 (offset 0)
+WARNING pypdf._reader: Ignoring wrong pointing object 510 0 (offset 0)
+WARNING pypdf._reader: Ignoring wrong pointing object 512 0 (offset 0)
+WARNING pypdf._reader: Ignoring wrong pointing object 514 0 (offset 0)
+WARNING pypdf._reader: Ignoring wrong pointing object 516 0 (offset 0)
+WARNING pypdf._reader: Ignoring wrong pointing object 518 0 (offset 0)
+WARNING pypdf._reader: Ignoring wrong pointing object 520 0 (offset 0)
+WARNING pypdf._reader: Ignoring wrong pointing object 522 0 (offset 0)
+WARNING pypdf._reader: Ignoring wrong pointing object 524 0 (offset 0)
+WARNING pypdf._reader: Ignoring wrong pointing object 575 0 (offset 0)
+WARNING pypdf._reader: Ignoring wrong pointing object 577 0 (offset 0)
+WARNING pypdf._reader: Ignoring wrong pointing object 589 0 (offset 0)
+WARNING pypdf._reader: Ignoring wrong pointing object 596 0 (offset 0)
+WARNING pypdf._reader: Ignoring wrong pointing object 600 0 (offset 0)
+WARNING pypdf._reader: Ignoring wrong pointing object 605 0 (offset 0)
+WARNING pypdf._reader: Ignoring wrong pointing object 628 0 (offset 0)
+WARNING pypdf._reader: Ignoring wrong pointing object 630 0 (offset 0)
+WARNING pypdf._reader: Ignoring wrong pointing object 632 0 (offset 0)
+WARNING pypdf._reader: Ignoring wrong pointing object 634 0 (offset 0)
+WARNING pypdf._reader: Ignoring wrong pointing object 636 0 (offset 0)
+WARNING pypdf._reader: Ignoring wrong pointing object 638 0 (offset 0)
+WARNING pypdf._reader: Ignoring wrong pointing object 640 0 (offset 0)
+WARNING pypdf._reader: Ignoring wrong pointing object 642 0 (offset 0)
+WARNING pypdf._reader: Ignoring wrong pointing object 648 0 (offset 0)
+WARNING pypdf._reader: Ignoring wrong pointing object 653 0 (offset 0)
+WARNING pypdf._reader: Ignoring wrong pointing object 655 0 (offset 0)
+WARNING pypdf._reader: Ignoring wrong pointing object 669 0 (offset 0)
+WARNING pypdf._reader: Ignoring wrong pointing object 671 0 (offset 0)
+WARNING pypdf._reader: Ignoring wrong pointing object 679 0 (offset 0)
+WARNING pypdf._reader: Ignoring wrong pointing object 681 0 (offset 0)
+WARNING pypdf._reader: Ignoring wrong pointing object 687 0 (offset 0)
+WARNING pypdf._reader: Ignoring wrong pointing object 692 0 (offset 0)
+WARNING pypdf._reader: Ignoring wrong pointing object 694 0 (offset 0)
+WARNING pypdf._reader: Ignoring wrong pointing object 696 0 (offset 0)
+WARNING pypdf._reader: Ignoring wrong pointing object 698 0 (offset 0)
+WARNING pypdf._reader: Ignoring wrong pointing object 712 0 (offset 0)
+WARNING pypdf._reader: Ignoring wrong pointing object 717 0 (offset 0)
+WARNING pypdf._reader: Ignoring wrong pointing object 719 0 (offset 0)
+WARNING pypdf._reader: Ignoring wrong pointing object 724 0 (offset 0)
+WARNING pypdf._reader: Ignoring wrong pointing object 726 0 (offset 0)
+WARNING pypdf._reader: Ignoring wrong pointing object 732 0 (offset 0)
+WARNING pypdf._reader: Ignoring wrong pointing object 740 0 (offset 0)
+WARNING pypdf._reader: Ignoring wrong pointing object 742 0 (offset 0)
+WARNING pypdf._reader: Ignoring wrong pointing object 747 0 (offset 0)
+WARNING pypdf._reader: Ignoring wrong pointing object 752 0 (offset 0)
+WARNING pypdf._reader: Ignoring wrong pointing object 754 0 (offset 0)
+WARNING pypdf._reader: Ignoring wrong pointing object 759 0 (offset 0)
+WARNING pypdf._reader: Ignoring wrong pointing object 780 0 (offset 0)
+WARNING pypdf._reader: Ignoring wrong pointing object 785 0 (offset 0)
+WARNING pypdf._reader: Ignoring wrong pointing object 790 0 (offset 0)
+WARNING pypdf._reader: Ignoring wrong pointing object 795 0 (offset 0)
+WARNING pypdf._reader: Ignoring wrong pointing object 800 0 (offset 0)
+WARNING pypdf._reader: Ignoring wrong pointing object 806 0 (offset 0)
+WARNING pypdf._reader: Ignoring wrong pointing object 817 0 (offset 0)
+WARNING pypdf._cmap: fontTools is required to fully parse the encoding of a CFF Type1 font in font dictionary {'/Type': '/Font', '/Subtype': '/Type1', '/BaseFont': '/AAAABH+MyriadPro-Regular', '/FontDescriptor': IndirectObject(1599, 0, 2774441445088), '/Encoding': '/MacRomanEncoding', '/FirstChar': 32, '/LastChar': 109, '/Widths': [212, 0, 0, 0, 0, 792, 0, 0, 0, 0, 0, 0, 207, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 487, 0, 0, 0, 0, 0, 0, 804, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 482, 0, 0, 0, 501, 0, 0, 0, 0, 0, 0, 236, 834]}, but is not installed. Consider installing fontTools if you encounter encoding problems.
+WARNING pypdf._cmap: fontTools is required to fully parse the encoding of a CFF Type1 font in font dictionary {'/BaseFont': '/NJCFKM+AdvGSANS-B', '/Encoding': '/WinAnsiEncoding', '/FirstChar': 44, '/FontDescriptor': IndirectObject(85, 0, 2772418517328), '/LastChar': 122, '/Subtype': '/Type1', '/Type': '/Font', '/Widths': [270, 0, 270, 0, 0, 552, 552, 552, 552, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 781, 697, 770, 802, 635, 604, 0, 0, 333, 333, 718, 0, 885, 0, 0, 0, 0, 677, 604, 718, 0, 0, 1166, 0, 0, 0, 0, 0, 0, 0, 0, 0, 531, 583, 500, 583, 552, 302, 541, 583, 270, 0, 552, 270, 958, 583, 593, 583, 0, 447, 427, 406, 583, 510, 781, 552, 510, 520]}, but is not installed. Consider installing fontTools if you encounter encoding problems.
+WARNING pypdf._cmap: fontTools is required to fully parse the encoding of a CFF Type1 font in font dictionary {'/BaseFont': '/NJCFKN+AdvPSSAB-R', '/Encoding': '/MacRomanEncoding', '/FirstChar': 35, '/FontDescriptor': IndirectObject(86, 0, 2772418517328), '/LastChar': 223, '/Subtype': '/Type1', '/Type': '/Font', '/Widths': [552, 0, 1000, 947, 0, 333, 333, 0, 552, 281, 333, 281, 281, 552, 552, 552, 552, 552, 552, 552, 552, 552, 552, 281, 281, 0, 0, 0, 447, 802, 718, 614, 718, 781, 614, 552, 781, 833, 333, 385, 718, 614, 1000, 833, 833, 552, 833, 718, 500, 666, 718, 718, 1000, 781, 718, 0, 333, 0, 333, 0, 0, 0, 500, 552, 447, 552, 447, 333, 500, 552, 281, 281, 552, 281, 833, 552, 552, 552, 552, 385, 385, 333, 552, 500, 781, 552, 500, 447, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 281, 281, 0, 0, 0, 0, 0, 0, 0, 0, 552, 552]}, but is not installed. Consider installing fontTools if you encounter encoding problems.
+WARNING pypdf._cmap: fontTools is required to fully parse the encoding of a CFF Type1 font in font dictionary {'/BaseFont': '/NJCFKO+AdvPSSAB-I', '/Encoding': '/MacRomanEncoding', '/FirstChar': 41, '/FontDescriptor': IndirectObject(87, 0, 2772418517328), '/LastChar': 222, '/Subtype': '/Type1', '/Type': '/Font', '/Widths': [333, 0, 0, 281, 333, 281, 281, 552, 552, 552, 552, 552, 552, 0, 0, 0, 552, 281, 0, 0, 0, 552, 0, 0, 718, 666, 718, 833, 666, 0, 833, 833, 385, 385, 718, 666, 947, 833, 885, 614, 0, 718, 500, 666, 781, 0, 1000, 781, 666, 0, 0, 0, 0, 0, 0, 0, 500, 552, 447, 552, 447, 333, 500, 552, 281, 0, 552, 281, 833, 552, 552, 552, 552, 385, 385, 333, 552, 500, 781, 552, 500, 447, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 552]}, but is not installed. Consider installing fontTools if you encounter encoding problems.
+WARNING pypdf._cmap: fontTools is required to fully parse the encoding of a CFF Type1 font in font dictionary {'/BaseFont': '/NJCFKP+AdvSabonOSF-SC', '/Encoding': '/WinAnsiEncoding', '/FirstChar': 48, '/FontDescriptor': IndirectObject(88, 0, 2772418517328), '/LastChar': 118, '/Subtype': '/Type1', '/Type': '/Font', '/Widths': [552, 552, 552, 0, 0, 552, 0, 552, 552, 552, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 552, 552, 666, 500, 0, 0, 666, 333, 385, 0, 500, 781, 614, 666, 500, 0, 552, 447, 500, 614, 552]}, but is not installed. Consider installing fontTools if you encounter encoding problems.
+WARNING pypdf._cmap: fontTools is required to fully parse the encoding of a CFF Type1 font in font dictionary {'/BaseFont': '/NJCFLA+AdvTTec369687+20', '/Encoding': '/WinAnsiEncoding', '/FirstChar': 150, '/FontDescriptor': IndirectObject(91, 0, 2772418517328), '/LastChar': 150, '/Subtype': '/Type1', '/Type': '/Font', '/Widths': [500]}, but is not installed. Consider installing fontTools if you encounter encoding problems.
+WARNING pypdf._cmap: fontTools is required to fully parse the encoding of a CFF Type1 font in font dictionary {'/BaseFont': '/NJCFLB+AdvTTec369687', '/Encoding': '/WinAnsiEncoding', '/FirstChar': 60, '/FontDescriptor': IndirectObject(92, 0, 2772418517328), '/LastChar': 62, '/Subtype': '/Type1', '/Type': '/Font', '/Widths': [562, 562, 562]}, but is not installed. Consider installing fontTools if you encounter encoding problems.
+WARNING pypdf._cmap: fontTools is required to fully parse the encoding of a CFF Type1 font in font dictionary {'/BaseFont': '/NJCFMB+AdvTT9476842c', '/Encoding': '/WinAnsiEncoding', '/FirstChar': 38, '/FontDescriptor': IndirectObject(96, 0, 2772418517328), '/LastChar': 169, '/Subtype': '/Type1', '/Type': '/Font', '/Widths': [614, 0, 0, 0, 0, 0, 166, 0, 166, 0, 500, 500, 500, 0, 0, 0, 0, 500, 0, 0, 0, 0, 0, 0, 0, 0, 0, 666, 0, 666, 0, 0, 0, 0, 0, 0, 197, 0, 468, 0, 0, 0, 0, 0, 0, 468, 572, 0, 0, 1020, 0, 0, 0, 0, 0, 0, 0, 0, 0, 416, 500, 416, 500, 468, 239, 416, 489, 187, 0, 416, 187, 770, 489, 541, 500, 0, 322, 343, 291, 489, 416, 697, 0, 416, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 791]}, but is not installed. Consider installing fontTools if you encounter encoding problems.
+WARNING pypdf._cmap: fontTools is required to fully parse the encoding of a CFF Type1 font in font dictionary {'/BaseFont': '/NJCFMC+AdvTTb9f64e59.I', '/Encoding': '/WinAnsiEncoding', '/FirstChar': 38, '/FontDescriptor': IndirectObject(97, 0, 2772418517328), '/LastChar': 116, '/Subtype': '/Type1', '/Type': '/Font', '/Widths': [645, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 697, 197, 0, 0, 0, 791, 0, 0, 0, 0, 0, 0, 447, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 468, 0, 375, 468, 447, 0, 0, 447, 166, 0, 0, 166, 0, 447, 447, 500, 0, 270, 0, 270]}, but is not installed. Consider installing fontTools if you encounter encoding problems.
+WARNING pypdf._cmap: fontTools is required to fully parse the encoding of a CFF Type1 font in font dictionary {'/BaseFont': '/NJCFMD+AdvGSANS', '/Encoding': '/WinAnsiEncoding', '/FirstChar': 48, '/FontDescriptor': IndirectObject(98, 0, 2772418517328), '/LastChar': 57, '/Subtype': '/Type1', '/Type': '/Font', '/Widths': [500, 500, 500, 500, 500, 500, 500, 500, 500, 500]}, but is not installed. Consider installing fontTools if you encounter encoding problems.
+WARNING pypdf._cmap: fontTools is required to fully parse the encoding of a CFF Type1 font in font dictionary {'/BaseFont': '/NJCFKM+AdvGSANS-B', '/Encoding': '/WinAnsiEncoding', '/FirstChar': 44, '/FontDescriptor': IndirectObject(85, 0, 2772418517328), '/LastChar': 122, '/Subtype': '/Type1', '/Type': '/Font', '/Widths': [270, 0, 270, 0, 0, 552, 552, 552, 552, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 781, 697, 770, 802, 635, 604, 0, 0, 333, 333, 718, 0, 885, 0, 0, 0, 0, 677, 604, 718, 0, 0, 1166, 0, 0, 0, 0, 0, 0, 0, 0, 0, 531, 583, 500, 583, 552, 302, 541, 583, 270, 0, 552, 270, 958, 583, 593, 583, 0, 447, 427, 406, 583, 510, 781, 552, 510, 520]}, but is not installed. Consider installing fontTools if you encounter encoding problems.
+WARNING pypdf._cmap: fontTools is required to fully parse the encoding of a CFF Type1 font in font dictionary {'/BaseFont': '/NJCFNE+AdvPSSab-B', '/Encoding': '/WinAnsiEncoding', '/FirstChar': 46, '/FontDescriptor': IndirectObject(59, 0, 2772418517328), '/LastChar': 122, '/Subtype': '/Type1', '/Type': '/Font', '/Widths': [281, 0, 552, 552, 552, 552, 0, 552, 552, 0, 552, 552, 0, 0, 0, 0, 0, 0, 0, 0, 0, 718, 781, 0, 0, 0, 833, 333, 385, 718, 614, 0, 0, 0, 0, 0, 0, 500, 718, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 500, 552, 447, 552, 447, 333, 500, 552, 281, 0, 0, 281, 833, 552, 552, 0, 552, 385, 385, 333, 552, 500, 0, 0, 500, 447]}, but is not installed. Consider installing fontTools if you encounter encoding problems.
+WARNING pypdf._cmap: fontTools is required to fully parse the encoding of a CFF Type1 font in font dictionary {'/BaseFont': '/NJCFKN+AdvPSSAB-R', '/Encoding': '/MacRomanEncoding', '/FirstChar': 35, '/FontDescriptor': IndirectObject(86, 0, 2772418517328), '/LastChar': 223, '/Subtype': '/Type1', '/Type': '/Font', '/Widths': [552, 0, 1000, 947, 0, 333, 333, 0, 552, 281, 333, 281, 281, 552, 552, 552, 552, 552, 552, 552, 552, 552, 552, 281, 281, 0, 0, 0, 447, 802, 718, 614, 718, 781, 614, 552, 781, 833, 333, 385, 718, 614, 1000, 833, 833, 552, 833, 718, 500, 666, 718, 718, 1000, 781, 718, 0, 333, 0, 333, 0, 0, 0, 500, 552, 447, 552, 447, 333, 500, 552, 281, 281, 552, 281, 833, 552, 552, 552, 552, 385, 385, 333, 552, 500, 781, 552, 500, 447, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 281, 281, 0, 0, 0, 0, 0, 0, 0, 0, 552, 552]}, but is not installed. Consider installing fontTools if you encounter encoding problems.
+WARNING pypdf._cmap: fontTools is required to fully parse the encoding of a CFF Type1 font in font dictionary {'/BaseFont': '/NJCFKO+AdvPSSAB-I', '/Encoding': '/MacRomanEncoding', '/FirstChar': 41, '/FontDescriptor': IndirectObject(87, 0, 2772418517328), '/LastChar': 222, '/Subtype': '/Type1', '/Type': '/Font', '/Widths': [333, 0, 0, 281, 333, 281, 281, 552, 552, 552, 552, 552, 552, 0, 0, 0, 552, 281, 0, 0, 0, 552, 0, 0, 718, 666, 718, 833, 666, 0, 833, 833, 385, 385, 718, 666, 947, 833, 885, 614, 0, 718, 500, 666, 781, 0, 1000, 781, 666, 0, 0, 0, 0, 0, 0, 0, 500, 552, 447, 552, 447, 333, 500, 552, 281, 0, 552, 281, 833, 552, 552, 552, 552, 385, 385, 333, 552, 500, 781, 552, 500, 447, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 552]}, but is not installed. Consider installing fontTools if you encounter encoding problems.
+WARNING pypdf._cmap: fontTools is required to fully parse the encoding of a CFF Type1 font in font dictionary {'/BaseFont': '/NJCFKP+AdvSabonOSF-SC', '/Encoding': '/WinAnsiEncoding', '/FirstChar': 48, '/FontDescriptor': IndirectObject(88, 0, 2772418517328), '/LastChar': 118, '/Subtype': '/Type1', '/Type': '/Font', '/Widths': [552, 552, 552, 0, 0, 552, 0, 552, 552, 552, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 552, 552, 666, 500, 0, 0, 666, 333, 385, 0, 500, 781, 614, 666, 500, 0, 552, 447, 500, 614, 552]}, but is not installed. Consider installing fontTools if you encounter encoding problems.
+WARNING pypdf._cmap: fontTools is required to fully parse the encoding of a CFF Type1 font in font dictionary {'/BaseFont': '/NJCFLA+AdvTTec369687+20', '/Encoding': '/WinAnsiEncoding', '/FirstChar': 150, '/FontDescriptor': IndirectObject(91, 0, 2772418517328), '/LastChar': 150, '/Subtype': '/Type1', '/Type': '/Font', '/Widths': [500]}, but is not installed. Consider installing fontTools if you encounter encoding problems.
+WARNING pypdf._cmap: fontTools is required to fully parse the encoding of a CFF Type1 font in font dictionary {'/BaseFont': '/NJCFMB+AdvTT9476842c', '/Encoding': '/WinAnsiEncoding', '/FirstChar': 38, '/FontDescriptor': IndirectObject(96, 0, 2772418517328), '/LastChar': 169, '/Subtype': '/Type1', '/Type': '/Font', '/Widths': [614, 0, 0, 0, 0, 0, 166, 0, 166, 0, 500, 500, 500, 0, 0, 0, 0, 500, 0, 0, 0, 0, 0, 0, 0, 0, 0, 666, 0, 666, 0, 0, 0, 0, 0, 0, 197, 0, 468, 0, 0, 0, 0, 0, 0, 468, 572, 0, 0, 1020, 0, 0, 0, 0, 0, 0, 0, 0, 0, 416, 500, 416, 500, 468, 239, 416, 489, 187, 0, 416, 187, 770, 489, 541, 500, 0, 322, 343, 291, 489, 416, 697, 0, 416, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 791]}, but is not installed. Consider installing fontTools if you encounter encoding problems.
+WARNING pypdf._cmap: fontTools is required to fully parse the encoding of a CFF Type1 font in font dictionary {'/BaseFont': '/NJCFMC+AdvTTb9f64e59.I', '/Encoding': '/WinAnsiEncoding', '/FirstChar': 38, '/FontDescriptor': IndirectObject(97, 0, 2772418517328), '/LastChar': 116, '/Subtype': '/Type1', '/Type': '/Font', '/Widths': [645, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 697, 197, 0, 0, 0, 791, 0, 0, 0, 0, 0, 0, 447, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 468, 0, 375, 468, 447, 0, 0, 447, 166, 0, 0, 166, 0, 447, 447, 500, 0, 270, 0, 270]}, but is not installed. Consider installing fontTools if you encounter encoding problems.
+WARNING pypdf._cmap: fontTools is required to fully parse the encoding of a CFF Type1 font in font dictionary {'/BaseFont': '/NJCFMD+AdvGSANS', '/Encoding': '/WinAnsiEncoding', '/FirstChar': 48, '/FontDescriptor': IndirectObject(98, 0, 2772418517328), '/LastChar': 57, '/Subtype': '/Type1', '/Type': '/Font', '/Widths': [500, 500, 500, 500, 500, 500, 500, 500, 500, 500]}, but is not installed. Consider installing fontTools if you encounter encoding problems.
+WARNING pypdf._cmap: fontTools is required to fully parse the encoding of a CFF Type1 font in font dictionary {'/BaseFont': '/NJCFKM+AdvGSANS-B', '/Encoding': '/WinAnsiEncoding', '/FirstChar': 44, '/FontDescriptor': IndirectObject(85, 0, 2772418517328), '/LastChar': 122, '/Subtype': '/Type1', '/Type': '/Font', '/Widths': [270, 0, 270, 0, 0, 552, 552, 552, 552, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 781, 697, 770, 802, 635, 604, 0, 0, 333, 333, 718, 0, 885, 0, 0, 0, 0, 677, 604, 718, 0, 0, 1166, 0, 0, 0, 0, 0, 0, 0, 0, 0, 531, 583, 500, 583, 552, 302, 541, 583, 270, 0, 552, 270, 958, 583, 593, 583, 0, 447, 427, 406, 583, 510, 781, 552, 510, 520]}, but is not installed. Consider installing fontTools if you encounter encoding problems.
+WARNING pypdf._cmap: fontTools is required to fully parse the encoding of a CFF Type1 font in font dictionary {'/BaseFont': '/NJCFNE+AdvPSSab-B', '/Encoding': '/WinAnsiEncoding', '/FirstChar': 46, '/FontDescriptor': IndirectObject(59, 0, 2772418517328), '/LastChar': 122, '/Subtype': '/Type1', '/Type': '/Font', '/Widths': [281, 0, 552, 552, 552, 552, 0, 552, 552, 0, 552, 552, 0, 0, 0, 0, 0, 0, 0, 0, 0, 718, 781, 0, 0, 0, 833, 333, 385, 718, 614, 0, 0, 0, 0, 0, 0, 500, 718, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 500, 552, 447, 552, 447, 333, 500, 552, 281, 0, 0, 281, 833, 552, 552, 0, 552, 385, 385, 333, 552, 500, 0, 0, 500, 447]}, but is not installed. Consider installing fontTools if you encounter encoding problems.
+WARNING pypdf._cmap: fontTools is required to fully parse the encoding of a CFF Type1 font in font dictionary {'/BaseFont': '/NJCFOF+AdvTTc6ee16d2.I+20', '/Encoding': '/WinAnsiEncoding', '/FirstChar': 150, '/FontDescriptor': IndirectObject(12, 0, 2772418517328), '/LastChar': 150, '/Subtype': '/Type1', '/Type': '/Font', '/Widths': [500]}, but is not installed. Consider installing fontTools if you encounter encoding problems.
+WARNING pypdf._cmap: fontTools is required to fully parse the encoding of a CFF Type1 font in font dictionary {'/BaseFont': '/NJCFKN+AdvPSSAB-R', '/Encoding': '/MacRomanEncoding', '/FirstChar': 35, '/FontDescriptor': IndirectObject(86, 0, 2772418517328), '/LastChar': 223, '/Subtype': '/Type1', '/Type': '/Font', '/Widths': [552, 0, 1000, 947, 0, 333, 333, 0, 552, 281, 333, 281, 281, 552, 552, 552, 552, 552, 552, 552, 552, 552, 552, 281, 281, 0, 0, 0, 447, 802, 718, 614, 718, 781, 614, 552, 781, 833, 333, 385, 718, 614, 1000, 833, 833, 552, 833, 718, 500, 666, 718, 718, 1000, 781, 718, 0, 333, 0, 333, 0, 0, 0, 500, 552, 447, 552, 447, 333, 500, 552, 281, 281, 552, 281, 833, 552, 552, 552, 552, 385, 385, 333, 552, 500, 781, 552, 500, 447, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 281, 281, 0, 0, 0, 0, 0, 0, 0, 0, 552, 552]}, but is not installed. Consider installing fontTools if you encounter encoding problems.
+WARNING pypdf._cmap: fontTools is required to fully parse the encoding of a CFF Type1 font in font dictionary {'/BaseFont': '/NJCFKO+AdvPSSAB-I', '/Encoding': '/MacRomanEncoding', '/FirstChar': 41, '/FontDescriptor': IndirectObject(87, 0, 2772418517328), '/LastChar': 222, '/Subtype': '/Type1', '/Type': '/Font', '/Widths': [333, 0, 0, 281, 333, 281, 281, 552, 552, 552, 552, 552, 552, 0, 0, 0, 552, 281, 0, 0, 0, 552, 0, 0, 718, 666, 718, 833, 666, 0, 833, 833, 385, 385, 718, 666, 947, 833, 885, 614, 0, 718, 500, 666, 781, 0, 1000, 781, 666, 0, 0, 0, 0, 0, 0, 0, 500, 552, 447, 552, 447, 333, 500, 552, 281, 0, 552, 281, 833, 552, 552, 552, 552, 385, 385, 333, 552, 500, 781, 552, 500, 447, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 552]}, but is not installed. Consider installing fontTools if you encounter encoding problems.
+WARNING pypdf._cmap: fontTools is required to fully parse the encoding of a CFF Type1 font in font dictionary {'/BaseFont': '/NJCFKP+AdvSabonOSF-SC', '/Encoding': '/WinAnsiEncoding', '/FirstChar': 48, '/FontDescriptor': IndirectObject(88, 0, 2772418517328), '/LastChar': 118, '/Subtype': '/Type1', '/Type': '/Font', '/Widths': [552, 552, 552, 0, 0, 552, 0, 552, 552, 552, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 552, 552, 666, 500, 0, 0, 666, 333, 385, 0, 500, 781, 614, 666, 500, 0, 552, 447, 500, 614, 552]}, but is not installed. Consider installing fontTools if you encounter encoding problems.
+WARNING pypdf._cmap: fontTools is required to fully parse the encoding of a CFF Type1 font in font dictionary {'/BaseFont': '/NJCFLA+AdvTTec369687+20', '/Encoding': '/WinAnsiEncoding', '/FirstChar': 150, '/FontDescriptor': IndirectObject(91, 0, 2772418517328), '/LastChar': 150, '/Subtype': '/Type1', '/Type': '/Font', '/Widths': [500]}, but is not installed. Consider installing fontTools if you encounter encoding problems.
+WARNING pypdf._cmap: fontTools is required to fully parse the encoding of a CFF Type1 font in font dictionary {'/BaseFont': '/NJCFLB+AdvTTec369687', '/Encoding': '/WinAnsiEncoding', '/FirstChar': 60, '/FontDescriptor': IndirectObject(92, 0, 2772418517328), '/LastChar': 62, '/Subtype': '/Type1', '/Type': '/Font', '/Widths': [562, 562, 562]}, but is not installed. Consider installing fontTools if you encounter encoding problems.
+WARNING pypdf._cmap: fontTools is required to fully parse the encoding of a CFF Type1 font in font dictionary {'/BaseFont': '/NJCFMB+AdvTT9476842c', '/Encoding': '/WinAnsiEncoding', '/FirstChar': 38, '/FontDescriptor': IndirectObject(96, 0, 2772418517328), '/LastChar': 169, '/Subtype': '/Type1', '/Type': '/Font', '/Widths': [614, 0, 0, 0, 0, 0, 166, 0, 166, 0, 500, 500, 500, 0, 0, 0, 0, 500, 0, 0, 0, 0, 0, 0, 0, 0, 0, 666, 0, 666, 0, 0, 0, 0, 0, 0, 197, 0, 468, 0, 0, 0, 0, 0, 0, 468, 572, 0, 0, 1020, 0, 0, 0, 0, 0, 0, 0, 0, 0, 416, 500, 416, 500, 468, 239, 416, 489, 187, 0, 416, 187, 770, 489, 541, 500, 0, 322, 343, 291, 489, 416, 697, 0, 416, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 791]}, but is not installed. Consider installing fontTools if you encounter encoding problems.
+WARNING pypdf._cmap: fontTools is required to fully parse the encoding of a CFF Type1 font in font dictionary {'/BaseFont': '/NJCFMC+AdvTTb9f64e59.I', '/Encoding': '/WinAnsiEncoding', '/FirstChar': 38, '/FontDescriptor': IndirectObject(97, 0, 2772418517328), '/LastChar': 116, '/Subtype': '/Type1', '/Type': '/Font', '/Widths': [645, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 697, 197, 0, 0, 0, 791, 0, 0, 0, 0, 0, 0, 447, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 468, 0, 375, 468, 447, 0, 0, 447, 166, 0, 0, 166, 0, 447, 447, 500, 0, 270, 0, 270]}, but is not installed. Consider installing fontTools if you encounter encoding problems.
+WARNING pypdf._cmap: fontTools is required to fully parse the encoding of a CFF Type1 font in font dictionary {'/BaseFont': '/NJCFMD+AdvGSANS', '/Encoding': '/WinAnsiEncoding', '/FirstChar': 48, '/FontDescriptor': IndirectObject(98, 0, 2772418517328), '/LastChar': 57, '/Subtype': '/Type1', '/Type': '/Font', '/Widths': [500, 500, 500, 500, 500, 500, 500, 500, 500, 500]}, but is not installed. Consider installing fontTools if you encounter encoding problems.
+WARNING pypdf._cmap: fontTools is required to fully parse the encoding of a CFF Type1 font in font dictionary {'/BaseFont': '/NJCFKM+AdvGSANS-B', '/Encoding': '/WinAnsiEncoding', '/FirstChar': 44, '/FontDescriptor': IndirectObject(85, 0, 2772418517328), '/LastChar': 122, '/Subtype': '/Type1', '/Type': '/Font', '/Widths': [270, 0, 270, 0, 0, 552, 552, 552, 552, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 781, 697, 770, 802, 635, 604, 0, 0, 333, 333, 718, 0, 885, 0, 0, 0, 0, 677, 604, 718, 0, 0, 1166, 0, 0, 0, 0, 0, 0, 0, 0, 0, 531, 583, 500, 583, 552, 302, 541, 583, 270, 0, 552, 270, 958, 583, 593, 583, 0, 447, 427, 406, 583, 510, 781, 552, 510, 520]}, but is not installed. Consider installing fontTools if you encounter encoding problems.
+WARNING pypdf._cmap: fontTools is required to fully parse the encoding of a CFF Type1 font in font dictionary {'/BaseFont': '/NJCFKN+AdvPSSAB-R', '/Encoding': '/MacRomanEncoding', '/FirstChar': 35, '/FontDescriptor': IndirectObject(86, 0, 2772418517328), '/LastChar': 223, '/Subtype': '/Type1', '/Type': '/Font', '/Widths': [552, 0, 1000, 947, 0, 333, 333, 0, 552, 281, 333, 281, 281, 552, 552, 552, 552, 552, 552, 552, 552, 552, 552, 281, 281, 0, 0, 0, 447, 802, 718, 614, 718, 781, 614, 552, 781, 833, 333, 385, 718, 614, 1000, 833, 833, 552, 833, 718, 500, 666, 718, 718, 1000, 781, 718, 0, 333, 0, 333, 0, 0, 0, 500, 552, 447, 552, 447, 333, 500, 552, 281, 281, 552, 281, 833, 552, 552, 552, 552, 385, 385, 333, 552, 500, 781, 552, 500, 447, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 281, 281, 0, 0, 0, 0, 0, 0, 0, 0, 552, 552]}, but is not installed. Consider installing fontTools if you encounter encoding problems.
+WARNING pypdf._cmap: fontTools is required to fully parse the encoding of a CFF Type1 font in font dictionary {'/BaseFont': '/NJCFKO+AdvPSSAB-I', '/Encoding': '/MacRomanEncoding', '/FirstChar': 41, '/FontDescriptor': IndirectObject(87, 0, 2772418517328), '/LastChar': 222, '/Subtype': '/Type1', '/Type': '/Font', '/Widths': [333, 0, 0, 281, 333, 281, 281, 552, 552, 552, 552, 552, 552, 0, 0, 0, 552, 281, 0, 0, 0, 552, 0, 0, 718, 666, 718, 833, 666, 0, 833, 833, 385, 385, 718, 666, 947, 833, 885, 614, 0, 718, 500, 666, 781, 0, 1000, 781, 666, 0, 0, 0, 0, 0, 0, 0, 500, 552, 447, 552, 447, 333, 500, 552, 281, 0, 552, 281, 833, 552, 552, 552, 552, 385, 385, 333, 552, 500, 781, 552, 500, 447, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 552]}, but is not installed. Consider installing fontTools if you encounter encoding problems.
+WARNING pypdf._cmap: fontTools is required to fully parse the encoding of a CFF Type1 font in font dictionary {'/BaseFont': '/NJCFKP+AdvSabonOSF-SC', '/Encoding': '/WinAnsiEncoding', '/FirstChar': 48, '/FontDescriptor': IndirectObject(88, 0, 2772418517328), '/LastChar': 118, '/Subtype': '/Type1', '/Type': '/Font', '/Widths': [552, 552, 552, 0, 0, 552, 0, 552, 552, 552, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 552, 552, 666, 500, 0, 0, 666, 333, 385, 0, 500, 781, 614, 666, 500, 0, 552, 447, 500, 614, 552]}, but is not installed. Consider installing fontTools if you encounter encoding problems.
+WARNING pypdf._cmap: fontTools is required to fully parse the encoding of a CFF Type1 font in font dictionary {'/BaseFont': '/NJCFLA+AdvTTec369687+20', '/Encoding': '/WinAnsiEncoding', '/FirstChar': 150, '/FontDescriptor': IndirectObject(91, 0, 2772418517328), '/LastChar': 150, '/Subtype': '/Type1', '/Type': '/Font', '/Widths': [500]}, but is not installed. Consider installing fontTools if you encounter encoding problems.
+WARNING pypdf._cmap: fontTools is required to fully parse the encoding of a CFF Type1 font in font dictionary {'/BaseFont': '/NJCFLB+AdvTTec369687', '/Encoding': '/WinAnsiEncoding', '/FirstChar': 60, '/FontDescriptor': IndirectObject(92, 0, 2772418517328), '/LastChar': 62, '/Subtype': '/Type1', '/Type': '/Font', '/Widths': [562, 562, 562]}, but is not installed. Consider installing fontTools if you encounter encoding problems.
+WARNING pypdf._cmap: fontTools is required to fully parse the encoding of a CFF Type1 font in font dictionary {'/BaseFont': '/NJCFMB+AdvTT9476842c', '/Encoding': '/WinAnsiEncoding', '/FirstChar': 38, '/FontDescriptor': IndirectObject(96, 0, 2772418517328), '/LastChar': 169, '/Subtype': '/Type1', '/Type': '/Font', '/Widths': [614, 0, 0, 0, 0, 0, 166, 0, 166, 0, 500, 500, 500, 0, 0, 0, 0, 500, 0, 0, 0, 0, 0, 0, 0, 0, 0, 666, 0, 666, 0, 0, 0, 0, 0, 0, 197, 0, 468, 0, 0, 0, 0, 0, 0, 468, 572, 0, 0, 1020, 0, 0, 0, 0, 0, 0, 0, 0, 0, 416, 500, 416, 500, 468, 239, 416, 489, 187, 0, 416, 187, 770, 489, 541, 500, 0, 322, 343, 291, 489, 416, 697, 0, 416, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 791]}, but is not installed. Consider installing fontTools if you encounter encoding problems.
+WARNING pypdf._cmap: fontTools is required to fully parse the encoding of a CFF Type1 font in font dictionary {'/BaseFont': '/NJCFMC+AdvTTb9f64e59.I', '/Encoding': '/WinAnsiEncoding', '/FirstChar': 38, '/FontDescriptor': IndirectObject(97, 0, 2772418517328), '/LastChar': 116, '/Subtype': '/Type1', '/Type': '/Font', '/Widths': [645, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 697, 197, 0, 0, 0, 791, 0, 0, 0, 0, 0, 0, 447, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 468, 0, 375, 468, 447, 0, 0, 447, 166, 0, 0, 166, 0, 447, 447, 500, 0, 270, 0, 270]}, but is not installed. Consider installing fontTools if you encounter encoding problems.
+WARNING pypdf._cmap: fontTools is required to fully parse the encoding of a CFF Type1 font in font dictionary {'/BaseFont': '/NJCFMD+AdvGSANS', '/Encoding': '/WinAnsiEncoding', '/FirstChar': 48, '/FontDescriptor': IndirectObject(98, 0, 2772418517328), '/LastChar': 57, '/Subtype': '/Type1', '/Type': '/Font', '/Widths': [500, 500, 500, 500, 500, 500, 500, 500, 500, 500]}, but is not installed. Consider installing fontTools if you encounter encoding problems.
+WARNING pypdf._cmap: fontTools is required to fully parse the encoding of a CFF Type1 font in font dictionary {'/BaseFont': '/NJCFKM+AdvGSANS-B', '/Encoding': '/WinAnsiEncoding', '/FirstChar': 44, '/FontDescriptor': IndirectObject(85, 0, 2772418517328), '/LastChar': 122, '/Subtype': '/Type1', '/Type': '/Font', '/Widths': [270, 0, 270, 0, 0, 552, 552, 552, 552, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 781, 697, 770, 802, 635, 604, 0, 0, 333, 333, 718, 0, 885, 0, 0, 0, 0, 677, 604, 718, 0, 0, 1166, 0, 0, 0, 0, 0, 0, 0, 0, 0, 531, 583, 500, 583, 552, 302, 541, 583, 270, 0, 552, 270, 958, 583, 593, 583, 0, 447, 427, 406, 583, 510, 781, 552, 510, 520]}, but is not installed. Consider installing fontTools if you encounter encoding problems.
+WARNING pypdf._cmap: fontTools is required to fully parse the encoding of a CFF Type1 font in font dictionary {'/BaseFont': '/NJCFNE+AdvPSSab-B', '/Encoding': '/WinAnsiEncoding', '/FirstChar': 46, '/FontDescriptor': IndirectObject(59, 0, 2772418517328), '/LastChar': 122, '/Subtype': '/Type1', '/Type': '/Font', '/Widths': [281, 0, 552, 552, 552, 552, 0, 552, 552, 0, 552, 552, 0, 0, 0, 0, 0, 0, 0, 0, 0, 718, 781, 0, 0, 0, 833, 333, 385, 718, 614, 0, 0, 0, 0, 0, 0, 500, 718, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 500, 552, 447, 552, 447, 333, 500, 552, 281, 0, 0, 281, 833, 552, 552, 0, 552, 385, 385, 333, 552, 500, 0, 0, 500, 447]}, but is not installed. Consider installing fontTools if you encounter encoding problems.
+WARNING pypdf._cmap: fontTools is required to fully parse the encoding of a CFF Type1 font in font dictionary {'/BaseFont': '/NJCGCF+Helvetica', '/Encoding': '/WinAnsiEncoding', '/FirstChar': 32, '/FontDescriptor': IndirectObject(63, 0, 2772418517328), '/LastChar': 150, '/Subtype': '/Type1', '/Type': '/Font', '/Widths': [278, 0, 0, 0, 0, 889, 0, 0, 0, 0, 0, 0, 278, 333, 278, 278, 556, 556, 556, 556, 556, 556, 556, 556, 556, 556, 0, 0, 0, 0, 0, 0, 0, 667, 667, 722, 722, 667, 611, 0, 722, 278, 0, 667, 556, 833, 722, 778, 667, 0, 722, 667, 611, 722, 667, 0, 0, 667, 0, 278, 0, 278, 0, 0, 0, 556, 556, 500, 556, 556, 278, 556, 556, 222, 0, 500, 222, 833, 556, 556, 556, 556, 333, 500, 278, 556, 500, 722, 0, 500, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 556]}, but is not installed. Consider installing fontTools if you encounter encoding problems.
+WARNING pypdf._cmap: fontTools is required to fully parse the encoding of a CFF Type1 font in font dictionary {'/BaseFont': '/NJCGCG+Helvetica-Bold', '/Encoding': '/WinAnsiEncoding', '/FirstChar': 32, '/FontDescriptor': IndirectObject(22, 0, 2772418517328), '/LastChar': 86, '/Subtype': '/Type1', '/Type': '/Font', '/Widths': [278, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 722, 0, 722, 722, 667, 0, 778, 722, 278, 0, 0, 611, 0, 722, 778, 0, 0, 722, 667, 611, 722, 667]}, but is not installed. Consider installing fontTools if you encounter encoding problems.
+WARNING pypdf._cmap: fontTools is required to fully parse the encoding of a CFF Type1 font in font dictionary {'/BaseFont': '/NJCFKN+AdvPSSAB-R', '/Encoding': '/MacRomanEncoding', '/FirstChar': 35, '/FontDescriptor': IndirectObject(86, 0, 2772418517328), '/LastChar': 223, '/Subtype': '/Type1', '/Type': '/Font', '/Widths': [552, 0, 1000, 947, 0, 333, 333, 0, 552, 281, 333, 281, 281, 552, 552, 552, 552, 552, 552, 552, 552, 552, 552, 281, 281, 0, 0, 0, 447, 802, 718, 614, 718, 781, 614, 552, 781, 833, 333, 385, 718, 614, 1000, 833, 833, 552, 833, 718, 500, 666, 718, 718, 1000, 781, 718, 0, 333, 0, 333, 0, 0, 0, 500, 552, 447, 552, 447, 333, 500, 552, 281, 281, 552, 281, 833, 552, 552, 552, 552, 385, 385, 333, 552, 500, 781, 552, 500, 447, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 281, 281, 0, 0, 0, 0, 0, 0, 0, 0, 552, 552]}, but is not installed. Consider installing fontTools if you encounter encoding problems.
+WARNING pypdf._cmap: fontTools is required to fully parse the encoding of a CFF Type1 font in font dictionary {'/BaseFont': '/NJCFKP+AdvSabonOSF-SC', '/Encoding': '/WinAnsiEncoding', '/FirstChar': 48, '/FontDescriptor': IndirectObject(88, 0, 2772418517328), '/LastChar': 118, '/Subtype': '/Type1', '/Type': '/Font', '/Widths': [552, 552, 552, 0, 0, 552, 0, 552, 552, 552, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 552, 552, 666, 500, 0, 0, 666, 333, 385, 0, 500, 781, 614, 666, 500, 0, 552, 447, 500, 614, 552]}, but is not installed. Consider installing fontTools if you encounter encoding problems.
+WARNING pypdf._cmap: fontTools is required to fully parse the encoding of a CFF Type1 font in font dictionary {'/BaseFont': '/NJCFLA+AdvTTec369687+20', '/Encoding': '/WinAnsiEncoding', '/FirstChar': 150, '/FontDescriptor': IndirectObject(91, 0, 2772418517328), '/LastChar': 150, '/Subtype': '/Type1', '/Type': '/Font', '/Widths': [500]}, but is not installed. Consider installing fontTools if you encounter encoding problems.
+WARNING pypdf._cmap: fontTools is required to fully parse the encoding of a CFF Type1 font in font dictionary {'/BaseFont': '/NJCFLB+AdvTTec369687', '/Encoding': '/WinAnsiEncoding', '/FirstChar': 60, '/FontDescriptor': IndirectObject(92, 0, 2772418517328), '/LastChar': 62, '/Subtype': '/Type1', '/Type': '/Font', '/Widths': [562, 562, 562]}, but is not installed. Consider installing fontTools if you encounter encoding problems.
+WARNING pypdf._cmap: fontTools is required to fully parse the encoding of a CFF Type1 font in font dictionary {'/BaseFont': '/NJCFMB+AdvTT9476842c', '/Encoding': '/WinAnsiEncoding', '/FirstChar': 38, '/FontDescriptor': IndirectObject(96, 0, 2772418517328), '/LastChar': 169, '/Subtype': '/Type1', '/Type': '/Font', '/Widths': [614, 0, 0, 0, 0, 0, 166, 0, 166, 0, 500, 500, 500, 0, 0, 0, 0, 500, 0, 0, 0, 0, 0, 0, 0, 0, 0, 666, 0, 666, 0, 0, 0, 0, 0, 0, 197, 0, 468, 0, 0, 0, 0, 0, 0, 468, 572, 0, 0, 1020, 0, 0, 0, 0, 0, 0, 0, 0, 0, 416, 500, 416, 500, 468, 239, 416, 489, 187, 0, 416, 187, 770, 489, 541, 500, 0, 322, 343, 291, 489, 416, 697, 0, 416, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 791]}, but is not installed. Consider installing fontTools if you encounter encoding problems.
+WARNING pypdf._cmap: fontTools is required to fully parse the encoding of a CFF Type1 font in font dictionary {'/BaseFont': '/NJCFMC+AdvTTb9f64e59.I', '/Encoding': '/WinAnsiEncoding', '/FirstChar': 38, '/FontDescriptor': IndirectObject(97, 0, 2772418517328), '/LastChar': 116, '/Subtype': '/Type1', '/Type': '/Font', '/Widths': [645, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 697, 197, 0, 0, 0, 791, 0, 0, 0, 0, 0, 0, 447, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 468, 0, 375, 468, 447, 0, 0, 447, 166, 0, 0, 166, 0, 447, 447, 500, 0, 270, 0, 270]}, but is not installed. Consider installing fontTools if you encounter encoding problems.
+WARNING pypdf._cmap: fontTools is required to fully parse the encoding of a CFF Type1 font in font dictionary {'/BaseFont': '/NJCFMD+AdvGSANS', '/Encoding': '/WinAnsiEncoding', '/FirstChar': 48, '/FontDescriptor': IndirectObject(98, 0, 2772418517328), '/LastChar': 57, '/Subtype': '/Type1', '/Type': '/Font', '/Widths': [500, 500, 500, 500, 500, 500, 500, 500, 500, 500]}, but is not installed. Consider installing fontTools if you encounter encoding problems.
+WARNING pypdf._cmap: fontTools is required to fully parse the encoding of a CFF Type1 font in font dictionary {'/BaseFont': '/NJCFKM+AdvGSANS-B', '/Encoding': '/WinAnsiEncoding', '/FirstChar': 44, '/FontDescriptor': IndirectObject(85, 0, 2772418517328), '/LastChar': 122, '/Subtype': '/Type1', '/Type': '/Font', '/Widths': [270, 0, 270, 0, 0, 552, 552, 552, 552, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 781, 697, 770, 802, 635, 604, 0, 0, 333, 333, 718, 0, 885, 0, 0, 0, 0, 677, 604, 718, 0, 0, 1166, 0, 0, 0, 0, 0, 0, 0, 0, 0, 531, 583, 500, 583, 552, 302, 541, 583, 270, 0, 552, 270, 958, 583, 593, 583, 0, 447, 427, 406, 583, 510, 781, 552, 510, 520]}, but is not installed. Consider installing fontTools if you encounter encoding problems.
+WARNING pypdf._cmap: fontTools is required to fully parse the encoding of a CFF Type1 font in font dictionary {'/BaseFont': '/NJCFKN+AdvPSSAB-R', '/Encoding': '/MacRomanEncoding', '/FirstChar': 35, '/FontDescriptor': IndirectObject(86, 0, 2772418517328), '/LastChar': 223, '/Subtype': '/Type1', '/Type': '/Font', '/Widths': [552, 0, 1000, 947, 0, 333, 333, 0, 552, 281, 333, 281, 281, 552, 552, 552, 552, 552, 552, 552, 552, 552, 552, 281, 281, 0, 0, 0, 447, 802, 718, 614, 718, 781, 614, 552, 781, 833, 333, 385, 718, 614, 1000, 833, 833, 552, 833, 718, 500, 666, 718, 718, 1000, 781, 718, 0, 333, 0, 333, 0, 0, 0, 500, 552, 447, 552, 447, 333, 500, 552, 281, 281, 552, 281, 833, 552, 552, 552, 552, 385, 385, 333, 552, 500, 781, 552, 500, 447, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 281, 281, 0, 0, 0, 0, 0, 0, 0, 0, 552, 552]}, but is not installed. Consider installing fontTools if you encounter encoding problems.
+WARNING pypdf._cmap: fontTools is required to fully parse the encoding of a CFF Type1 font in font dictionary {'/BaseFont': '/NJCFKO+AdvPSSAB-I', '/Encoding': '/MacRomanEncoding', '/FirstChar': 41, '/FontDescriptor': IndirectObject(87, 0, 2772418517328), '/LastChar': 222, '/Subtype': '/Type1', '/Type': '/Font', '/Widths': [333, 0, 0, 281, 333, 281, 281, 552, 552, 552, 552, 552, 552, 0, 0, 0, 552, 281, 0, 0, 0, 552, 0, 0, 718, 666, 718, 833, 666, 0, 833, 833, 385, 385, 718, 666, 947, 833, 885, 614, 0, 718, 500, 666, 781, 0, 1000, 781, 666, 0, 0, 0, 0, 0, 0, 0, 500, 552, 447, 552, 447, 333, 500, 552, 281, 0, 552, 281, 833, 552, 552, 552, 552, 385, 385, 333, 552, 500, 781, 552, 500, 447, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 552]}, but is not installed. Consider installing fontTools if you encounter encoding problems.
+WARNING pypdf._cmap: fontTools is required to fully parse the encoding of a CFF Type1 font in font dictionary {'/BaseFont': '/NJCFKP+AdvSabonOSF-SC', '/Encoding': '/WinAnsiEncoding', '/FirstChar': 48, '/FontDescriptor': IndirectObject(88, 0, 2772418517328), '/LastChar': 118, '/Subtype': '/Type1', '/Type': '/Font', '/Widths': [552, 552, 552, 0, 0, 552, 0, 552, 552, 552, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 552, 552, 666, 500, 0, 0, 666, 333, 385, 0, 500, 781, 614, 666, 500, 0, 552, 447, 500, 614, 552]}, but is not installed. Consider installing fontTools if you encounter encoding problems.
+WARNING pypdf._cmap: fontTools is required to fully parse the encoding of a CFF Type1 font in font dictionary {'/BaseFont': '/NJCFLA+AdvTTec369687+20', '/Encoding': '/WinAnsiEncoding', '/FirstChar': 150, '/FontDescriptor': IndirectObject(91, 0, 2772418517328), '/LastChar': 150, '/Subtype': '/Type1', '/Type': '/Font', '/Widths': [500]}, but is not installed. Consider installing fontTools if you encounter encoding problems.
+WARNING pypdf._cmap: fontTools is required to fully parse the encoding of a CFF Type1 font in font dictionary {'/BaseFont': '/NJCFLB+AdvTTec369687', '/Encoding': '/WinAnsiEncoding', '/FirstChar': 60, '/FontDescriptor': IndirectObject(92, 0, 2772418517328), '/LastChar': 62, '/Subtype': '/Type1', '/Type': '/Font', '/Widths': [562, 562, 562]}, but is not installed. Consider installing fontTools if you encounter encoding problems.
+WARNING pypdf._cmap: fontTools is required to fully parse the encoding of a CFF Type1 font in font dictionary {'/BaseFont': '/NJCFMB+AdvTT9476842c', '/Encoding': '/WinAnsiEncoding', '/FirstChar': 38, '/FontDescriptor': IndirectObject(96, 0, 2772418517328), '/LastChar': 169, '/Subtype': '/Type1', '/Type': '/Font', '/Widths': [614, 0, 0, 0, 0, 0, 166, 0, 166, 0, 500, 500, 500, 0, 0, 0, 0, 500, 0, 0, 0, 0, 0, 0, 0, 0, 0, 666, 0, 666, 0, 0, 0, 0, 0, 0, 197, 0, 468, 0, 0, 0, 0, 0, 0, 468, 572, 0, 0, 1020, 0, 0, 0, 0, 0, 0, 0, 0, 0, 416, 500, 416, 500, 468, 239, 416, 489, 187, 0, 416, 187, 770, 489, 541, 500, 0, 322, 343, 291, 489, 416, 697, 0, 416, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 791]}, but is not installed. Consider installing fontTools if you encounter encoding problems.
+WARNING pypdf._cmap: fontTools is required to fully parse the encoding of a CFF Type1 font in font dictionary {'/BaseFont': '/NJCFMC+AdvTTb9f64e59.I', '/Encoding': '/WinAnsiEncoding', '/FirstChar': 38, '/FontDescriptor': IndirectObject(97, 0, 2772418517328), '/LastChar': 116, '/Subtype': '/Type1', '/Type': '/Font', '/Widths': [645, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 697, 197, 0, 0, 0, 791, 0, 0, 0, 0, 0, 0, 447, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 468, 0, 375, 468, 447, 0, 0, 447, 166, 0, 0, 166, 0, 447, 447, 500, 0, 270, 0, 270]}, but is not installed. Consider installing fontTools if you encounter encoding problems.
+WARNING pypdf._cmap: fontTools is required to fully parse the encoding of a CFF Type1 font in font dictionary {'/BaseFont': '/NJCFMD+AdvGSANS', '/Encoding': '/WinAnsiEncoding', '/FirstChar': 48, '/FontDescriptor': IndirectObject(98, 0, 2772418517328), '/LastChar': 57, '/Subtype': '/Type1', '/Type': '/Font', '/Widths': [500, 500, 500, 500, 500, 500, 500, 500, 500, 500]}, but is not installed. Consider installing fontTools if you encounter encoding problems.
+WARNING pypdf._cmap: fontTools is required to fully parse the encoding of a CFF Type1 font in font dictionary {'/BaseFont': '/NJCFKM+AdvGSANS-B', '/Encoding': '/WinAnsiEncoding', '/FirstChar': 44, '/FontDescriptor': IndirectObject(85, 0, 2772418517328), '/LastChar': 122, '/Subtype': '/Type1', '/Type': '/Font', '/Widths': [270, 0, 270, 0, 0, 552, 552, 552, 552, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 781, 697, 770, 802, 635, 604, 0, 0, 333, 333, 718, 0, 885, 0, 0, 0, 0, 677, 604, 718, 0, 0, 1166, 0, 0, 0, 0, 0, 0, 0, 0, 0, 531, 583, 500, 583, 552, 302, 541, 583, 270, 0, 552, 270, 958, 583, 593, 583, 0, 447, 427, 406, 583, 510, 781, 552, 510, 520]}, but is not installed. Consider installing fontTools if you encounter encoding problems.
+WARNING pypdf._cmap: fontTools is required to fully parse the encoding of a CFF Type1 font in font dictionary {'/BaseFont': '/NJCGCF+Helvetica', '/Encoding': '/WinAnsiEncoding', '/FirstChar': 32, '/FontDescriptor': IndirectObject(63, 0, 2772418517328), '/LastChar': 150, '/Subtype': '/Type1', '/Type': '/Font', '/Widths': [278, 0, 0, 0, 0, 889, 0, 0, 0, 0, 0, 0, 278, 333, 278, 278, 556, 556, 556, 556, 556, 556, 556, 556, 556, 556, 0, 0, 0, 0, 0, 0, 0, 667, 667, 722, 722, 667, 611, 0, 722, 278, 0, 667, 556, 833, 722, 778, 667, 0, 722, 667, 611, 722, 667, 0, 0, 667, 0, 278, 0, 278, 0, 0, 0, 556, 556, 500, 556, 556, 278, 556, 556, 222, 0, 500, 222, 833, 556, 556, 556, 556, 333, 500, 278, 556, 500, 722, 0, 500, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 556]}, but is not installed. Consider installing fontTools if you encounter encoding problems.
+WARNING pypdf._cmap: fontTools is required to fully parse the encoding of a CFF Type1 font in font dictionary {'/BaseFont': '/NJCFKN+AdvPSSAB-R', '/Encoding': '/MacRomanEncoding', '/FirstChar': 35, '/FontDescriptor': IndirectObject(86, 0, 2772418517328), '/LastChar': 223, '/Subtype': '/Type1', '/Type': '/Font', '/Widths': [552, 0, 1000, 947, 0, 333, 333, 0, 552, 281, 333, 281, 281, 552, 552, 552, 552, 552, 552, 552, 552, 552, 552, 281, 281, 0, 0, 0, 447, 802, 718, 614, 718, 781, 614, 552, 781, 833, 333, 385, 718, 614, 1000, 833, 833, 552, 833, 718, 500, 666, 718, 718, 1000, 781, 718, 0, 333, 0, 333, 0, 0, 0, 500, 552, 447, 552, 447, 333, 500, 552, 281, 281, 552, 281, 833, 552, 552, 552, 552, 385, 385, 333, 552, 500, 781, 552, 500, 447, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 281, 281, 0, 0, 0, 0, 0, 0, 0, 0, 552, 552]}, but is not installed. Consider installing fontTools if you encounter encoding problems.
+WARNING pypdf._cmap: fontTools is required to fully parse the encoding of a CFF Type1 font in font dictionary {'/BaseFont': '/NJCFKP+AdvSabonOSF-SC', '/Encoding': '/WinAnsiEncoding', '/FirstChar': 48, '/FontDescriptor': IndirectObject(88, 0, 2772418517328), '/LastChar': 118, '/Subtype': '/Type1', '/Type': '/Font', '/Widths': [552, 552, 552, 0, 0, 552, 0, 552, 552, 552, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 552, 552, 666, 500, 0, 0, 666, 333, 385, 0, 500, 781, 614, 666, 500, 0, 552, 447, 500, 614, 552]}, but is not installed. Consider installing fontTools if you encounter encoding problems.
+WARNING pypdf._cmap: fontTools is required to fully parse the encoding of a CFF Type1 font in font dictionary {'/BaseFont': '/NJCFLA+AdvTTec369687+20', '/Encoding': '/WinAnsiEncoding', '/FirstChar': 150, '/FontDescriptor': IndirectObject(91, 0, 2772418517328), '/LastChar': 150, '/Subtype': '/Type1', '/Type': '/Font', '/Widths': [500]}, but is not installed. Consider installing fontTools if you encounter encoding problems.
+WARNING pypdf._cmap: fontTools is required to fully parse the encoding of a CFF Type1 font in font dictionary {'/BaseFont': '/NJCFMB+AdvTT9476842c', '/Encoding': '/WinAnsiEncoding', '/FirstChar': 38, '/FontDescriptor': IndirectObject(96, 0, 2772418517328), '/LastChar': 169, '/Subtype': '/Type1', '/Type': '/Font', '/Widths': [614, 0, 0, 0, 0, 0, 166, 0, 166, 0, 500, 500, 500, 0, 0, 0, 0, 500, 0, 0, 0, 0, 0, 0, 0, 0, 0, 666, 0, 666, 0, 0, 0, 0, 0, 0, 197, 0, 468, 0, 0, 0, 0, 0, 0, 468, 572, 0, 0, 1020, 0, 0, 0, 0, 0, 0, 0, 0, 0, 416, 500, 416, 500, 468, 239, 416, 489, 187, 0, 416, 187, 770, 489, 541, 500, 0, 322, 343, 291, 489, 416, 697, 0, 416, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 791]}, but is not installed. Consider installing fontTools if you encounter encoding problems.
+WARNING pypdf._cmap: fontTools is required to fully parse the encoding of a CFF Type1 font in font dictionary {'/BaseFont': '/NJCFMC+AdvTTb9f64e59.I', '/Encoding': '/WinAnsiEncoding', '/FirstChar': 38, '/FontDescriptor': IndirectObject(97, 0, 2772418517328), '/LastChar': 116, '/Subtype': '/Type1', '/Type': '/Font', '/Widths': [645, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 697, 197, 0, 0, 0, 791, 0, 0, 0, 0, 0, 0, 447, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 468, 0, 375, 468, 447, 0, 0, 447, 166, 0, 0, 166, 0, 447, 447, 500, 0, 270, 0, 270]}, but is not installed. Consider installing fontTools if you encounter encoding problems.
+WARNING pypdf._cmap: fontTools is required to fully parse the encoding of a CFF Type1 font in font dictionary {'/BaseFont': '/NJCFMD+AdvGSANS', '/Encoding': '/WinAnsiEncoding', '/FirstChar': 48, '/FontDescriptor': IndirectObject(98, 0, 2772418517328), '/LastChar': 57, '/Subtype': '/Type1', '/Type': '/Font', '/Widths': [500, 500, 500, 500, 500, 500, 500, 500, 500, 500]}, but is not installed. Consider installing fontTools if you encounter encoding problems.
+WARNING pypdf._cmap: fontTools is required to fully parse the encoding of a CFF Type1 font in font dictionary {'/BaseFont': '/NJCFKM+AdvGSANS-B', '/Encoding': '/WinAnsiEncoding', '/FirstChar': 44, '/FontDescriptor': IndirectObject(85, 0, 2772418517328), '/LastChar': 122, '/Subtype': '/Type1', '/Type': '/Font', '/Widths': [270, 0, 270, 0, 0, 552, 552, 552, 552, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 781, 697, 770, 802, 635, 604, 0, 0, 333, 333, 718, 0, 885, 0, 0, 0, 0, 677, 604, 718, 0, 0, 1166, 0, 0, 0, 0, 0, 0, 0, 0, 0, 531, 583, 500, 583, 552, 302, 541, 583, 270, 0, 552, 270, 958, 583, 593, 583, 0, 447, 427, 406, 583, 510, 781, 552, 510, 520]}, but is not installed. Consider installing fontTools if you encounter encoding problems.
+WARNING pypdf._cmap: fontTools is required to fully parse the encoding of a CFF Type1 font in font dictionary {'/BaseFont': '/NJCGCF+Helvetica', '/Encoding': '/WinAnsiEncoding', '/FirstChar': 32, '/FontDescriptor': IndirectObject(63, 0, 2772418517328), '/LastChar': 150, '/Subtype': '/Type1', '/Type': '/Font', '/Widths': [278, 0, 0, 0, 0, 889, 0, 0, 0, 0, 0, 0, 278, 333, 278, 278, 556, 556, 556, 556, 556, 556, 556, 556, 556, 556, 0, 0, 0, 0, 0, 0, 0, 667, 667, 722, 722, 667, 611, 0, 722, 278, 0, 667, 556, 833, 722, 778, 667, 0, 722, 667, 611, 722, 667, 0, 0, 667, 0, 278, 0, 278, 0, 0, 0, 556, 556, 500, 556, 556, 278, 556, 556, 222, 0, 500, 222, 833, 556, 556, 556, 556, 333, 500, 278, 556, 500, 722, 0, 500, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 556]}, but is not installed. Consider installing fontTools if you encounter encoding problems.
+WARNING pypdf._cmap: fontTools is required to fully parse the encoding of a CFF Type1 font in font dictionary {'/BaseFont': '/NJCFKN+AdvPSSAB-R', '/Encoding': '/MacRomanEncoding', '/FirstChar': 35, '/FontDescriptor': IndirectObject(86, 0, 2772418517328), '/LastChar': 223, '/Subtype': '/Type1', '/Type': '/Font', '/Widths': [552, 0, 1000, 947, 0, 333, 333, 0, 552, 281, 333, 281, 281, 552, 552, 552, 552, 552, 552, 552, 552, 552, 552, 281, 281, 0, 0, 0, 447, 802, 718, 614, 718, 781, 614, 552, 781, 833, 333, 385, 718, 614, 1000, 833, 833, 552, 833, 718, 500, 666, 718, 718, 1000, 781, 718, 0, 333, 0, 333, 0, 0, 0, 500, 552, 447, 552, 447, 333, 500, 552, 281, 281, 552, 281, 833, 552, 552, 552, 552, 385, 385, 333, 552, 500, 781, 552, 500, 447, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 281, 281, 0, 0, 0, 0, 0, 0, 0, 0, 552, 552]}, but is not installed. Consider installing fontTools if you encounter encoding problems.
+WARNING pypdf._cmap: fontTools is required to fully parse the encoding of a CFF Type1 font in font dictionary {'/BaseFont': '/NJCFKP+AdvSabonOSF-SC', '/Encoding': '/WinAnsiEncoding', '/FirstChar': 48, '/FontDescriptor': IndirectObject(88, 0, 2772418517328), '/LastChar': 118, '/Subtype': '/Type1', '/Type': '/Font', '/Widths': [552, 552, 552, 0, 0, 552, 0, 552, 552, 552, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 552, 552, 666, 500, 0, 0, 666, 333, 385, 0, 500, 781, 614, 666, 500, 0, 552, 447, 500, 614, 552]}, but is not installed. Consider installing fontTools if you encounter encoding problems.
+WARNING pypdf._cmap: fontTools is required to fully parse the encoding of a CFF Type1 font in font dictionary {'/BaseFont': '/NJCFLA+AdvTTec369687+20', '/Encoding': '/WinAnsiEncoding', '/FirstChar': 150, '/FontDescriptor': IndirectObject(91, 0, 2772418517328), '/LastChar': 150, '/Subtype': '/Type1', '/Type': '/Font', '/Widths': [500]}, but is not installed. Consider installing fontTools if you encounter encoding problems.
+WARNING pypdf._cmap: fontTools is required to fully parse the encoding of a CFF Type1 font in font dictionary {'/BaseFont': '/NJCFMB+AdvTT9476842c', '/Encoding': '/WinAnsiEncoding', '/FirstChar': 38, '/FontDescriptor': IndirectObject(96, 0, 2772418517328), '/LastChar': 169, '/Subtype': '/Type1', '/Type': '/Font', '/Widths': [614, 0, 0, 0, 0, 0, 166, 0, 166, 0, 500, 500, 500, 0, 0, 0, 0, 500, 0, 0, 0, 0, 0, 0, 0, 0, 0, 666, 0, 666, 0, 0, 0, 0, 0, 0, 197, 0, 468, 0, 0, 0, 0, 0, 0, 468, 572, 0, 0, 1020, 0, 0, 0, 0, 0, 0, 0, 0, 0, 416, 500, 416, 500, 468, 239, 416, 489, 187, 0, 416, 187, 770, 489, 541, 500, 0, 322, 343, 291, 489, 416, 697, 0, 416, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 791]}, but is not installed. Consider installing fontTools if you encounter encoding problems.
+WARNING pypdf._cmap: fontTools is required to fully parse the encoding of a CFF Type1 font in font dictionary {'/BaseFont': '/NJCFMC+AdvTTb9f64e59.I', '/Encoding': '/WinAnsiEncoding', '/FirstChar': 38, '/FontDescriptor': IndirectObject(97, 0, 2772418517328), '/LastChar': 116, '/Subtype': '/Type1', '/Type': '/Font', '/Widths': [645, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 697, 197, 0, 0, 0, 791, 0, 0, 0, 0, 0, 0, 447, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 468, 0, 375, 468, 447, 0, 0, 447, 166, 0, 0, 166, 0, 447, 447, 500, 0, 270, 0, 270]}, but is not installed. Consider installing fontTools if you encounter encoding problems.
+WARNING pypdf._cmap: fontTools is required to fully parse the encoding of a CFF Type1 font in font dictionary {'/BaseFont': '/NJCFMD+AdvGSANS', '/Encoding': '/WinAnsiEncoding', '/FirstChar': 48, '/FontDescriptor': IndirectObject(98, 0, 2772418517328), '/LastChar': 57, '/Subtype': '/Type1', '/Type': '/Font', '/Widths': [500, 500, 500, 500, 500, 500, 500, 500, 500, 500]}, but is not installed. Consider installing fontTools if you encounter encoding problems.
+WARNING pypdf._cmap: fontTools is required to fully parse the encoding of a CFF Type1 font in font dictionary {'/BaseFont': '/NJCFKM+AdvGSANS-B', '/Encoding': '/WinAnsiEncoding', '/FirstChar': 44, '/FontDescriptor': IndirectObject(85, 0, 2772418517328), '/LastChar': 122, '/Subtype': '/Type1', '/Type': '/Font', '/Widths': [270, 0, 270, 0, 0, 552, 552, 552, 552, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 781, 697, 770, 802, 635, 604, 0, 0, 333, 333, 718, 0, 885, 0, 0, 0, 0, 677, 604, 718, 0, 0, 1166, 0, 0, 0, 0, 0, 0, 0, 0, 0, 531, 583, 500, 583, 552, 302, 541, 583, 270, 0, 552, 270, 958, 583, 593, 583, 0, 447, 427, 406, 583, 510, 781, 552, 510, 520]}, but is not installed. Consider installing fontTools if you encounter encoding problems.
+WARNING pypdf._cmap: fontTools is required to fully parse the encoding of a CFF Type1 font in font dictionary {'/BaseFont': '/NJCFNE+AdvPSSab-B', '/Encoding': '/WinAnsiEncoding', '/FirstChar': 46, '/FontDescriptor': IndirectObject(59, 0, 2772418517328), '/LastChar': 122, '/Subtype': '/Type1', '/Type': '/Font', '/Widths': [281, 0, 552, 552, 552, 552, 0, 552, 552, 0, 552, 552, 0, 0, 0, 0, 0, 0, 0, 0, 0, 718, 781, 0, 0, 0, 833, 333, 385, 718, 614, 0, 0, 0, 0, 0, 0, 500, 718, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 500, 552, 447, 552, 447, 333, 500, 552, 281, 0, 0, 281, 833, 552, 552, 0, 552, 385, 385, 333, 552, 500, 0, 0, 500, 447]}, but is not installed. Consider installing fontTools if you encounter encoding problems.
+WARNING pypdf._cmap: fontTools is required to fully parse the encoding of a CFF Type1 font in font dictionary {'/BaseFont': '/NJCFKN+AdvPSSAB-R', '/Encoding': '/MacRomanEncoding', '/FirstChar': 35, '/FontDescriptor': IndirectObject(86, 0, 2772418517328), '/LastChar': 223, '/Subtype': '/Type1', '/Type': '/Font', '/Widths': [552, 0, 1000, 947, 0, 333, 333, 0, 552, 281, 333, 281, 281, 552, 552, 552, 552, 552, 552, 552, 552, 552, 552, 281, 281, 0, 0, 0, 447, 802, 718, 614, 718, 781, 614, 552, 781, 833, 333, 385, 718, 614, 1000, 833, 833, 552, 833, 718, 500, 666, 718, 718, 1000, 781, 718, 0, 333, 0, 333, 0, 0, 0, 500, 552, 447, 552, 447, 333, 500, 552, 281, 281, 552, 281, 833, 552, 552, 552, 552, 385, 385, 333, 552, 500, 781, 552, 500, 447, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 281, 281, 0, 0, 0, 0, 0, 0, 0, 0, 552, 552]}, but is not installed. Consider installing fontTools if you encounter encoding problems.
+WARNING pypdf._cmap: fontTools is required to fully parse the encoding of a CFF Type1 font in font dictionary {'/BaseFont': '/NJCFKO+AdvPSSAB-I', '/Encoding': '/MacRomanEncoding', '/FirstChar': 41, '/FontDescriptor': IndirectObject(87, 0, 2772418517328), '/LastChar': 222, '/Subtype': '/Type1', '/Type': '/Font', '/Widths': [333, 0, 0, 281, 333, 281, 281, 552, 552, 552, 552, 552, 552, 0, 0, 0, 552, 281, 0, 0, 0, 552, 0, 0, 718, 666, 718, 833, 666, 0, 833, 833, 385, 385, 718, 666, 947, 833, 885, 614, 0, 718, 500, 666, 781, 0, 1000, 781, 666, 0, 0, 0, 0, 0, 0, 0, 500, 552, 447, 552, 447, 333, 500, 552, 281, 0, 552, 281, 833, 552, 552, 552, 552, 385, 385, 333, 552, 500, 781, 552, 500, 447, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 552]}, but is not installed. Consider installing fontTools if you encounter encoding problems.
+WARNING pypdf._cmap: fontTools is required to fully parse the encoding of a CFF Type1 font in font dictionary {'/BaseFont': '/NJCFKP+AdvSabonOSF-SC', '/Encoding': '/WinAnsiEncoding', '/FirstChar': 48, '/FontDescriptor': IndirectObject(88, 0, 2772418517328), '/LastChar': 118, '/Subtype': '/Type1', '/Type': '/Font', '/Widths': [552, 552, 552, 0, 0, 552, 0, 552, 552, 552, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 552, 552, 666, 500, 0, 0, 666, 333, 385, 0, 500, 781, 614, 666, 500, 0, 552, 447, 500, 614, 552]}, but is not installed. Consider installing fontTools if you encounter encoding problems.
+WARNING pypdf._cmap: fontTools is required to fully parse the encoding of a CFF Type1 font in font dictionary {'/BaseFont': '/NJCFLA+AdvTTec369687+20', '/Encoding': '/WinAnsiEncoding', '/FirstChar': 150, '/FontDescriptor': IndirectObject(91, 0, 2772418517328), '/LastChar': 150, '/Subtype': '/Type1', '/Type': '/Font', '/Widths': [500]}, but is not installed. Consider installing fontTools if you encounter encoding problems.
+WARNING pypdf._cmap: fontTools is required to fully parse the encoding of a CFF Type1 font in font dictionary {'/BaseFont': '/NJCFLB+AdvTTec369687', '/Encoding': '/WinAnsiEncoding', '/FirstChar': 60, '/FontDescriptor': IndirectObject(92, 0, 2772418517328), '/LastChar': 62, '/Subtype': '/Type1', '/Type': '/Font', '/Widths': [562, 562, 562]}, but is not installed. Consider installing fontTools if you encounter encoding problems.
+WARNING pypdf._cmap: fontTools is required to fully parse the encoding of a CFF Type1 font in font dictionary {'/BaseFont': '/NJCFMB+AdvTT9476842c', '/Encoding': '/WinAnsiEncoding', '/FirstChar': 38, '/FontDescriptor': IndirectObject(96, 0, 2772418517328), '/LastChar': 169, '/Subtype': '/Type1', '/Type': '/Font', '/Widths': [614, 0, 0, 0, 0, 0, 166, 0, 166, 0, 500, 500, 500, 0, 0, 0, 0, 500, 0, 0, 0, 0, 0, 0, 0, 0, 0, 666, 0, 666, 0, 0, 0, 0, 0, 0, 197, 0, 468, 0, 0, 0, 0, 0, 0, 468, 572, 0, 0, 1020, 0, 0, 0, 0, 0, 0, 0, 0, 0, 416, 500, 416, 500, 468, 239, 416, 489, 187, 0, 416, 187, 770, 489, 541, 500, 0, 322, 343, 291, 489, 416, 697, 0, 416, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 791]}, but is not installed. Consider installing fontTools if you encounter encoding problems.
+WARNING pypdf._cmap: fontTools is required to fully parse the encoding of a CFF Type1 font in font dictionary {'/BaseFont': '/NJCFMC+AdvTTb9f64e59.I', '/Encoding': '/WinAnsiEncoding', '/FirstChar': 38, '/FontDescriptor': IndirectObject(97, 0, 2772418517328), '/LastChar': 116, '/Subtype': '/Type1', '/Type': '/Font', '/Widths': [645, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 697, 197, 0, 0, 0, 791, 0, 0, 0, 0, 0, 0, 447, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 468, 0, 375, 468, 447, 0, 0, 447, 166, 0, 0, 166, 0, 447, 447, 500, 0, 270, 0, 270]}, but is not installed. Consider installing fontTools if you encounter encoding problems.
+WARNING pypdf._cmap: fontTools is required to fully parse the encoding of a CFF Type1 font in font dictionary {'/BaseFont': '/NJCFMD+AdvGSANS', '/Encoding': '/WinAnsiEncoding', '/FirstChar': 48, '/FontDescriptor': IndirectObject(98, 0, 2772418517328), '/LastChar': 57, '/Subtype': '/Type1', '/Type': '/Font', '/Widths': [500, 500, 500, 500, 500, 500, 500, 500, 500, 500]}, but is not installed. Consider installing fontTools if you encounter encoding problems.
+WARNING pypdf._cmap: fontTools is required to fully parse the encoding of a CFF Type1 font in font dictionary {'/BaseFont': '/NJCFKM+AdvGSANS-B', '/Encoding': '/WinAnsiEncoding', '/FirstChar': 44, '/FontDescriptor': IndirectObject(85, 0, 2772418517328), '/LastChar': 122, '/Subtype': '/Type1', '/Type': '/Font', '/Widths': [270, 0, 270, 0, 0, 552, 552, 552, 552, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 781, 697, 770, 802, 635, 604, 0, 0, 333, 333, 718, 0, 885, 0, 0, 0, 0, 677, 604, 718, 0, 0, 1166, 0, 0, 0, 0, 0, 0, 0, 0, 0, 531, 583, 500, 583, 552, 302, 541, 583, 270, 0, 552, 270, 958, 583, 593, 583, 0, 447, 427, 406, 583, 510, 781, 552, 510, 520]}, but is not installed. Consider installing fontTools if you encounter encoding problems.
+WARNING pypdf._cmap: fontTools is required to fully parse the encoding of a CFF Type1 font in font dictionary {'/BaseFont': '/NJCFNE+AdvPSSab-B', '/Encoding': '/WinAnsiEncoding', '/FirstChar': 46, '/FontDescriptor': IndirectObject(59, 0, 2772418517328), '/LastChar': 122, '/Subtype': '/Type1', '/Type': '/Font', '/Widths': [281, 0, 552, 552, 552, 552, 0, 552, 552, 0, 552, 552, 0, 0, 0, 0, 0, 0, 0, 0, 0, 718, 781, 0, 0, 0, 833, 333, 385, 718, 614, 0, 0, 0, 0, 0, 0, 500, 718, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 500, 552, 447, 552, 447, 333, 500, 552, 281, 0, 0, 281, 833, 552, 552, 0, 552, 385, 385, 333, 552, 500, 0, 0, 500, 447]}, but is not installed. Consider installing fontTools if you encounter encoding problems.
+WARNING pypdf._cmap: fontTools is required to fully parse the encoding of a CFF Type1 font in font dictionary {'/BaseFont': '/NJCFKN+AdvPSSAB-R', '/Encoding': '/MacRomanEncoding', '/FirstChar': 35, '/FontDescriptor': IndirectObject(86, 0, 2772418517328), '/LastChar': 223, '/Subtype': '/Type1', '/Type': '/Font', '/Widths': [552, 0, 1000, 947, 0, 333, 333, 0, 552, 281, 333, 281, 281, 552, 552, 552, 552, 552, 552, 552, 552, 552, 552, 281, 281, 0, 0, 0, 447, 802, 718, 614, 718, 781, 614, 552, 781, 833, 333, 385, 718, 614, 1000, 833, 833, 552, 833, 718, 500, 666, 718, 718, 1000, 781, 718, 0, 333, 0, 333, 0, 0, 0, 500, 552, 447, 552, 447, 333, 500, 552, 281, 281, 552, 281, 833, 552, 552, 552, 552, 385, 385, 333, 552, 500, 781, 552, 500, 447, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 281, 281, 0, 0, 0, 0, 0, 0, 0, 0, 552, 552]}, but is not installed. Consider installing fontTools if you encounter encoding problems.
+WARNING pypdf._cmap: fontTools is required to fully parse the encoding of a CFF Type1 font in font dictionary {'/BaseFont': '/NJCFKO+AdvPSSAB-I', '/Encoding': '/MacRomanEncoding', '/FirstChar': 41, '/FontDescriptor': IndirectObject(87, 0, 2772418517328), '/LastChar': 222, '/Subtype': '/Type1', '/Type': '/Font', '/Widths': [333, 0, 0, 281, 333, 281, 281, 552, 552, 552, 552, 552, 552, 0, 0, 0, 552, 281, 0, 0, 0, 552, 0, 0, 718, 666, 718, 833, 666, 0, 833, 833, 385, 385, 718, 666, 947, 833, 885, 614, 0, 718, 500, 666, 781, 0, 1000, 781, 666, 0, 0, 0, 0, 0, 0, 0, 500, 552, 447, 552, 447, 333, 500, 552, 281, 0, 552, 281, 833, 552, 552, 552, 552, 385, 385, 333, 552, 500, 781, 552, 500, 447, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 552]}, but is not installed. Consider installing fontTools if you encounter encoding problems.
+WARNING pypdf._cmap: fontTools is required to fully parse the encoding of a CFF Type1 font in font dictionary {'/BaseFont': '/NJCFKP+AdvSabonOSF-SC', '/Encoding': '/WinAnsiEncoding', '/FirstChar': 48, '/FontDescriptor': IndirectObject(88, 0, 2772418517328), '/LastChar': 118, '/Subtype': '/Type1', '/Type': '/Font', '/Widths': [552, 552, 552, 0, 0, 552, 0, 552, 552, 552, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 552, 552, 666, 500, 0, 0, 666, 333, 385, 0, 500, 781, 614, 666, 500, 0, 552, 447, 500, 614, 552]}, but is not installed. Consider installing fontTools if you encounter encoding problems.
+WARNING pypdf._cmap: fontTools is required to fully parse the encoding of a CFF Type1 font in font dictionary {'/BaseFont': '/NJCFLA+AdvTTec369687+20', '/Encoding': '/WinAnsiEncoding', '/FirstChar': 150, '/FontDescriptor': IndirectObject(91, 0, 2772418517328), '/LastChar': 150, '/Subtype': '/Type1', '/Type': '/Font', '/Widths': [500]}, but is not installed. Consider installing fontTools if you encounter encoding problems.
+WARNING pypdf._cmap: fontTools is required to fully parse the encoding of a CFF Type1 font in font dictionary {'/BaseFont': '/NJCFMB+AdvTT9476842c', '/Encoding': '/WinAnsiEncoding', '/FirstChar': 38, '/FontDescriptor': IndirectObject(96, 0, 2772418517328), '/LastChar': 169, '/Subtype': '/Type1', '/Type': '/Font', '/Widths': [614, 0, 0, 0, 0, 0, 166, 0, 166, 0, 500, 500, 500, 0, 0, 0, 0, 500, 0, 0, 0, 0, 0, 0, 0, 0, 0, 666, 0, 666, 0, 0, 0, 0, 0, 0, 197, 0, 468, 0, 0, 0, 0, 0, 0, 468, 572, 0, 0, 1020, 0, 0, 0, 0, 0, 0, 0, 0, 0, 416, 500, 416, 500, 468, 239, 416, 489, 187, 0, 416, 187, 770, 489, 541, 500, 0, 322, 343, 291, 489, 416, 697, 0, 416, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 791]}, but is not installed. Consider installing fontTools if you encounter encoding problems.
+WARNING pypdf._cmap: fontTools is required to fully parse the encoding of a CFF Type1 font in font dictionary {'/BaseFont': '/NJCFMC+AdvTTb9f64e59.I', '/Encoding': '/WinAnsiEncoding', '/FirstChar': 38, '/FontDescriptor': IndirectObject(97, 0, 2772418517328), '/LastChar': 116, '/Subtype': '/Type1', '/Type': '/Font', '/Widths': [645, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 697, 197, 0, 0, 0, 791, 0, 0, 0, 0, 0, 0, 447, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 468, 0, 375, 468, 447, 0, 0, 447, 166, 0, 0, 166, 0, 447, 447, 500, 0, 270, 0, 270]}, but is not installed. Consider installing fontTools if you encounter encoding problems.
+WARNING pypdf._cmap: fontTools is required to fully parse the encoding of a CFF Type1 font in font dictionary {'/BaseFont': '/NJCFMD+AdvGSANS', '/Encoding': '/WinAnsiEncoding', '/FirstChar': 48, '/FontDescriptor': IndirectObject(98, 0, 2772418517328), '/LastChar': 57, '/Subtype': '/Type1', '/Type': '/Font', '/Widths': [500, 500, 500, 500, 500, 500, 500, 500, 500, 500]}, but is not installed. Consider installing fontTools if you encounter encoding problems.
+WARNING pypdf._cmap: fontTools is required to fully parse the encoding of a CFF Type1 font in font dictionary {'/BaseFont': '/NJCFKM+AdvGSANS-B', '/Encoding': '/WinAnsiEncoding', '/FirstChar': 44, '/FontDescriptor': IndirectObject(85, 0, 2772418517328), '/LastChar': 122, '/Subtype': '/Type1', '/Type': '/Font', '/Widths': [270, 0, 270, 0, 0, 552, 552, 552, 552, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 781, 697, 770, 802, 635, 604, 0, 0, 333, 333, 718, 0, 885, 0, 0, 0, 0, 677, 604, 718, 0, 0, 1166, 0, 0, 0, 0, 0, 0, 0, 0, 0, 531, 583, 500, 583, 552, 302, 541, 583, 270, 0, 552, 270, 958, 583, 593, 583, 0, 447, 427, 406, 583, 510, 781, 552, 510, 520]}, but is not installed. Consider installing fontTools if you encounter encoding problems.
+WARNING pypdf._cmap: fontTools is required to fully parse the encoding of a CFF Type1 font in font dictionary {'/BaseFont': '/NJCFNE+AdvPSSab-B', '/Encoding': '/WinAnsiEncoding', '/FirstChar': 46, '/FontDescriptor': IndirectObject(59, 0, 2772418517328), '/LastChar': 122, '/Subtype': '/Type1', '/Type': '/Font', '/Widths': [281, 0, 552, 552, 552, 552, 0, 552, 552, 0, 552, 552, 0, 0, 0, 0, 0, 0, 0, 0, 0, 718, 781, 0, 0, 0, 833, 333, 385, 718, 614, 0, 0, 0, 0, 0, 0, 500, 718, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 500, 552, 447, 552, 447, 333, 500, 552, 281, 0, 0, 281, 833, 552, 552, 0, 552, 385, 385, 333, 552, 500, 0, 0, 500, 447]}, but is not installed. Consider installing fontTools if you encounter encoding problems.
+WARNING pypdf._cmap: fontTools is required to fully parse the encoding of a CFF Type1 font in font dictionary {'/BaseFont': '/NJCFKN+AdvPSSAB-R', '/Encoding': '/MacRomanEncoding', '/FirstChar': 35, '/FontDescriptor': IndirectObject(86, 0, 2772418517328), '/LastChar': 223, '/Subtype': '/Type1', '/Type': '/Font', '/Widths': [552, 0, 1000, 947, 0, 333, 333, 0, 552, 281, 333, 281, 281, 552, 552, 552, 552, 552, 552, 552, 552, 552, 552, 281, 281, 0, 0, 0, 447, 802, 718, 614, 718, 781, 614, 552, 781, 833, 333, 385, 718, 614, 1000, 833, 833, 552, 833, 718, 500, 666, 718, 718, 1000, 781, 718, 0, 333, 0, 333, 0, 0, 0, 500, 552, 447, 552, 447, 333, 500, 552, 281, 281, 552, 281, 833, 552, 552, 552, 552, 385, 385, 333, 552, 500, 781, 552, 500, 447, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 281, 281, 0, 0, 0, 0, 0, 0, 0, 0, 552, 552]}, but is not installed. Consider installing fontTools if you encounter encoding problems.
+WARNING pypdf._cmap: fontTools is required to fully parse the encoding of a CFF Type1 font in font dictionary {'/BaseFont': '/NJCFKO+AdvPSSAB-I', '/Encoding': '/MacRomanEncoding', '/FirstChar': 41, '/FontDescriptor': IndirectObject(87, 0, 2772418517328), '/LastChar': 222, '/Subtype': '/Type1', '/Type': '/Font', '/Widths': [333, 0, 0, 281, 333, 281, 281, 552, 552, 552, 552, 552, 552, 0, 0, 0, 552, 281, 0, 0, 0, 552, 0, 0, 718, 666, 718, 833, 666, 0, 833, 833, 385, 385, 718, 666, 947, 833, 885, 614, 0, 718, 500, 666, 781, 0, 1000, 781, 666, 0, 0, 0, 0, 0, 0, 0, 500, 552, 447, 552, 447, 333, 500, 552, 281, 0, 552, 281, 833, 552, 552, 552, 552, 385, 385, 333, 552, 500, 781, 552, 500, 447, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 552]}, but is not installed. Consider installing fontTools if you encounter encoding problems.
+WARNING pypdf._cmap: fontTools is required to fully parse the encoding of a CFF Type1 font in font dictionary {'/BaseFont': '/NJCFKP+AdvSabonOSF-SC', '/Encoding': '/WinAnsiEncoding', '/FirstChar': 48, '/FontDescriptor': IndirectObject(88, 0, 2772418517328), '/LastChar': 118, '/Subtype': '/Type1', '/Type': '/Font', '/Widths': [552, 552, 552, 0, 0, 552, 0, 552, 552, 552, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 552, 552, 666, 500, 0, 0, 666, 333, 385, 0, 500, 781, 614, 666, 500, 0, 552, 447, 500, 614, 552]}, but is not installed. Consider installing fontTools if you encounter encoding problems.
+WARNING pypdf._cmap: fontTools is required to fully parse the encoding of a CFF Type1 font in font dictionary {'/BaseFont': '/NJCFLA+AdvTTec369687+20', '/Encoding': '/WinAnsiEncoding', '/FirstChar': 150, '/FontDescriptor': IndirectObject(91, 0, 2772418517328), '/LastChar': 150, '/Subtype': '/Type1', '/Type': '/Font', '/Widths': [500]}, but is not installed. Consider installing fontTools if you encounter encoding problems.
+WARNING pypdf._cmap: fontTools is required to fully parse the encoding of a CFF Type1 font in font dictionary {'/BaseFont': '/NJCFMB+AdvTT9476842c', '/Encoding': '/WinAnsiEncoding', '/FirstChar': 38, '/FontDescriptor': IndirectObject(96, 0, 2772418517328), '/LastChar': 169, '/Subtype': '/Type1', '/Type': '/Font', '/Widths': [614, 0, 0, 0, 0, 0, 166, 0, 166, 0, 500, 500, 500, 0, 0, 0, 0, 500, 0, 0, 0, 0, 0, 0, 0, 0, 0, 666, 0, 666, 0, 0, 0, 0, 0, 0, 197, 0, 468, 0, 0, 0, 0, 0, 0, 468, 572, 0, 0, 1020, 0, 0, 0, 0, 0, 0, 0, 0, 0, 416, 500, 416, 500, 468, 239, 416, 489, 187, 0, 416, 187, 770, 489, 541, 500, 0, 322, 343, 291, 489, 416, 697, 0, 416, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 791]}, but is not installed. Consider installing fontTools if you encounter encoding problems.
+WARNING pypdf._cmap: fontTools is required to fully parse the encoding of a CFF Type1 font in font dictionary {'/BaseFont': '/NJCFMC+AdvTTb9f64e59.I', '/Encoding': '/WinAnsiEncoding', '/FirstChar': 38, '/FontDescriptor': IndirectObject(97, 0, 2772418517328), '/LastChar': 116, '/Subtype': '/Type1', '/Type': '/Font', '/Widths': [645, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 697, 197, 0, 0, 0, 791, 0, 0, 0, 0, 0, 0, 447, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 468, 0, 375, 468, 447, 0, 0, 447, 166, 0, 0, 166, 0, 447, 447, 500, 0, 270, 0, 270]}, but is not installed. Consider installing fontTools if you encounter encoding problems.
+WARNING pypdf._cmap: fontTools is required to fully parse the encoding of a CFF Type1 font in font dictionary {'/BaseFont': '/NJCFMD+AdvGSANS', '/Encoding': '/WinAnsiEncoding', '/FirstChar': 48, '/FontDescriptor': IndirectObject(98, 0, 2772418517328), '/LastChar': 57, '/Subtype': '/Type1', '/Type': '/Font', '/Widths': [500, 500, 500, 500, 500, 500, 500, 500, 500, 500]}, but is not installed. Consider installing fontTools if you encounter encoding problems.
+  42.9s extracting        19 usable documents extracted
+  43.0s node done: fetch
+INFO app.llm: llm extractor/ollama:gpt-oss:20b 1.1s tokens=1245
+  44.2s extracting        0 claims from WHO | Regional Office for Africa
+INFO app.llm: llm extractor/ollama:gpt-oss:20b 1.1s tokens=1086
+  44.2s extracting        0 claims from hospitals.aku.edu
+INFO app.llm: llm extractor/ollama:gpt-oss:20b 2.2s tokens=1126
+  45.2s extracting        1 claims from Kenya
+INFO app.llm: llm extractor/ollama:gpt-oss:20b 2.3s tokens=963
+  45.3s extracting        0 claims from nairobiservices.go.ke
+INFO app.llm: llm extractor/ollama:gpt-oss:20b 3.3s tokens=1866
+  46.4s extracting        0 claims from nairobiassembly.go.ke
+INFO app.llm: llm extractor/ollama:gpt-oss:20b 4.0s tokens=1408
+  47.0s extracting        2 claims from WHO | Regional Office for Africa
+INFO app.llm: llm extractor/ollama:gpt-oss:20b 7.0s tokens=2515
+  51.2s extracting        3 claims from IEA Kenya
+INFO app.llm: llm extractor/ollama:gpt-oss:20b 10.0s tokens=2552
+  53.3s extracting        2 claims from www.medrxiv.org (2 rejected: quote not in source)
+INFO app.llm: llm extractor/ollama:gpt-oss:20b 10.5s tokens=2609
+  53.6s extracting        4 claims from American Journal of Respiratory and Critical Care Medicine
+INFO app.llm: llm extractor/ollama:gpt-oss:20b 12.4s tokens=2875
+  56.6s extracting        7 claims from Public Health Research
+INFO app.llm: llm extractor/ollama:gpt-oss:20b 15.3s tokens=2718
+INFO app.llm: llm extractor/ollama:gpt-oss:20b 17.6s tokens=2455
+  60.7s extracting        4 claims from labourmarket.go.ke
+INFO app.llm: llm extractor/ollama:gpt-oss:20b 18.5s tokens=2860
+  61.8s extracting        5 claims from Journal of Global Health (1 rejected: quote not in source)
+INFO app.llm: llm extractor/ollama:gpt-oss:20b 23.8s tokens=2608
+  66.8s extracting        8 claims from Global Health
+INFO app.llm: llm extractor/ollama:gpt-oss:20b 24.1s tokens=2552
+  68.3s extracting        4 claims from repository.embuni.ac.ke
+INFO app.llm: llm extractor/ollama:gpt-oss:20b 27.2s tokens=3143
+  70.3s extracting        8 claims from Human Resources for Health
+INFO app.llm: llm extractor/ollama:gpt-oss:20b 12.5s tokens=3512
+WARNING app.llm: llm provider ollama could not produce valid JSON for extractor - falling back: extractor: Extra data: line 14 column 4 (char 722)
+INFO app.llm: llm extractor/ollama:gpt-oss:20b 31.1s tokens=2802
+INFO app.llm: llm extractor/ollama:gpt-oss:20b 31.1s tokens=2780
+  74.2s extracting        8 claims from hospitals.aku.edu
+  74.2s extracting        8 claims from WHO | Regional Office for Africa
+INFO app.llm: llm extractor/groq:openai/gpt-oss-20b 1.7s tokens=2403
+  76.4s extracting        8 claims from Amref Health Africa
+INFO app.llm: llm extractor/ollama:gpt-oss:20b 36.8s tokens=2899
+  79.8s extracting        8 claims from Cardiovascular Journal of Africa
+  79.8s verifying         80 grounded claims collected, 3 rejected; starting independent verification
+  79.8s node done: collect_claims
+INFO app.llm: llm checker/ollama:gpt-oss:120b 3.4s tokens=3209
+  83.2s verifying         batch of 6: SUPPORTED 6
+INFO app.llm: llm checker/ollama:gpt-oss:120b 4.2s tokens=3174
+  84.0s verifying         batch of 6: SUPPORTED 6
+INFO app.llm: llm checker/ollama:gpt-oss:120b 5.5s tokens=1406
+  85.3s verifying         batch of 2: SUPPORTED 1
+INFO app.llm: llm checker/ollama:gpt-oss:120b 5.6s tokens=3224
+INFO app.llm: llm checker/ollama:gpt-oss:120b 6.2s tokens=3659
+  86.1s verifying         batch of 6: MISSING 5, SUPPORTED 1
+INFO app.llm: llm checker/ollama:gpt-oss:120b 6.6s tokens=3604
+  86.4s verifying         batch of 6: SUPPORTED 4, PARTIALLY_SUPPORTED 1, UNSUPPORTED 1
+INFO app.llm: llm checker/ollama:gpt-oss:120b 8.9s tokens=3223
+  88.7s verifying         batch of 6: SUPPORTED 3, PARTIALLY_SUPPORTED 3
+INFO app.llm: llm checker/ollama:gpt-oss:120b 4.1s tokens=3341
+  89.5s verifying         batch of 6: SUPPORTED 2, UNSUPPORTED 1, PARTIALLY_SUPPORTED 3
+INFO app.llm: llm checker/ollama:gpt-oss:120b 11.1s tokens=3173
+  91.0s verifying         batch of 6: SUPPORTED 5, UNSUPPORTED 1
+INFO app.llm: llm checker/ollama:gpt-oss:120b 11.3s tokens=3448
+  91.1s verifying         batch of 6: SUPPORTED 5, UNSUPPORTED 1
+INFO app.llm: llm checker/ollama:gpt-oss:120b 13.5s tokens=3774
+  93.4s verifying         batch of 6: SUPPORTED 3, PARTIALLY_SUPPORTED 3
+INFO app.llm: llm checker/ollama:gpt-oss:120b 14.9s tokens=3276
+  94.7s verifying         batch of 6: SUPPORTED 5, PARTIALLY_SUPPORTED 1
+INFO app.llm: llm checker/ollama:gpt-oss:120b 15.1s tokens=3482
+  94.9s verifying         batch of 6: SUPPORTED 3, PARTIALLY_SUPPORTED 3
+INFO app.llm: llm checker/ollama:gpt-oss:120b 16.0s tokens=3279
+  95.8s verifying         batch of 6: SUPPORTED 6
+INFO app.llm: llm checker/ollama:gpt-oss:120b 16.3s tokens=3645
+  96.2s verifying         batch of 6: SUPPORTED 5, PARTIALLY_SUPPORTED 1
+INFO app.llm: llm checker/ollama:gpt-oss:120b 2.2s tokens=1503
+INFO app.llm: llm checker/ollama:gpt-oss:120b 2.0s tokens=633
+INFO app.llm: llm checker/ollama:gpt-oss:120b 1.0s tokens=561
+ 101.4s analysing_gaps    verified 71 of 80 claims; 0 conflicts; verdicts: {'SUPPORTED': 54, 'UNSUPPORTED': 4, 'PARTIALLY_SUPPORTED': 15, 'MISSING': 
+5}
+ 101.4s node done: detect_conflicts
+ 101.4s analysing_gaps    9 gaps identified
+ 101.4s node done: gap_analysis
+──────────────────────────────────────────────────────────────────────── Plan ────────────────────────────────────────────────────────────────────────
+Nairobi | Kenya | region=Nairobi County | aliases=['Nairobi City', 'Nairobi County'] | pop=approx 4.4 million (2023)
+  assumption: The city refers to Nairobi County, the capital and largest urban area of Kenya.
+  assumption: Population estimate is based on 2023 projections for Nairobi County.
+  assumption: Relevant data are expected to be published by Kenyan national bodies (Ministry of Health, NHIF), Nairobi County health department, WHO 
+Kenya office, and major surveys such as STEPS and DHS.
+cvd_burden: Nairobi Kenya hypertension prevalence STEPS survey | Nairobi Kenya cardiovascular disease mortality WHO
+health_system: Nairobi County public hospitals cardiology services | Nairobi Kenya health insurance coverage NHIF enrollment statistics
+programmes: Nairobi County NCD programme Kenya | Nairobi Kenya hypertension screening NGO
+policies: Kenya national NCD strategy Nairobi implementation | Nairobi County tobacco control policy
+stakeholders: Nairobi County health department | Nairobi Kenya WHO country office
+risks_gaps: Nairobi Kenya air pollution cardiovascular risk study | Nairobi County health workforce shortage cardiology
+─────────────────────────────────────────────────────────────────────── Stats ────────────────────────────────────────────────────────────────────────
+{
+    'planner_tokens': 2198,
+    'queries': 12,
+    'raw_results': 72,
+    'unique_urls': 69,
+    'search_providers': {'serper': 72},
+    'crawl_allowed': 37,
+    'crawl_denied': 32,
+    'denied_reasons': {
+        'HTTP 403 on probe': 7,
+        'HTTP 406 on probe': 1,
+        'platform terms prohibit automated extraction': 9,
+        'robots.txt unreachable; conservative policy denies crawl': 13,
+        'robots.txt disallows this path': 1,
+        'blocks automated access; use publisher/DOI instead': 1
+    },
+    'fetched': 24,
+    'usable_documents': 19,
+    'skipped_by_cap': 13,
+    'extractor_tokens': 2403,
+    'claims_extracted': 80,
+    'claims_rejected_grounding': 3,
+    'extractor_model': 'gpt-oss:20b',
+    'checker_tokens': 1406,
+    'verdicts': {'SUPPORTED': 54, 'UNSUPPORTED': 4, 'PARTIALLY_SUPPORTED': 15, 'MISSING': 5},
+    'verified': 71,
+    'conflicts': 0,
+    'conflict_tokens': 2697,
+    'checker_model': 'gpt-oss:120b',
+    'gaps': 9
+}
+LLM usage:
+{
+    'planner': {'calls': 1, 'prompt_tokens': 892, 'completion_tokens': 1306},
+    'provider:ollama': {'calls': 39, 'prompt_tokens': 68472, 'completion_tokens': 31914},
+    'extractor': {'calls': 21, 'prompt_tokens': 37359, 'completion_tokens': 11618},
+    'provider:groq': {'calls': 1, 'prompt_tokens': 1595, 'completion_tokens': 808},
+    'checker': {'calls': 18, 'prompt_tokens': 31816, 'completion_tokens': 19798}
+}
+───────────────────────────────────────────────────── Claims by category (verdict, geo, source) ──────────────────────────────────────────────────────
+
+CVD Burden (16 claims)
+  SUPPORTED           In Kenya, 25% of hospital admissions and 13% of deaths are due to cardiovascular diseases (CVDs).
+      “Estimates show that 25% of hospital admissions and 13% of deaths in Kenya are due to CVDs.” — Kenya launches national cardiovascular disease 
+man (intergovernmental, 2019-04-23)
+  SUPPORTED           In Kenya, 56% of the adult population has never had their blood pressure measured, and almost 1 in 4 Kenyans lives with 
+hypertension.
+      “Significantly, the survey shows more than half (56%) of the adult population has never had their blood pressur” — Kenya launches national 
+cardiovascular disease man (intergovernmental, 2015)
+  SUPPORTED           In Kenya, over 90% of people diagnosed with hypertension have not attained control of the disease.
+      “over 90% of people diagnosed with hypertension have not attained control of the disease” — Kenya launches national cardiovascular disease man 
+(intergovernmental, 2015)
+  SUPPORTED           In Kenya, 11.6% of adult Kenyans use tobacco products, and 86.1% of adults are exposed to second-hand tobacco smoke in bars and 
+night clubs.
+      “About 11.6% (2.5 Million) of adult Kenyans and 9.9 % of youth aged between 13 -15 years use tobacco products; ” — Kenya launches national 
+cardiovascular disease man (intergovernmental, 2019-04-23)
+  SUPPORTED           In Kenya, 24.8% of youth aged 13-15 years are exposed to second-hand tobacco smoke at home.
+      “24.8% of youth being exposed at home” — Kenya launches national cardiovascular disease man (intergovernmental, 2019-04-23)
+  SUPPORTED           In Kenya, 50% of hospital admissions and 55% of hospital deaths are due to non-communicable diseases (NCDs).
+      “Dr Kioko said that the guidelines were a major milestone in the country’s response to Non-Communicable Disease” — Kenya launches national 
+cardiovascular disease man (intergovernmental, 2019-04-23)
+  SUPPORTED           Globally, 31% of all deaths are due to cardiovascular diseases, with 17.7 million deaths annually.
+      “An estimated 17.7 million people die from CVDs each year, representing 31% of all global deaths.” — Kenya launches national cardiovascular 
+disease man (intergovernmental, 2019-04-23)
+  UNSUPPORTED          [geo→global] In Kenya, 7.4 million deaths are due to coronary heart disease and 6.7 million deaths are due to stroke.
+      “Of these deaths, an estimated 7.4 million are due to coronary heart disease while 6.7 million are due to strok” — Kenya launches national 
+cardiovascular disease man (intergovernmental, 2019-04-23)
+      checker: The numbers (7.4 million coronary heart disease deaths and 6.7 million stroke deaths) are given as global figures, not Kenya-specific.
+  SUPPORTED           In Kenya, the premature (30–70 years old) cardiovascular disease mortality rate was 8% in 2019.
+      “Kenya had a premature (30–70 years old) cardiovascular disease (CVD) mortality rate of 8%, while the total CVD” — PASCAR and WHF Cardiovascular
+Diseases Scorecard p (academic, 2019)
+  SUPPORTED           In Kenya, the total cardiovascular disease mortality rate was 13.8% in 2019.
+      “Kenya had a premature (30–70 years old) cardiovascular disease (CVD) mortality rate of 8%, while the total CVD” — PASCAR and WHF Cardiovascular
+Diseases Scorecard p (academic, 2019)
+  PARTIALLY_SUPPORTED  In Kenya, 6.3% of disability-adjusted life years were attributable to cardiovascular disease in 2019.
+      “The percentage of disability-adjusted life years (DALYs) resulting from CVD was 6.3%.” — PASCAR and WHF Cardiovascular Diseases Scorecard p 
+(academic, 2019)
+      checker: The evidence gives the DALY percentage as 6.3% but does not explicitly mention the year 2019.
+  PARTIALLY_SUPPORTED  In Kenya, 0.1% of adults had atrial fibrillation or atrial flutter in 2019.
+      “The prevalence of atrial fibrillation (AF) and atrial flutter was 0.1%” — PASCAR and WHF Cardiovascular Diseases Scorecard p (academic, 2019)
+      checker: The prevalence of atrial fibrillation/flutter is given as 0.1% but the evidence does not specify the year 2019.
+  PARTIALLY_SUPPORTED  In Kenya, 1.2% of adults had rheumatic heart disease in 2019.
+      “while that of rheumatic heart disease (RHD) was 1.2%.” — PASCAR and WHF Cardiovascular Diseases Scorecard p (academic, 2019)
+      checker: The evidence reports a 1.2% prevalence of rheumatic heart disease, without stating the year 2019.
+  SUPPORTED           In Kenya, 23% of men and 4.1% of women aged 18–69 years used tobacco in 2015.
+      “STEPS (Step-wise survey for NCD risk factors) data reported in 2015 indicated 23% of Kenyan men and 4.1% of wo” — PASCAR and WHF Cardiovascular
+Diseases Scorecard p (academic, 2015)
+  SUPPORTED           In Kenya, 25.1% of men and 22.6% of women had raised blood pressure in 2015.
+      “In 2015 the percentage of men and women with raised blood pressure (BP) [systolic BP (SBP) ≥ 140 mmHg or diast” — PASCAR and WHF Cardiovascular
+Diseases Scorecard p (academic, 2015)
+  SUPPORTED           In Kenya, 7.3% of men and 12.8% of women had raised total cholesterol in 2015.
+      “Country data for raised total cholesterol level (≥ 5.0 mmol/l) in 2015 was 7.3% for men and 12.8% for women.” — PASCAR and WHF Cardiovascular 
+Diseases Scorecard p (academic, 2015)
+
+Health System Capacity (7 claims)
+  SUPPORTED           In Kenya, overall health insurance coverage increased from 8.17% in 2009 to 19.59% in 2014.
+      “Overall health insurance coverage increased from 8.17% to 19.59% between 2009 and 2014.” — Examining levels, distribution and correlates of h 
+(academic, 2014)
+  SUPPORTED           In Kenya, the concentration index for health insurance coverage decreased from 0.61 in 2009 to 0.49 in 2014, indicating reduced 
+inequality.
+      “CIX = 0.61, 95% CI 0.52 –0.0.71) and 2014 (Q5/Q1 ratio 12.34, CIX = 0.49, 95% CI 0.45 –0.52).” — Examining levels, distribution and correlates 
+of h (academic, 2014)
+  SUPPORTED           In Kenya, over 80% of the population works in the informal sector, contributing to low and inequitable health insurance 
+coverage.
+      “In a context where over 80% of the population is in the informal sector, and close to 50% live below the natio” — Examining levels, 
+distribution and correlates of h (academic, n.d.)
+  SUPPORTED           In Kenya, close to 50% of the population lives below the national poverty line, which hampers equitable health insurance 
+coverage.
+      “In a context where over 80% of the population is in the informal sector, and close to 50% live below the natio” — Examining levels, 
+distribution and correlates of h (academic, n.d.)
+  SUPPORTED           In Kenya, 26% of females and 27% of males had some health insurance in 2022.
+      “In 2022, it was ascertained that one in four persons in Kenya (26% of females and 27% of males) have some heal” — Increasing Enrolment in 
+Kenya’s Social Health Insu (ngo, 2022)
+  SUPPORTED           In Kenya, 6.2% of Kenyans spend at least 40% of their non-food income on health care, indicating a catastrophic health 
+expenditure incidence of around 6%.
+      “Furthermore, 6.2% of Kenyans spend at least 40% of their non-food income on health care, which indicates that ” — Increasing Enrolment in 
+Kenya’s Social Health Insu (ngo, 2024-03-26)
+  SUPPORTED           A pilot program for NHIF enrolment is proposed to start in eight counties, including Nairobi, for 7-9 months.
+      “A phased implementation of this approach is recommended, commencing with a pilot program in eight carefully se” — Increasing Enrolment in 
+Kenya’s Social Health Insu (ngo, 2024-03-26)
+
+Existing NCD Programmes (11 claims)
+  PARTIALLY_SUPPORTED  In Kenya, 17.5% of the 109 activities in the National NCD Strategic Plan 2015-2020 were fully achieved by July-August 2020.
+      “Of the 109 activities in the NSP grouped into 10 objectives, 19 (17.5%) of the activities had been fully achie” — Implementing a Five Year 
+Non-Communicable Disease  (ngo, n.d.)
+      checker: The evidence confirms that 19 of 109 activities (17.5%) were fully achieved, but it does not specify the July‑August 2020 timeframe.
+  PARTIALLY_SUPPORTED  In Kenya, 68.8% of the 109 activities in the National NCD Strategic Plan 2015-2020 were partially achieved by July-August 2020.
+      “75 (68.8%) were partially achieved” — Implementing a Five Year Non-Communicable Disease  (ngo, n.d.)
+      checker: The evidence shows that 75 of 109 activities (68.8%) were partially achieved, yet it does not mention the July‑August 2020 period.
+  PARTIALLY_SUPPORTED  In Kenya, 13.8% of the 109 activities in the National NCD Strategic Plan 2015-2020 had not commenced by July-August 2020.
+      “15 (13.8%) had not commenced at all” — Implementing a Five Year Non-Communicable Disease  (ngo, n.d.)
+      checker: The evidence indicates that 15 of 109 activities (13.8%) had not commenced, but it lacks the specific July‑August 2020 timing.
+  SUPPORTED          [geo→global] The Healthy Heart Africa programme seeks to reach 10 million hypertension victims throughout Africa
+      “The minister also touched on the Healthy Heart Africa programme that seeks to reach 10 million hypertension vi” — Amref Health Africa 
+Commemorates World Hypertensio (ngo, 2017-02-23)
+  UNSUPPORTED           AstraZeneca identified Amref Health Africa, AMPATH, JHPAIGO, CHAK, PSK and MEDS as key partners to implement the Healthy Heart
+Africa programme
+      “Amref Health Africa, together with the Academic Model Providing Access to Healthcare (AMPATH), Johns Hopkins P” — Amref Health Africa 
+Commemorates World Hypertensio (ngo, 2017-02-23)
+      checker: The excerpt lists the partners but does not say they were identified by AstraZeneca.
+  SUPPORTED           Amref Health Africa has been implementing the Healthy Heart Africa Project in Kibera Informal settlement since September 2014
+      “Amref Health Africa has been implementing the Healthy Heart Africa Project since September 2014 within the Kib” — Amref Health Africa 
+Commemorates World Hypertensio (ngo, 2014)
+  SUPPORTED           The Healthy Heart Africa Project has reached more than 100,000 clients with hypertension screening and started more than 2500 
+patients on treatment
+      “The project had since reached more than 100,000 clients with hypertension screening and has started more than ” — Amref Health Africa 
+Commemorates World Hypertensio (ngo, 2017-02-23)
+  SUPPORTED           The Healthy Heart Africa Project has three objectives: increase awareness and screening for hypertension, capacity building for 
+health workers, and increase access to quality hypertension services and commodities
+      “The project has three objectives. These are to increase awareness and screening for hypertension, carry out ca” — Amref Health Africa 
+Commemorates World Hypertensio (ngo, 2017-02-23)
+  SUPPORTED          [geo→global] The Healthy Heart Africa programme aims to reach 10 million hypertension victims throughout Africa
+      “The minister also touched on the Healthy Heart Africa programme that seeks to reach 10 million hypertension vi” — Amref Health Africa 
+Commemorates World Hypertensio (ngo, 2017-02-23)
+  SUPPORTED          [geo→global] The Healthy Heart Africa programme seeks to reach 10 million hypertension victims throughout Africa
+      “The minister also touched on the Healthy Heart Africa programme that seeks to reach 10 million hypertension vi” — Amref Health Africa 
+Commemorates World Hypertensio (ngo, 2017-02-23)
+  SUPPORTED          [geo→global] The Healthy Heart Africa programme seeks to reach 10 million hypertension victims throughout Africa
+      “The minister also touched on the Healthy Heart Africa programme that seeks to reach 10 million hypertension vi” — Amref Health Africa 
+Commemorates World Hypertensio (ngo, 2017-02-23)
+
+Policy Environment (6 claims)
+  SUPPORTED           In Kenya, the National Strategy for the Prevention and Control of NCDs (2015–2020) aims to reduce NCD mortality by 25 percent by
+2025 in accordance with WHO recommendations.
+      “In 2015, Kenya launched the National Strategy for the Prevention and Control of NCDs (2015–2020) to reduce NCD” — Research for Actionable 
+Policies: implementation s (academic, 2015)
+  SUPPORTED           Kenya’s Tobacco Control Act of 2007 is the principal law governing tobacco use, covering restrictions on public smoking, 
+advertising, promotion, sponsorship, and packaging and labeling of tobacco products.
+      “The Tobacco Control Act of 2007 is the principal law governing tobacco use in Kenya. This comprehensive law de” — Research for Actionable 
+Policies: implementation s (academic, 2007)
+  SUPPORTED           The Tobacco Control Regulations of 2014, which came into effect in September 2016, further regulate public smoking restrictions 
+and tobacco industry disclosures under the 2007 Act.
+      “The Tobacco Control Regulations of 2014 further regulates selected provisions under the Tobacco Control Act in” — Research for Actionable 
+Policies: implementation s (academic, 2014)
+  SUPPORTED           Kenya imposes a 49 percent tax on the sale price of tobacco products.
+      “Currently, there is a 49% tax on the sale price of tobacco products.” — Research for Actionable Policies: implementation s (academic, 
+2017-03-24)
+  SUPPORTED           Kenya’s Alcoholic Drinks Act of 2010 has not yet been fully implemented nationwide due to devolution, which shifted 
+implementation decisions to the 47 county governments.
+      “In 2010, the Alcoholics Drinks Act was enacted by the Kenyan parliament. It has not yet been fully implemented” — Research for Actionable 
+Policies: implementation s (academic, 2010)
+  SUPPORTED           In Kenya, the National NCD Strategic Plan 2015-2020 established the NCD intersectoral coordinating committee (NCD-ICC).
+      “Key achievements include establishment of the NCD intersectoral coordinating committee (NCD-ICC)” — Implementing a Five Year Non-Communicable 
+Disease  (ngo, n.d.)
+
+Key Stakeholders (11 claims)
+  SUPPORTED           In Kenya, the World Health Organization (WHO) works in partnership with the Government of Kenya, county governments, UN agencies
+and development partners to strengthen the country's health system.
+      “WHO Kenya works in partnership with the Government of Kenya, county governments, UN agencies and development p” — Kenya (intergovernmental, 
+2026-09-17)
+  SUPPORTED           In Kenya, WHO provides technical support, capacity building, policy guidance and coordination to the Ministry of Health and the 
+47 county health systems.
+      “WHO provides technical support, capacity building, policy guidance and coordination to Kenya's Ministry of Hea” — Kenya (intergovernmental, 
+2026-09-17)
+  UNSUPPORTED          [geo→national] The World Health Organization (WHO) is a key stakeholder in Kenya’s health system.
+      “The International Health Regulations (2005) (IHR) form a global framework for health security that mandates ea” — Kenya Country Overview | 
+World Health Organization (intergovernmental, 2026-07-29)
+      checker: The evidence discusses International Health Regulations and does not state that WHO is a key stakeholder in Kenya’s health system.
+  SUPPORTED           In Kenya, the Centers for Disease Control and Prevention (CDC) operates a national office that collaborates with the Ministry of
+Health and other partners to strengthen public health systems.
+      “CDC works with the Ministry of Health (MOH) and other partners to build effective public health collaboration ” — CDC in Kenya (government, 
+2026-07-13)
+  SUPPORTED           In Kenya, the Kenya Medical Research Institute (KEMRI) laboratories receive ongoing technical assistance from CDC to enhance 
+diagnostics and outbreak detection capabilities.
+      “CDC provides ongoing support to select Kenya Medical Research Institute (KEMRI) laboratories, regional and cou” — CDC in Kenya (government, 
+2026-07-13)
+  SUPPORTED           In Kenya, the Field Epidemiology Laboratory Training Program (FELTP) graduates serve as frontline responders for the Ministry of
+Health, addressing over 80% of detected outbreaks.
+      “Supported training of over 1,500 global health leaders who graduated from the Field Epidemiology Laboratory Tr” — CDC in Kenya (government, 
+2026-07-13)
+  SUPPORTED           In Kenya, more than 20 sub‑national Emergency Operations Centers (EOCs) have been established with CDC support and have 
+responded to over 100 disease outbreaks as of 2024.
+      “Created a network of more than 20 sub-national Emergency Operations Centers (EOCs) who have responded to more ” — CDC in Kenya (government, 
+2024)
+  PARTIALLY_SUPPORTED  In Kenya, the CDC-supported Kenya National Public Health Emergency Operations Center was established in 2013 and continues to 
+support ongoing monkeypox and cholera outbreak responses.
+      “CDC supported the design and provided equipment for the Kenya National Public Health Emergency Operations Cent” — CDC in Kenya (government, 
+2013)
+      checker: The evidence confirms the Kenya National Public Health Emergency Operations Center was established in 2013 with CDC support, but it 
+does not mention ongoing mon
+  SUPPORTED           In Kenya, the CDC Global Immunization Program works with the Government of Kenya to develop national policies, strategies, 
+action plans and projects for vaccine‑preventable diseases.
+      “CDC’s Global Immunization Program supports the Government of Kenya and the region in developing national polic” — CDC in Kenya (government, 
+2026-07-13)
+  SUPPORTED           In Kenya, the CDC Global Migration Health Africa Program, located in Kenya, collaborates with local and international partners 
+to address public health needs associated with population mobility.
+      “CDC’s Global Migration Health Africa Program, located in Kenya, works with local and international partners to” — CDC in Kenya (government, 
+2026-07-13)
+  SUPPORTED           In Kenya, the CDC’s Influenza Program Regional Hub works with partners across East Africa, including Kenya, to enhance influenza
+surveillance and laboratory systems.
+      “CDC’s Influenza Program Regional Hub in Kenya works with partners in the East Africa region (Kenya, Uganda, Ta” — CDC in Kenya (government, 
+2026-07-13)
+
+Risks and Gaps (29 claims)
+  PARTIALLY_SUPPORTED [geo→city] In Nairobi County, the population exceeds 4 million, creating significant demand for health services.
+      “Nairobi County has the highest population at over 4 million followed by Kiambu and” — Health Labour Market Analysis for Kenya (government, 
+n.d.)
+      checker: The excerpt confirms Nairobi County’s population is over 4 million, but it does not mention the resulting demand for health services.
+  PARTIALLY_SUPPORTED  In Kenya, 39% of deaths are attributed to non-communicable diseases, indicating a high burden of cardiovascular risk factors.
+      “deaths but an estimated 39% are due to non-communicable diseases” — Health Labour Market Analysis for Kenya (government, n.d.)
+      checker: The evidence reports that an estimated 39% of deaths in Kenya are due to non‑communicable diseases, but it does not link this to a high
+burden of cardiovascular
+  PARTIALLY_SUPPORTED  Kenya faces a shortage of health workers, limiting access to essential cardiovascular care.
+      “health workforce shortages, and shifting demographics, no country can afford to act in isolation, indeed” — Health Labour Market Analysis for 
+Kenya (government, n.d.)
+      checker: The excerpt mentions health workforce shortages in Kenya, yet it does not specify that these shortages limit access to essential 
+cardiovascular care.
+  SUPPORTED           The Kenyan health labour market shows a wide pay relativity gap between health workers and general practitioners.
+      “wide pay relativity gap between health workers, when measured against the General Practitioner” — Health Labour Market Analysis for Kenya 
+(government, n.d.)
+  UNSUPPORTED           In Kenya, household air pollution from burning biomass fuels is a major environmental risk factor contributing to 
+cardiovascular disease.
+      “Exposure to household air pollution from burning biomass fuels is a major environmental risk factor contributi” — Household Air Pollution Is 
+Associated with Altered (academic, 2018-04-01)
+      checker: The evidence describes household air pollution as a global risk factor for cardiovascular disease but does not state that this applies 
+specifically to Kenya.
+  SUPPORTED          [geo→unknown] In western Kenya, women exposed to high levels of household carbon monoxide have higher rates of right and left 
+heart abnormalities.
+      “This study demonstrates that CO and PM2.5 levels are high inside homes using traditional cook stoves in wester” — Household Air Pollution Is 
+Associated with Altered (academic, 2018-04-01)
+  SUPPORTED          [geo→unknown] In western Kenya, higher household air pollution is associated with increased pulmonary artery pressures, a 
+potential harbinger of right heart failure.
+      “The increased pulmonary artery pressures in women with high household air pollution are possible harbingers of” — Household Air Pollution Is 
+Associated with Altered (academic, 2018-04-01)
+  SUPPORTED          [geo→unknown] In western Kenya, higher household air pollution is associated with reduced left ventricular ejection fraction, 
+indicating impaired myocardial function.
+      “Higher levels of household air pollution were associated with reduced left ventricular ejection fraction, sugg” — Household Air Pollution Is 
+Associated with Altered (academic, 2018-04-01)
+  PARTIALLY_SUPPORTED  In Kenya, there is a severe shortage of health specialists, which threatens the country’s ability to achieve universal health 
+coverage and the Sustainable Development Goals.
+      “What emerged from this assessment is that Kenya is experiencing a severe shortage of health specialist which i” — The implication of the 
+shortage of health workforc (academic, 2017)
+      checker: The excerpt confirms Kenya faces a severe shortage of health specialists threatening UHC and SDGs, but it does not provide the specific
+year 2017 cited in the c
+  PARTIALLY_SUPPORTED  In Kenya, the shortage of cardiologists is 99% of the ideal number suggested by County Directors of Health.
+      “The cardiologists and endocrinologists both had a shortfall of 99% of the health workforce against ideal numbe” — The implication of the 
+shortage of health workforc (academic, 2015)
+      checker: The excerpt shows cardiologists have a 99% shortfall against the ideal number suggested by the CDH, matching the claim, but no year 
+2015 is mentioned.
+  PARTIALLY_SUPPORTED  In Kenya, the shortage of endocrinologists is 99% of the ideal number suggested by County Directors of Health.
+      “The cardiologists and endocrinologists both had a shortfall of 99% of the health workforce against ideal numbe” — The implication of the 
+shortage of health workforc (academic, 2015)
+      checker: The excerpt indicates endocrinologists have a 99% shortfall against the ideal number suggested by the CDH, aligning with the claim, 
+though the year 2015 is not 
+  MISSING           In Kenya, the shortage of neurosurgeons is 100% against the national guidelines and 60% against the County Directors of Health 
+ideal numbers.
+      “The skill gaps among medical officer specialists is significant when compared to the national guideline and th” — The implication of the 
+shortage of health workforc (academic, 2015)
+      checker: The provided evidence excerpt does not contain the quoted neurosurgeon gap percentages.
+  MISSING           In Kenya, the shortage of urologists is 70% against the national guidelines and 97% against the County Directors of Health ideal 
+numbers.
+      “The shortage of urologist accounted for 70 and 97% against the Norms and Standards Guidelines and the ideal nu” — The implication of the 
+shortage of health workforc (academic, 2015)
+      checker: The excerpt does not include the urologist shortage percentages cited in the claim.
+  MISSING           In Kenya, the shortage of neurologists is 99% against the national guidelines and 96% against the County Directors of Health ideal
+numbers.
+      “The shortage of urologist accounted for 70 and 97% against the Norms and Standards Guidelines and the ideal nu” — The implication of the 
+shortage of health workforc (academic, 2015)
+      checker: The excerpt lacks the neurologist shortage figures referenced in the claim.
+  MISSING           In Kenya, the shortage of gastroenterologists is 96% against the ideal number suggested by County Directors of Health and 80% 
+against the national guidelines.
+      “Gastro-enterologists had a shortfall of 96% against the ideal number of workforce suggested by the CDH while t” — The implication of the 
+shortage of health workforc (academic, 2015)
+      checker: The excerpt does not contain the gastroenterologist shortfall percentages mentioned in the claim.
+  MISSING           In Kenya, the shortage of orthopaedic surgeons is 90% against the national guidelines and 85% against the ideal number suggested 
+by County Directors of Health.
+      “The ortho surgeons had a shortfall of 90% healthcare workers against the Norms and Standards Guidelines and 85” — The implication of the 
+shortage of health workforc (academic, 2015)
+      checker: The excerpt does not provide the orthopaedic surgeon shortfall percentages cited.
+  SUPPORTED           In Kenya, non‑communicable diseases now account for 40% of all deaths, a sharp rise from the early 1990s.
+      “Non‑communicable diseases (NCDs) now account for 40% of all deaths in Kenya — nearly double their share in the” — Kenya’s Healthcare Crossroads
+(academic, 2026-03-19)
+  SUPPORTED           In Kenya, cardiovascular diseases contribute 13% of total deaths, indicating a growing burden of heart disease.
+      “Cardiovascular diseases contribute 13% of total deaths” — Kenya’s Healthcare Crossroads (academic, 2026-03-19)
+  SUPPORTED           In Kenya, hypertension affects 24% of adults, up from below 15% three decades ago, highlighting a rising prevalence of high 
+blood pressure.
+      “hypertension affects 24% of adults, up from below 15% three decades ago” — Kenya’s Healthcare Crossroads (academic, 2026-03-19)
+  SUPPORTED           In Kenya, the workforce shortage is acute, with only 10 nurses per 10,000 people against a requirement of 58.6.
+      “Kenya has just 10 nurses per 10,000 people against an estimated requirement of 58.6” — Kenya’s Healthcare Crossroads (academic, 2026-03-19)
+  SUPPORTED           In Kenya, there is only 1 doctor per 10,000 people compared to the WHO benchmark of 7.7, underscoring a critical shortage of 
+physicians.
+      “only 1 doctor per 10,000 compared to the WHO benchmark of 7.7” — Kenya’s Healthcare Crossroads (academic, 2026-03-19)
+  SUPPORTED           In Kenya, high out‑of‑pocket spending and declining donor funding threaten the continuity of essential programmes, posing a 
+financing risk.
+      “High out‑of‑pocket spending and declining donor funding threaten the continuity of essential programmes” — Kenya’s Healthcare Crossroads 
+(academic, 2026-03-19)
+  PARTIALLY_SUPPORTED  In Kenya, the PSA highlights that financing challenges could become a major barrier to achieving Universal Health Coverage.
+      “These gaps risk becoming a major barrier to achieving Universal Health Coverage (UHC)” — Kenya’s Healthcare Crossroads (academic, 2026-03-19)
+      checker: The excerpt confirms that gaps risk becoming a major barrier to UHC, but it does not link financing challenges to that barrier as the 
+claim asserts.
+  SUPPORTED           In Kenya, the PSA warns that if investments are not made now, inequities may widen and facilities could be pushed beyond 
+capacity.
+      “If we wait, we risk widening inequities and pushing already strained facilities beyond capacity” — Kenya’s Healthcare Crossroads (academic, 
+2026-03-19)
+  PARTIALLY_SUPPORTED  In Nairobi, 12.2% of high socioeconomic status respondents rated air quality as good compared with 0.3% of low socioeconomic 
+status respondents.
+      “In contrast, 12.2% of HSES respondents rated air quality as good compared with 0.3% in LSES” — Socioeconomic disparities in perceived air 
+quality (academic, n.d.)
+      checker: The evidence provides the percentages (12.2% vs 0.3%) but does not specify that the data are from Nairobi.
+  SUPPORTED           Nairobi City County adopted the Nairobi City County Air Policy in 2020 and developed an Air Quality Action Plan.
+      “Nairobi City County Air Policy, 2020 and an Air Quality Action Plan” — Socioeconomic disparities in perceived air quality (academic, 2020)
+  SUPPORTED           In Kenya, insufficient NCD-specific financing at national and county levels was identified as a major gap in the National NCD 
+Strategic Plan 2015-2020 implementation.
+      “Major gaps were: insufficient NCD-specific financing both at national and county levels” — Implementing a Five Year Non-Communicable Disease  
+(ngo, n.d.)
+  SUPPORTED           In Kenya, failure to formulate risk factor mitigation legislations was identified as a major gap in the National NCD Strategic 
+Plan 2015-2020 implementation.
+      “failure to formulate the identified risk factor mitigation legislations” — Implementing a Five Year Non-Communicable Disease  (ngo, n.d.)
+  SUPPORTED           In Kenya, lack of an effective monitoring and evaluation framework was identified as a major gap in the National NCD Strategic 
+Plan 2015-2020 implementation.
+      “lack of an effective monitoring and evaluation framework” — Implementing a Five Year Non-Communicable Disease  (ngo, n.d.)
+───────────────────────────────────────────────────── 3 claims rejected by quote-grounding check ─────────────────────────────────────────────────────
+  x Kenya has developed policies and regulations to address tobacco use and excessive alcohol consumptio  quote: “Furthermore, to address key risk 
+factors for NCDs, Kenya has developed policies ”
+  x The National Environment Management Authority imposed national air quality regulations in 2014, revi  quote: “National Environment Management 
+Authority (NEMA) imposed regulations in 2014 (re”
+  x A 2017 UNEP study identified Nairobi’s air pollution as a major concern in the city’s poor neighbour  quote: “According to a 2017 UNEP study, 
+Nairobi's air pollution is a major concern in Na”
+──────────────────────────────────────────────────────────────────────── Gaps ────────────────────────────────────────────────────────────────────────
+  medium cvd_burden     Only state/national-level evidence for 'CVD Burden'; nothing specific to Nairobi.
+         → Request city-level data from the municipal health department or a local academic partner.
+  medium cvd_burden     Most recent dated evidence for 'CVD Burden' is from 2019.
+         → Check for newer surveys or reports before the meeting.
+  medium health_system  Only state/national-level evidence for 'Health System Capacity'; nothing specific to Nairobi.
+         → Request city-level data from the municipal health department or a local academic partner.
+  medium programmes     Most recent dated evidence for 'Existing NCD Programmes' is from 2014.
+         → Check for newer surveys or reports before the meeting.
+  medium policies       Only state/national-level evidence for 'Policy Environment'; nothing specific to Nairobi.
+         → Request city-level data from the municipal health department or a local academic partner.
+  medium policies       Most recent dated evidence for 'Policy Environment' is from 2015.
+         → Check for newer surveys or reports before the meeting.
+  medium stakeholders   Only state/national-level evidence for 'Key Stakeholders'; nothing specific to Nairobi.
+         → Request city-level data from the municipal health department or a local academic partner.
+  medium risks_gaps     Most recent dated evidence for 'Risks and Gaps' is from 2020.
+         → Check for newer surveys or reports before the meeting.
+  medium sources        11 official sources were discovered but could not be extracted (robots.txt / access refused / unreachable).
+         → Open manually: http://guidelines.health.go.ke:8000/media/2024_KENYA_NATIONAL_GUIDELINES_FOR_CVD_MANAGEMENT_3.pdf; 
+https://nairobi.go.ke/wp-content/upl
+
+state written to C:\Users\SriramM\Desktop\case_study\backend\samples\graph_nairobi.json; total 102s

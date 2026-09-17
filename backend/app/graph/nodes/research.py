@@ -32,14 +32,18 @@ def search_node(state: ResearchState) -> dict:
     results: dict[str, SearchResult] = {}
     url_queries: dict[str, list[str]] = {}
     raw = 0
-    for q, rows in search_many(queries, max_results=settings.max_results_per_query).items():
+    plan = state.get("plan")
+    gl = (plan.country_code or "").lower()[:2] or None if plan else None
+    providers: dict[str, int] = {}
+    for q, rows in search_many(queries, max_results=settings.max_results_per_query, gl=gl).items():
         raw += len(rows)
         for r in rows:
+            providers[r.provider] = providers.get(r.provider, 0) + 1
             results.setdefault(r.normalized_url, r)
             url_queries.setdefault(r.normalized_url, []).append(q)
-    writer({"stage": "searching", "message": f"{raw} results, {len(results)} unique sources"})
+    writer({"stage": "searching", "message": f"{raw} results, {len(results)} unique sources via {providers}"})
     return {"search_results": results, "url_queries": url_queries, "stage": "checking_sources",
-            "stats": {"raw_results": raw, "unique_urls": len(results)}}
+            "stats": {"raw_results": raw, "unique_urls": len(results), "search_providers": providers}}
 
 
 def crawl_check_node(state: ResearchState) -> dict:

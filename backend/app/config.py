@@ -14,7 +14,8 @@ class Settings(BaseSettings):
         env_file=BACKEND_DIR / ".env", env_file_encoding="utf-8", extra="ignore"
     )
 
-    search_provider: Literal["auto", "tavily", "ddgs"] = "auto"
+    # auto = chain of every configured provider: serper -> tavily -> ollama -> ddgs
+    search_provider: Literal["auto", "serper", "tavily", "ollama", "ddgs"] = "auto"
     tavily_api_key: str | None = None
 
     user_agent: str = (
@@ -30,7 +31,17 @@ class Settings(BaseSettings):
     # Re-use search results / fetched pages younger than this. 0 = always live (production).
     research_cache_ttl_hours: float = 0
 
-    # --- LLM (Groq) -------------------------------------------------------
+    # --- LLM ----------------------------------------------------------------
+    # Primary provider; the other becomes the automatic fallback when its key(s) exist.
+    llm_provider: Literal["ollama", "groq"] = "ollama"
+    ollama_base_url: str = "https://ollama.com"
+    ollama_model_planner: str = "gpt-oss:120b"
+    ollama_model_extractor: str = "gpt-oss:20b"
+    ollama_model_checker: str = "gpt-oss:120b"
+    ollama_model_answer: str = "gpt-oss:120b"
+    ollama_per_key_concurrency: int = 1      # free tier: 1 concurrent request per account
+
+    # --- Groq (fallback) ---------------------------------------------------
     groq_api_key: str | None = None
     # Free tier: 8K tokens/min *per model*, so volume work goes to the small model
     # and judgement work (planning, verification, answering) to the large one.

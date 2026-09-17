@@ -33,6 +33,7 @@ class ResearchCategory(BaseModel):
 class ResearchPlan(BaseModel):
     city: str
     country: str
+    country_code: str | None = Field(default=None, description="ISO 3166-1 alpha-2 code of the country, lowercase, e.g. ke, in, br")
     admin_region: str | None = Field(default=None, description="state / province / county the city sits in, or null")
     aliases: list[str] = Field(default_factory=list, description="other names the city is known by")
     population_hint: str | None = Field(default=None, description="approximate population if known, else null")

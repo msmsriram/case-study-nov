@@ -1,0 +1,160 @@
+
+====================================================================================================
+1. Cloud models visible to this key (/api/tags)
+====================================================================================================
+status 200 | interesting headers: {}
+  minimax-m3                       family=           params=         quant=
+  kimi-k2.6                        family=           params=         quant=
+  deepseek-v4-pro:0813             family=           params=         quant=
+  mistral-large-3:675b             family=           params=         quant=
+  gemma4:31b                       family=           params=         quant=
+  qwen3.5:397b                     family=           params=         quant=
+  glm-5.3                          family=           params=         quant=
+  gpt-oss:120b                     family=           params=         quant=
+  nemotron-3-nano:30b              family=           params=         quant=
+  kimi-k2.7-code                   family=           params=         quant=
+  gpt-oss:20b                      family=           params=         quant=
+  glm-5.2                          family=           params=         quant=
+  minimax-m2.7                     family=           params=         quant=
+  glm-5.1                          family=           params=         quant=
+  deepseek-v4-flash:0731           family=           params=         quant=
+  deepseek-v4.1-flash              family=           params=         quant=
+  nemotron-3-ultra                 family=           params=         quant=
+  glm-5.3-flash                    family=           params=         quant=
+  kimi-k3                          family=           params=         quant=
+  nemotron-3-super                 family=           params=         quant=
+
+20 models. Candidates present: ['minimax-m3', 'kimi-k2.6', 'deepseek-v4-pro:0813', 'mistral-large-3:675b', 'gemma4:31b', 'qwen3.5:397b', 'glm-5.3', 'gpt-oss:120b', 'nemotron-3-nano:30b', 'kimi-k2.7-code', 'gpt-oss:20b', 'glm-5.2', 'minimax-m2.7', 'glm-5.1', 'deepseek-v4-flash:0731', 'deepseek-v4.1-flash', 'nemotron-3-ultra', 'glm-5.3-flash', 'kimi-k3', 'nemotron-3-super']
+
+====================================================================================================
+1b. Declared capabilities and context length (/api/show)
+====================================================================================================
+  minimax-m3                       caps=['completion', 'tools', 'thinking', 'vision'] context=512000
+  kimi-k2.6                        caps=['vision', 'thinking', 'completion', 'tools'] context=262144
+  deepseek-v4-pro:0813             caps=['completion', 'tools', 'thinking'] context=1048576
+  mistral-large-3:675b             caps=['completion', 'tools', 'vision'] context=262144
+  gemma4:31b                       caps=['completion', 'thinking', 'tools', 'vision'] context=262144
+  qwen3.5:397b                     caps=['completion', 'thinking', 'tools', 'vision'] context=262144
+  glm-5.3                          caps=['completion', 'thinking', 'tools'] context=1048576
+  gpt-oss:120b                     caps=['completion', 'tools', 'thinking'] context=131072
+  nemotron-3-nano:30b              caps=['completion', 'tools', 'thinking'] context=262144
+  kimi-k2.7-code                   caps=['vision', 'thinking', 'completion', 'tools'] context=262144
+  gpt-oss:20b                      caps=['completion', 'tools', 'thinking'] context=131072
+  glm-5.2                          caps=['thinking', 'completion', 'tools'] context=1048576
+  minimax-m2.7                     caps=['completion', 'tools', 'thinking'] context=196608
+  glm-5.1                          caps=['thinking', 'completion', 'tools'] context=202752
+  deepseek-v4-flash:0731           caps=['completion', 'tools', 'thinking'] context=1048576
+  deepseek-v4.1-flash              caps=['completion', 'thinking', 'tools', 'vision'] context=1048576
+  nemotron-3-ultra                 caps=['completion', 'thinking', 'tools'] context=262144
+  glm-5.3-flash                    caps=['completion', 'thinking', 'tools', 'vision'] context=1048576
+  kimi-k3                          caps=['vision', 'thinking', 'completion', 'tools'] context=1048576
+  nemotron-3-super                 caps=['completion', 'thinking', 'tools'] context=262144
+
+====================================================================================================
+2. Per-model probes: chat / structured output / tool call / thinking
+====================================================================================================
+  minimax-m3                   HTTP 402: {"error":"this model requires a subscription or usage credits, upgrade for acces
+  kimi-k2.6                    HTTP 402: {"error":"this model requires a subscription or usage credits, upgrade for acces
+  deepseek-v4-pro:0813         HTTP 402: {"error":"this model requires a subscription or usage credits, upgrade for acces
+  mistral-large-3:675b         HTTP 402: {"error":"this model requires a subscription or usage credits, upgrade for acces
+  gemma4:31b                   chat=ok             1.6s tok=18/2      | structured=bad json: Expecting value: line 1 column 1 (char     1.9s
+                               tools=ok {'query': 'latest hypertension prevalence Nairobi Kenya'}   | thinking=ok think=True ans='391'
+  qwen3.5:397b                 HTTP 402: {"error":"this model requires a subscription or usage credits, upgrade for acces
+  glm-5.3                      HTTP 402: {"error":"this model requires a subscription or usage credits, upgrade for acces
+  gpt-oss:120b                 chat=ok             0.8s tok=72/66     | structured=ok 2 claims geo=['str', 'str']                       1.5s
+                               tools=ok {'query': 'latest hypertension prevalence Nairobi 2023 20   | thinking=ok think=True ans='391'
+  nemotron-3-nano:30b          chat=ok             1.7s tok=21/38     | structured=ok 0 claims geo=[]                                   2.1s
+                               tools=ok {'query': 'latest hypertension prevalence in Nairobi 2023   | thinking=ok think=True ans='391'
+  kimi-k2.7-code               HTTP 402: {"error":"this model requires a subscription or usage credits, upgrade for acces
+  gpt-oss:20b                  chat=ok             1.4s tok=72/36     | structured=ok 2 claims geo=['str', 'str']                       4.8s
+                               tools=ok {'query': 'latest hypertension prevalence Nairobi'}         | thinking=ok think=True ans='391'
+  glm-5.2                      HTTP 402: {"error":"this model requires a subscription or usage credits, upgrade for acces
+  minimax-m2.7                 HTTP 402: {"error":"this model requires a subscription or usage credits, upgrade for acces
+  glm-5.1                      HTTP 402: {"error":"this model requires a subscription or usage credits, upgrade for acces
+  deepseek-v4-flash:0731       HTTP 402: {"error":"this model requires a subscription or usage credits, upgrade for acces
+  deepseek-v4.1-flash          HTTP 402: {"error":"this model requires a subscription or usage credits, upgrade for acces
+  nemotron-3-ultra             chat=ok            20.2s tok=21/31     | structured=ok 2 claims geo=[None, None]                        46.1s
+                               tools=ok {'query': 'latest hypertension prevalence Nairobi'}         | thinking=ReadTimeout
+  glm-5.3-flash                ReadTimeout
+  kimi-k3                      ReadTimeout
+  nemotron-3-super             chat=ok            23.8s tok=21/15     | structured=ok 2 claims geo=[None, None]                         5.5s
+                               tools=ok {'query': 'latest hypertension prevalence Nairobi'}         | thinking=ok think=True ans='391'
+
+====================================================================================================
+3. Web search + web fetch (/api/web_search, /api/web_fetch)
+====================================================================================================
+web_search HTTP 200 in 1.0s | headers={}
+  - Experts, partners join forces to strengthen county-level res https://nairobi.go.ke/experts-partners-join-forces-to-strengthen-count
+      snippet 4637 chars: 'Experts, partners join forces to strengthen county-level response to diabetes, hypertension, and other Non-Communicable Diseases | Nairobi City County\n\n +254 07'
+  - D4HL holds free wellness screening at GPO Huduma Centre as p https://doctors4healthyliving.org/2026/07/20/d4hl-holds-free-wellness-
+      snippet 4454 chars: 'D4HL holds free wellness screening at GPO Huduma Centre as part of World Hypertension Day 2026 – Doctors for Healthy Living\n\n info@doctors4healthyliving.org\n\n +'
+  - Case identification, retention and blood pressure control in https://pmc.ncbi.nlm.nih.gov/articles/PMC9176190/
+      snippet 30488 chars: 'Case identification, retention and blood pressure control in Kenya - PMC\n\nPublic Health Action\n\n. 2022 Jun 21;12(2):58–63. doi: 10.5588/pha.21.0051\n\nShow availa'
+  - Challenges and opportunities in screening and management of  https://doi.org/10.1080/17441692.2025.2545952
+      snippet 10583 chars: '# Challenges and opportunities in screening and management of hypertension and type 2 diabetes in informal settlements in Nairobi, Kenya: A qualitative study of'
+  - Enhancing Hypertensive/Diabetic Management Support through c https://maarifa.cog.go.ke/sites/default/files/2024-04/Hypertensive%20a
+      snippet 13292 chars: 'Council of Governors\n\nEnhancing Hypertensive/Diabetic Management Support through community pharmacy in Nairobi\n\nCounty: Nairobi City County Sector: Health, Well'
+
+web_fetch https://pmc.ncbi.nlm.nih.gov/articles/PMC9176190/ -> HTTP 404 in 10.5s | headers={}
+
+web_fetch https://www.who.int/news-room/fact-sheets/detail/hypertension -> HTTP 404 in 10.5s | headers={}
+
+web_fetch https://pib.gov.in/PressReleasePage.aspx?PRID=2003006 -> HTTP 200 in 6.5s | headers={}
+  title='Press Release Page | Press Information Bureau' content=2684 chars links=3
+  head: 'Press Release Page | Press Information Bureau \n\n## Shri Nitin Gadkari approves Rs 2,248.94 crore for the construction of Lada-Sarli section of NH-913 (Frontier Highway) in Arunachal Pradesh \n\n Posted On: 06 FEB 2024 3:17PM by PIB Delhi \n\nUnion Minister of Road Transport & Highways, Shri Nitin Gadkar'
+
+====================================================================================================
+4. Embeddings (/api/embed)
+====================================================================================================
+embedding-looking models in tags: none listed; trying candidates anyway
+  embeddinggemma               HTTP 401: {"error": "unauthorized"}
+  nomic-embed-text             HTTP 401: {"error": "unauthorized"}
+  qwen3-embedding              HTTP 401: {"error": "unauthorized"}
+
+====================================================================================================
+5. Concurrency: 2 simultaneous requests on the free tier (expect one 429 if limit is 1)
+====================================================================================================
+  req1: HTTP 402 in 0.4s headers={} {"error":"this model requires a subscription or usage credits, upgrade for access at https://ollama.
+  req2: HTTP 402 in 0.4s headers={} {"error":"this model requires a subscription or usage credits, upgrade for access at https://ollama.
+
+====================================================================================================
+6. Throughput: 6 back-to-back ~1.5K-token prompts on gpt-oss:120b (looking for 429 / slowdown)
+====================================================================================================
+  call 1: ok 1.4s tokens=1872/203 headers={}
+  call 2: ok 1.1s tokens=1872/175 headers={}
+  call 3: ok 1.9s tokens=1872/120 headers={}
+  call 4: ok 1.0s tokens=1872/134 headers={}
+  call 5: ok 1.3s tokens=1872/206 headers={}
+  call 6: ok 1.0s tokens=1872/121 headers={}
+  GET /api/usage: HTTP 200 '{"activity":{"cost":"0.00000","period":{"type":"last_4_weeks","starting_at":"2026-08-24T00:00:00Z","ending_at":"2026-09-'
+  GET /api/me: HTTP 405 'Method Not Allowed\n'
+  GET /api/keys: HTTP 404 '{"error":"path \\"/api/keys\\" not found"}\n'
+  GET /v1/models: HTTP 200 '{"object":"list","data":[{"id":"qwen3.5:397b","object":"model","created":1771200000,"owned_by":"ollama"},{"id":"glm-5.3"'
+
+====================================================================================================
+SUMMARY
+====================================================================================================
+Free tier per Ollama pricing page: starter usage credits (GPU-time based), 1 concurrent request, monthly reset;
+no published RPM/TPM. Check remaining credits at https://ollama.com/settings/usage
+
+model                         chat   structured                       tools   thinking
+minimax-m3                   HTTP 4 HTTP 402: {"error":"this model r -       -
+kimi-k2.6                    HTTP 4 HTTP 402: {"error":"this model r -       -
+deepseek-v4-pro:0813         HTTP 4 HTTP 402: {"error":"this model r -       -
+mistral-large-3:675b         HTTP 4 HTTP 402: {"error":"this model r -       -
+gemma4:31b                   ok     bad json: Expecting value: line  ok {'qu ok think=True ans='3
+qwen3.5:397b                 HTTP 4 HTTP 402: {"error":"this model r -       -
+glm-5.3                      HTTP 4 HTTP 402: {"error":"this model r -       -
+gpt-oss:120b                 ok     ok 2 claims geo=['str', 'str']   ok {'qu ok think=True ans='3
+nemotron-3-nano:30b          ok     ok 0 claims geo=[]               ok {'qu ok think=True ans='3
+kimi-k2.7-code               HTTP 4 HTTP 402: {"error":"this model r -       -
+gpt-oss:20b                  ok     ok 2 claims geo=['str', 'str']   ok {'qu ok think=True ans='3
+glm-5.2                      HTTP 4 HTTP 402: {"error":"this model r -       -
+minimax-m2.7                 HTTP 4 HTTP 402: {"error":"this model r -       -
+glm-5.1                      HTTP 4 HTTP 402: {"error":"this model r -       -
+deepseek-v4-flash:0731       HTTP 4 HTTP 402: {"error":"this model r -       -
+deepseek-v4.1-flash          HTTP 4 HTTP 402: {"error":"this model r -       -
+nemotron-3-ultra             ok     ok 2 claims geo=[None, None]     ok {'qu ReadTimeout
+glm-5.3-flash                ReadTi ReadTimeout                      -       -
+kimi-k3                      ReadTi ReadTimeout                      -       -
+nemotron-3-super             ok     ok 2 claims geo=[None, None]     ok {'qu ok think=True ans='3

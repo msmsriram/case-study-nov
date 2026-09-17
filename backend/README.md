@@ -24,7 +24,7 @@ The foundation every agent builds on. Three separate responsibilities, in a fixe
 
 | Module | Responsibility |
 |---|---|
-| `search.py` | Live web search at request time. Tavily when `TAVILY_API_KEY` is set, DuckDuckGo (keyless) otherwise. Same `SearchResult` shape from both. |
+| `search.py` | Live web search at request time, as a fallback chain: **Serper** (Google results, key pool) → Tavily → Ollama web search → DuckDuckGo (keyless). Same `SearchResult` shape from all. The planner's ISO country code localises results. Search is discovery only: every URL still has to pass the crawlability gate. |
 | `crawlability.py` | Decides **before any fetch** whether a source permits automated extraction. Produces a `CrawlDecision` with the reason. |
 | `fetcher.py` | Polite fetch + extraction for approved URLs only. HTML via trafilatura, PDF via pypdf. Produces a `FetchedDocument` with provenance metadata. |
 | `pipeline.py` | search → de-duplicate → crawlability → fetch. Returns items + stats. This is what the LangGraph nodes call. |
@@ -90,23 +90,30 @@ Query hygiene strips typographic punctuation, de-duplicates and guarantees the c
 government and intergovernmental sources go first, then academic, NGO, reference/news,
 commercial; ties broken by how many queries surfaced the URL.
 
-**LLM layer** (`app/llm.py`): Groq, routed by role.
+**LLM layer** (`app/llm.py`): every agent calls `structured_call(role, Schema, system, user)` and gets
+a validated Pydantic object back. Provider is chosen by `LLM_PROVIDER`; the other becomes the automatic
+fallback.
 
-| Role | Model | Why |
-|---|---|---|
-| planner | `openai/gpt-oss-120b` | judgement, once per run |
-| extractor | `openai/gpt-oss-20b` | volume work: one call per document |
-| checker | `openai/gpt-oss-120b` | independent of the extractor by construction |
-| answer | `openai/gpt-oss-120b` | synthesis with citations |
+| Role | Ollama Cloud (primary) | Groq (fallback) | Why |
+|---|---|---|---|
+| planner | `gpt-oss:120b` | `openai/gpt-oss-120b` | judgement, once per run |
+| extractor | `gpt-oss:20b` | `openai/gpt-oss-20b` | volume work: one call per document |
+| checker | `gpt-oss:120b` | `openai/gpt-oss-120b` | independent of the extractor by construction |
+| answer | `gpt-oss:120b` | `openai/gpt-oss-120b` | synthesis with citations |
 
-The free tier allows ~8K tokens/min **per model**. `TokenBudget` is a per-model sliding
-window that blocks a call until it fits; usage is accumulated per role. All calls use strict
-JSON-schema structured output. Set `GROQ_MODEL_*` in `.env` to re-route.
+- **Ollama Cloud**: free tier has no per-minute token ceiling we could measure (about 3M tokens/month by the
+  usage endpoint). gpt-oss ignores Ollama's `format` constraint and tool-calling drops required fields, so
+  the inlined JSON Schema goes in the prompt, the reply is validated with Pydantic, and one repair attempt
+  is made with the validation error fed back.
+- **Groq**: strict JSON-schema output, but ~8K tokens/min per model on the free tier; `TokenBudget` is a
+  per-model sliding window that blocks a call until it fits.
+- **Key pools** (`app/keys.py`): `SERPER_API_KEY_1..n` and `OLLAMA_API_KEY_1..n` are used round-robin with a
+  per-key concurrency limit. A key that returns quota / auth / rate-limit errors is retired for a cool-down
+  and the next one is used, so an exhausted key never fails a run.
 
 ### Known limitations of this layer
 
 - No JavaScript rendering. SPA-only pages come back as `empty` or `low` quality.
-- DuckDuckGo occasionally returns no results for a query; Tavily is far more reliable and
-  is the recommended provider.
+- DuckDuckGo throttles hard under repeated use; it is only the last link of the search chain.
 - Landing pages that link to the real document (e.g. WHO country-profile pages that link
   to a PDF) are graded `low`; following the PDF link is a planned improvement.
