@@ -42,7 +42,11 @@ Hard rules:
 - `statement` must be self-contained and name the place the evidence refers to
   (e.g. "In Kenya, 24% of adults aged 18-69 have hypertension (STEPS 2015)", not "prevalence is 24%").
 - Prefer fewer, precise claims over many vague ones. Maximum {max_claims} claims.
-- If the source is irrelevant (e.g. a clinic advert with no facts), return no claims and source_relevance "none"."""
+- If the source is irrelevant (e.g. a clinic advert with no facts), return no claims and source_relevance "none".
+- Relevance comes before extraction. The source must actually be about health, healthcare, health policy or
+  cardiovascular risk factors. Acronyms collide: "NCD" can be an organisation's name (for example a conservation
+  NGO), "HTA" or "CVD" can mean unrelated things. If the passage is about another subject, a true and well-quoted
+  claim is still useless: return no claims and source_relevance "none"."""
 
 
 def _norm(s: str) -> str:

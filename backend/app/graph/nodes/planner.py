@@ -45,14 +45,19 @@ Rules for queries:
   NCD programme, the state health mission). Do NOT invent programme names you are not sure exist;
   use generic phrasing instead.
 - Queries are plain search-engine strings, no quotes, no boolean operators.
+- Spell health terms out instead of using bare acronyms that collide with organisation names: write
+  "non-communicable diseases" (or the local-language term, e.g. "maladies non transmissibles") rather than "NCD".
+- Where the country's working language is not English, write about half of the queries in that language:
+  official and municipal sources are usually published in it.
 
 Resolve the city carefully: give the country, the admin region (state / province / county) and any
 aliases (former names, local-language names). If the city name is ambiguous, pick the most likely
 large city and record that as an assumption. Record every assumption you make."""
 
 
-_PUNCT = str.maketrans({"‑": "-", "‐": "-", "–": "-", "—": "-", "’": "'",
-                        "‘": "'", "“": '"', "”": '"', '"': "", "'": ""})
+# apostrophes become a space, not nothing: French elisions ("d'acces", "l'air") must not be glued into one word
+_PUNCT = str.maketrans({"‑": "-", "‐": "-", "–": "-", "—": "-", "’": " ", "‘": " ",
+                        "“": "", "”": "", '"': "", "'": " "})
 
 
 def _clean_query(q: str) -> str:

@@ -11,3 +11,6 @@ backend/scripts/explore_serper.py
 backend/data/
 frontend/node_modules/
 frontend/dist/
+# Office lock files and the confidential case-study documents stay local
+~$*
+*.docx
