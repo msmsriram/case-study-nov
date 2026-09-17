@@ -1,3 +1,13 @@
+---
+title: CARDIO4Cities City Intelligence
+emoji: 🫀
+colorFrom: blue
+colorTo: green
+sdk: docker
+app_port: 7860
+pinned: false
+---
+
 # CARDIO4Cities City Intelligence
 
 An AI research system that prepares a City Lead for a city nobody has researched before. Name any city: it

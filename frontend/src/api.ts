@@ -1,4 +1,6 @@
-export const API = (import.meta.env.VITE_API_URL as string | undefined)?.replace(/\/$/, '') ?? 'http://localhost:8000'
+const configured = import.meta.env.VITE_API_URL as string | undefined
+// dev: local API; production: explicit VITE_API_URL, or same origin when the API serves this bundle
+export const API = configured ? configured.replace(/\/$/, '') : import.meta.env.DEV ? 'http://localhost:8000' : ''
 
 export type GeoLevel = 'city' | 'metro' | 'district' | 'state' | 'national' | 'global' | 'unknown'
 

@@ -1,0 +1,10 @@
+case_venv
+**/node_modules
+frontend/dist
+backend/.env
+backend/data
+backend/.cache
+backend/samples/*.json
+backend/scripts/explore_*.py
+.git
+*.docx

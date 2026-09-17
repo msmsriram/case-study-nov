@@ -24,7 +24,8 @@ from collections import Counter
 
 from fastapi import FastAPI, HTTPException, Query
 from fastapi.middleware.cors import CORSMiddleware
-from fastapi.responses import PlainTextResponse, Response, StreamingResponse
+from fastapi.responses import FileResponse, PlainTextResponse, Response, StreamingResponse
+from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel, Field
 from sqlalchemy import func, select
 
@@ -33,6 +34,7 @@ from .graph.builder import build_graph, mermaid
 from .llm import usage_snapshot
 from .stores import graph as graph_store
 from .stores import relational as rel
+from .config import BACKEND_DIR
 from .stores import vector
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(name)s: %(message)s")
@@ -319,3 +321,14 @@ def workflow_diagram():
 def health():
     return {"ok": True, "stores": {"relational": rel.backend_name(), "vector": vector.backend_name(),
                                    "graph": graph_store.is_configured()}, "llm_usage": usage_snapshot()}
+
+
+# --------------------------------------------------------------------------- built frontend (container deployments)
+_DIST = BACKEND_DIR.parent / "frontend_dist"
+if _DIST.exists():
+    app.mount("/assets", StaticFiles(directory=_DIST / "assets"), name="assets")
+
+    @app.get("/{path:path}", include_in_schema=False)
+    def spa(path: str):
+        f = _DIST / path
+        return FileResponse(f if path and f.is_file() else _DIST / "index.html")
