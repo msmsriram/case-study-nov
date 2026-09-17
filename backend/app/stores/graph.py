@@ -251,3 +251,16 @@ async def remove_orphan_episodes(city_id: str, known_episode_uuids: set[str]) ->
         return len(orphans)
     finally:
         await g.close()
+
+
+async def delete_city(city_id: str) -> int:
+    """Drop the city's whole namespace: entities, relationships and episodes."""
+    _, driver = _graphiti()
+    try:
+        recs, _, _ = await driver.execute_query("MATCH (n) WHERE n.group_id = $g RETURN count(n) AS c", g=city_id)
+        n = recs[0]["c"] if recs else 0
+        if n:
+            await driver.execute_query("MATCH (n) WHERE n.group_id = $g DETACH DELETE n", g=city_id)
+        return n
+    finally:
+        await driver.close()

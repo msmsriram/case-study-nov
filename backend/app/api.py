@@ -211,6 +211,32 @@ def city_overview(city_id: str):
         }
 
 
+@app.delete("/api/cities/{city_id}")
+def delete_city(city_id: str):
+    """Remove a city from ALL three stores: audit trail, evidence index and its knowledge-graph namespace."""
+    with rel.SessionLocal() as s:
+        _city_or_404(s, city_id)
+    if any(r.status == "running" and r.city_id == city_id for r in RUNS.values()):
+        raise HTTPException(409, "A research run for this city is still in progress. Wait for it to finish, then delete.")
+    removed: dict = {}
+    errors: list[str] = []
+    # derived stores first, the system of record last: if a derived delete fails the city is still listed and can be retried
+    try:
+        removed["vector_points"] = vector.delete_city(city_id)
+    except Exception as e:  # noqa: BLE001
+        errors.append(f"vector: {type(e).__name__}: {e}"[:200])
+    if graph_store.is_configured():
+        try:
+            removed["graph_nodes"] = asyncio.run(graph_store.delete_city(city_id))
+        except Exception as e:  # noqa: BLE001
+            errors.append(f"graph: {type(e).__name__}: {e}"[:200])
+    if errors:
+        raise HTTPException(502, {"message": "Could not clear every store; nothing was removed from the record.", "errors": errors})
+    removed["relational"] = rel.delete_city(city_id)
+    log.info("deleted city %s: %s", city_id, removed)
+    return {"deleted": city_id, "removed": removed}
+
+
 @app.get("/api/cities/{city_id}/claims")
 def city_claims(city_id: str, category: str | None = None, status: str = "verified", geo_level: str | None = None,
                 limit: int = Query(300, le=1000)):

@@ -28,6 +28,7 @@ export default function AskTab({ cityId, cityName, ready, status }: { cityId: st
   const [focus, setFocus] = useState<number>(-1)            // which turn's evidence is shown
   const [active, setActive] = useState<number | null>(null) // highlighted evidence number
   const [past, setPast] = useState<ConversationSummary[]>([])
+  const [showAll, setShowAll] = useState(false)             // evidence panel: only what the answer used, or everything retrieved
   const endRef = useRef<HTMLDivElement>(null)
 
   const loadPast = () => api.conversations(cityId).then(setPast).catch(() => undefined)
@@ -100,7 +101,8 @@ export default function AskTab({ cityId, cityName, ready, status }: { cityId: st
               {a.insufficient_evidence && <div className="notice">The stored evidence does not answer this. We say so rather than guess.</div>}
               <AnswerBody a={a} onCite={n => { setFocus(i); setActive(n) }} />
               <div className="row">
-                <span className={`badge ${a.confidence === 'high' ? 'ok' : a.confidence === 'medium' ? 'warn' : 'bad'}`}>{a.confidence} confidence</span>
+                <span className={`badge ${a.confidence === 'high' ? 'ok' : a.confidence === 'medium' ? 'warn' : 'bad'}`} title={a.confidence_reason}>{a.confidence} confidence</span>
+                {a.confidence_reason && <span className="small faint">{a.confidence_reason} ·</span>}
                 <span className="small faint">drew on: {a.stores_used_in_answer.map(k => KIND[k as Evidence['kind']]).join(', ') || 'no evidence'} · {a.timings.total_s}s</span>
                 {focus !== i && <button className="btn ghost small" onClick={() => setFocus(i)}>show evidence</button>}
               </div>
@@ -133,7 +135,22 @@ export default function AskTab({ cityId, cityName, ready, status }: { cityId: st
         <div className="row"><h3 className="grow">Evidence{shown ? ` for turn ${focus + 1}` : ''}</h3>
           {shown && <span className="small faint">{shown.retrieval.graph_facts} graph · {shown.retrieval.claims} facts · {shown.retrieval.passages} passages retrieved</span>}</div>
         {!shown && <div className="card pad muted small">The evidence behind each answer appears here. Click a citation number to jump to its source.</div>}
-        {shown?.evidence.map(e => {
+        {shown && (() => {
+          const used = citedOf(shown).length
+          return (
+            <div className="row">
+              <div className="seg" role="tablist" aria-label="Evidence filter">
+                <button className={!showAll ? 'on' : ''} onClick={() => setShowAll(false)}>Used in this answer · {used}</button>
+                <button className={showAll ? 'on' : ''} onClick={() => setShowAll(true)}>Everything retrieved · {shown.evidence.length}</button>
+              </div>
+              <span className="small faint grow">{showAll
+                ? 'Faded items were found by the search but the answer did not rely on them.'
+                : 'Only the evidence the answer actually cites. Nothing else shaped it.'}</span>
+            </div>
+          )
+        })()}
+        {shown && !showAll && citedOf(shown).length === 0 && <div className="card pad muted small">This answer cites no evidence, which is why its confidence is low. Switch to “Everything retrieved” to see what the search found.</div>}
+        {shown?.evidence.filter(e => showAll || citedOf(shown).includes(e.n) || active === e.n).map(e => {
           const cited = citedOf(shown).includes(e.n)
           return (
             <div key={e.n} className={`ev ${active === e.n ? 'on' : ''} ${!cited ? 'dim' : ''}`} onMouseEnter={() => cited && setActive(e.n)}

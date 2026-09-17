@@ -282,3 +282,32 @@ def mark_ingested(claim_ids: list[str], episode_uuid: str) -> None:
             if r:
                 r.graph_episode_uuid = episode_uuid
         s.commit()
+
+
+def update_run_stats(run_id: str, extra: dict) -> None:
+    """Merge late-arriving stats (e.g. the graph build, which finishes after the run record is written)."""
+    with SessionLocal() as s:
+        r = s.get(Run, run_id)
+        if r:
+            r.stats = {**(r.stats or {}), **extra}
+            s.commit()
+
+
+def delete_city(city_id: str) -> dict:
+    """Remove a city and everything derived from it. Children first: Postgres enforces the foreign keys."""
+    from sqlalchemy import delete
+    with SessionLocal() as s:
+        if not s.get(City, city_id):
+            return {}
+        conv_ids = [r[0] for r in s.execute(select(Conversation.id).where(Conversation.city_id == city_id)).all()]
+        n: dict[str, int] = {}
+        n["messages"] = s.execute(delete(Message).where(Message.conversation_id.in_(conv_ids))).rowcount if conv_ids else 0
+        n["conversations"] = s.execute(delete(Conversation).where(Conversation.city_id == city_id)).rowcount
+        n["claims"] = s.execute(delete(ClaimRow).where(ClaimRow.city_id == city_id)).rowcount
+        n["conflicts"] = s.execute(delete(ConflictRow).where(ConflictRow.city_id == city_id)).rowcount
+        n["gaps"] = s.execute(delete(GapRow).where(GapRow.city_id == city_id)).rowcount
+        n["sources"] = s.execute(delete(Source).where(Source.city_id == city_id)).rowcount
+        n["runs"] = s.execute(delete(Run).where(Run.city_id == city_id)).rowcount
+        n["cities"] = s.execute(delete(City).where(City.id == city_id)).rowcount
+        s.commit()
+        return n

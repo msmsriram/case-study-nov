@@ -121,3 +121,12 @@ def search(city_id: str, query: str, k: int = 8, kind: str | None = None) -> lis
     res = client().query_points(settings.qdrant_collection, query=embed_one(query), limit=k,
                                 query_filter=qm.Filter(must=must), with_payload=True)
     return [{"score": round(p.score, 4), **(p.payload or {})} for p in res.points]
+
+
+def delete_city(city_id: str) -> int:
+    c = client()
+    flt = qm.Filter(must=[qm.FieldCondition(key="city_id", match=qm.MatchValue(value=city_id))])
+    n = c.count(settings.qdrant_collection, count_filter=flt, exact=True).count
+    if n:
+        c.delete(settings.qdrant_collection, points_selector=qm.FilterSelector(filter=flt))
+    return n

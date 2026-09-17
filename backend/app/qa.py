@@ -182,6 +182,31 @@ def _format(evidence: list[dict]) -> str:
     return "\n".join(lines)
 
 
+_LEVELS = ["low", "medium", "high"]
+_LOCAL = {"city", "metro", "district"}
+
+
+def _cap_confidence(model_confidence: str, cited: list[dict], insufficient: bool) -> tuple[str, str]:
+    """The model proposes a confidence; the evidence it actually cited decides the ceiling.
+    high   needs >= 2 SUPPORTED, city-level claims from >= 2 different sources
+    medium needs at least one fact-checked item (claim or graph fact)
+    low    otherwise (only unverified passages, nothing cited, or the question was not answered)"""
+    claims = [e for e in cited if e["kind"] == "claim"]
+    local_supported = [e for e in claims if e.get("geo_level") in _LOCAL and e.get("verdict") == "SUPPORTED"]
+    local_sources = {u for e in local_supported for u in e.get("source_urls", [])}
+    checked = [e for e in cited if e["kind"] in ("claim", "graph_fact")]
+    if insufficient or not checked:
+        cap, why = "low", "the answer rests on no fact-checked evidence" if not insufficient else "the evidence does not answer the question"
+    elif len(local_supported) >= 2 and len(local_sources) >= 2:
+        cap, why = "high", f"{len(local_supported)} supported city-level facts from {len(local_sources)} sources"
+    else:
+        n_local = len([e for e in claims if e.get("geo_level") in _LOCAL])
+        cap, why = "medium", (f"only {n_local} city-level fact(s) cited; the rest is regional, national or graph context"
+                              if claims else "rests on knowledge-graph facts without city-level claims")
+    final = _LEVELS[min(_LEVELS.index(model_confidence), _LEVELS.index(cap))]
+    return final, why
+
+
 def normalize_citations(text: str, prefix: str = "E") -> str:
     """Models vary how they write citations: 【E3】, (E3), [E3, E7], [E3-E5]. Canonicalise to [E3][E7] so that
     validation and the UI's clickable markers see every one of them."""
@@ -256,8 +281,10 @@ def answer(city_id: str, question: str, history: list[dict] | None = None) -> di
         text = text.replace(f"[E{n}]", "")
     used = sorted(cited & valid)
     kinds = {e["kind"] for e in ev if e["n"] in used}
+    confidence, confidence_reason = _cap_confidence(res.confidence, [e for e in ev if e["n"] in used],
+                                                    res.insufficient_evidence)
     got["timings"]["total_s"] = round(time.time() - t0, 2)
-    return {"city": status, "question": asked, "resolved_question": question, "rewritten": rewritten, "answer": text, "confidence": res.confidence, "caveats": res.caveats,
+    return {"city": status, "question": asked, "resolved_question": question, "rewritten": rewritten, "answer": text, "confidence": confidence, "confidence_reason": confidence_reason, "model_confidence": res.confidence, "caveats": res.caveats,
             "insufficient_evidence": res.insufficient_evidence, "cited": used, "invalid_citations_removed": invalid,
             "stores_used_in_answer": sorted(kinds), "evidence": ev, "gaps": got["gaps"] if res.insufficient_evidence else [],
             "retrieval": got["counts"], "timings": got["timings"], "tokens": usage.get("total_tokens")}

@@ -71,6 +71,7 @@ def build_graph_node(state: ResearchState) -> dict:
     stats.pop("episode_claims", None)      # already recorded per episode
     status = "ready" if stats["episodes"] else "failed"
     relational.set_graph_status(run_id, status)
+    relational.update_run_stats(run_id, {"graph": stats})   # the run record was written before the graph existed
     writer({"stage": "building_graph", "message": f"Knowledge graph {status}: {stats['nodes']} entities, "
             f"{stats['edges']} relationships in {stats['seconds']}s", "graph_ready": status == "ready"})
     return {"graph_status": status, "stage": "done", "stats": {"graph": stats}}

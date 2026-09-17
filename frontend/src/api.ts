@@ -55,6 +55,7 @@ export interface Answer {
   insufficient_evidence: boolean; cited: number[]; stores_used_in_answer: string[]; evidence: Evidence[]; gaps: Gap[]
   retrieval: { graph_facts: number; claims: number; passages: number }; timings: Record<string, number>
   conversation_id: string; turn: number; resolved_question: string; rewritten: boolean
+  confidence_reason?: string
 }
 export interface ConversationSummary { conversation_id: string; title: string; updated_at: string; turns: number }
 export interface ConversationDetail {
@@ -79,6 +80,7 @@ async function j<T>(path: string, init?: RequestInit): Promise<T> {
 
 export const api = {
   cities: () => j<CitySummary[]>('/api/cities'),
+  deleteCity: (id: string) => j<{ deleted: string; removed: Record<string, unknown> }>(`/api/cities/${id}`, { method: 'DELETE' }),
   overview: (id: string) => j<Overview>(`/api/cities/${id}`),
   claims: (id: string, status = 'verified') => j<Claim[]>(`/api/cities/${id}/claims?status=${status}`),
   sources: (id: string) => j<Source[]>(`/api/cities/${id}/sources`),
