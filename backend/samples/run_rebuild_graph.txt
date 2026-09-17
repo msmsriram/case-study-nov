@@ -1,0 +1,18 @@
+wiped 59 graph nodes for nairobi-ke
+46 verified relationship claims -> 14 episodes
+   episode 1/14: 9 entities, 7 relationships (22s)
+   episode 2/14: 5 entities, 3 relationships (16s)
+   episode 3/14: 9 entities, 5 relationships (25s)
+   episode 4/14: 5 entities, 3 relationships (16s)
+   episode 5/14: 7 entities, 5 relationships (24s)
+   episode 6/14: 8 entities, 5 relationships (27s)
+   episode 7/14: 4 entities, 1 relationships (18s)
+   episode 8/14: 4 entities, 2 relationships (18s)
+   episode 9/14: 4 entities, 3 relationships (18s)
+   episode 10/14: 2 entities, 1 relationships (12s)
+   episode 11/14: 4 entities, 2 relationships (20s)
+   episode 12/14: 7 entities, 6 relationships (26s)
+   episode 13/14: 4 entities, 4 relationships (20s)
+   episode 14/14: 5 entities, 1 relationships (18s)
+ingest: {'episodes': 14, 'failed': 0, 'nodes': 77, 'edges': 48, 'seconds': 281.3}
+overview: {'entities': {'Policy': 8, 'Organization': 10, 'Programme': 8, 'Place': 5, 'Facility': 1, 'HealthCondition': 8, 'Entity': 2}, 'relationships': 45}

@@ -9,3 +9,5 @@ node_modules/
 backend/scripts/explore_ollama.py
 backend/scripts/explore_serper.py
 backend/data/
+frontend/node_modules/
+frontend/dist/

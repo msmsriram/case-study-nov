@@ -161,7 +161,7 @@ def build_bundles(claims: list, already_ingested: set[str]) -> list[dict]:
 
 
 # --------------------------------------------------------------------------- write path
-async def ingest(city_id: str, city_label: str, bundles: list[dict], on_progress=None) -> dict:
+async def ingest(city_id: str, city_label: str, bundles: list[dict], on_progress=None, on_episode=None) -> dict:
     from graphiti_core.nodes import EpisodeType
 
     g, _ = _graphiti()
@@ -183,6 +183,8 @@ async def ingest(city_id: str, city_label: str, bundles: list[dict], on_progress
                 stats["nodes"] += len(res.nodes)
                 stats["edges"] += len(res.edges)
                 stats["episode_claims"][res.episode.uuid] = [c.id for c in b["claims"]]
+                if on_episode:      # record provenance immediately: a crash must never orphan graph facts
+                    on_episode(res.episode.uuid, [c.id for c in b["claims"]])
                 msg = f"episode {i}/{len(bundles)}: {len(res.nodes)} entities, {len(res.edges)} relationships ({time.time()-t:.0f}s)"
             except Exception as e:  # noqa: BLE001
                 stats["failed"] += 1
@@ -236,3 +238,16 @@ async def overview(city_id: str) -> dict:
         return {"entities": {r["type"] or "Entity": r["c"] for r in recs}, "relationships": rels[0]["c"] if rels else 0}
     finally:
         await driver.close()
+
+
+async def remove_orphan_episodes(city_id: str, known_episode_uuids: set[str]) -> int:
+    """Delete episodes (and facts only they support) that the relational store has no record of."""
+    g, driver = _graphiti()
+    try:
+        recs, _, _ = await driver.execute_query("MATCH (e:Episodic) WHERE e.group_id = $g RETURN e.uuid AS u", g=city_id)
+        orphans = [r["u"] for r in recs if r["u"] not in known_episode_uuids]
+        for u in orphans:
+            await g.remove_episode(u)
+        return len(orphans)
+    finally:
+        await g.close()

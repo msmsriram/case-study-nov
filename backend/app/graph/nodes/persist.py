@@ -61,14 +61,14 @@ def build_graph_node(state: ResearchState) -> dict:
     try:
         stats = asyncio.run(graph_store.ingest(
             city_id, f"{plan.city}, {plan.country}", bundles,
-            on_progress=lambda m: writer({"stage": "building_graph", "message": m})))
+            on_progress=lambda m: writer({"stage": "building_graph", "message": m}),
+            on_episode=lambda ep, ids: relational.mark_ingested(ids, ep)))
     except Exception as e:  # noqa: BLE001
         log.exception("graph build failed")
         relational.set_graph_status(run_id, "failed")
         return {"graph_status": "failed", "stage": "done", "errors": [f"graph: {type(e).__name__}: {e}"[:300]]}
 
-    for episode_uuid, claim_ids in stats.pop("episode_claims").items():
-        relational.mark_ingested(claim_ids, episode_uuid)
+    stats.pop("episode_claims", None)      # already recorded per episode
     status = "ready" if stats["episodes"] else "failed"
     relational.set_graph_status(run_id, status)
     writer({"stage": "building_graph", "message": f"Knowledge graph {status}: {stats['nodes']} entities, "
