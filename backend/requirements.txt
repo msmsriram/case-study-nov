@@ -15,3 +15,6 @@ langchain-groq>=1.0
 groq>=0.30
 langgraph-checkpoint-sqlite>=3.0
 tiktoken>=0.8
+graphiti-core>=0.30
+fastembed>=0.8
+neo4j>=5.26
