@@ -8,7 +8,7 @@
     "build": "tsc -b && vite build",
     "lint": "oxlint",
     "preview": "vite preview",
-    "build:deploy": "tsc -b && vite build --outDir ../backend/frontend_dist --emptyOutDir"
+    "build:deploy": "tsc -b && vite build --mode selfhosted --outDir ../backend/frontend_dist --emptyOutDir"
   },
   "dependencies": {
     "d3-force": "^3.0.0",
