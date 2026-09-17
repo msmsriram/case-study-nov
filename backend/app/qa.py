@@ -16,6 +16,7 @@ from __future__ import annotations
 
 import asyncio
 import logging
+from concurrent.futures import ThreadPoolExecutor
 import re
 import time
 from typing import Literal
@@ -63,12 +64,16 @@ def _rows_for(claim_ids: list[str]) -> dict[str, tuple]:
     return {c.id: (c, src) for c, src in rows}
 
 
-def _claims_for_episodes(episode_uuids: list[str]) -> list[str]:
+def _claims_by_episode(episode_uuids: list[str]) -> dict[str, list[str]]:
+    """episode uuid -> verified claim ids, in ONE query (the hosted database is a network hop away)."""
     if not episode_uuids:
-        return []
+        return {}
+    out: dict[str, list[str]] = {}
     with rel.SessionLocal() as s:
-        return [r[0] for r in s.execute(select(rel.ClaimRow.id).where(
-            rel.ClaimRow.graph_episode_uuid.in_(episode_uuids), rel.ClaimRow.status == "verified")).all()]
+        for cid, ep in s.execute(select(rel.ClaimRow.id, rel.ClaimRow.graph_episode_uuid).where(
+                rel.ClaimRow.graph_episode_uuid.in_(episode_uuids), rel.ClaimRow.status == "verified")).all():
+            out.setdefault(ep, []).append(cid)
+    return out
 
 
 def city_status(city_id: str) -> dict | None:
@@ -83,26 +88,45 @@ def city_status(city_id: str) -> dict | None:
 
 def retrieve(city_id: str, question: str, k_graph: int = 8, k_claims: int = 8, k_passages: int = 4) -> dict:
     timings: dict[str, float] = {}
-    t = time.time()
-    try:
-        facts = asyncio.run(graph_store.search(city_id, question, k=k_graph)) if graph_store.is_configured() else []
-    except Exception as e:  # noqa: BLE001
-        log.warning("graph search failed: %s", e)
-        facts = []
-    timings["graph_s"] = round(time.time() - t, 2)
+
+    def graph_part():
+        t = time.time()
+        try:
+            return (asyncio.run(graph_store.search(city_id, question, k=k_graph)) if graph_store.is_configured() else []), time.time() - t
+        except Exception as e:  # noqa: BLE001
+            log.warning("graph search failed: %s", e)
+            return [], time.time() - t
+
+    def vector_part():
+        t = time.time()
+        return (vector.search(city_id, question, k=k_claims, kind="claim"),
+                vector.search(city_id, question, k=k_passages, kind="passage")), time.time() - t
+
+    # the three stores are independent network hops: query graph and vector concurrently
+    with ThreadPoolExecutor(max_workers=2) as ex:
+        fg, fv = ex.submit(graph_part), ex.submit(vector_part)
+        (facts, tg), ((claim_hits, passage_hits), tv) = fg.result(), fv.result()
+    timings["graph_s"], timings["vector_s"] = round(tg, 2), round(tv, 2)
 
     t = time.time()
-    claim_hits = vector.search(city_id, question, k=k_claims, kind="claim")
-    passage_hits = vector.search(city_id, question, k=k_passages, kind="passage")
-    timings["vector_s"] = round(time.time() - t, 2)
-
-    t = time.time()
-    rows = _rows_for([h["claim_id"] for h in claim_hits])
+    episode_ids = sorted({ep for f in facts for ep in f["episode_uuids"]})
+    claim_ids = [h["claim_id"] for h in claim_hits]
+    with rel.SessionLocal() as s:                              # ONE connection checkout for all SQL work
+        rows = {c.id: (c, src) for c, src in s.execute(
+            select(rel.ClaimRow, rel.Source).join(rel.Source, rel.ClaimRow.source_id == rel.Source.id, isouter=True)
+            .where(rel.ClaimRow.id.in_(claim_ids), rel.ClaimRow.status == "verified")).all()} if claim_ids else {}
+        by_episode: dict[str, list[str]] = {}
+        if episode_ids:
+            for cid, ep in s.execute(select(rel.ClaimRow.id, rel.ClaimRow.graph_episode_uuid).where(
+                    rel.ClaimRow.graph_episode_uuid.in_(episode_ids), rel.ClaimRow.status == "verified")).all():
+                by_episode.setdefault(ep, []).append(cid)
+        gaps = [{"category": g.category, "severity": g.severity, "description": g.description, "suggestion": g.suggestion}
+                for g in s.execute(select(rel.GapRow).where(rel.GapRow.city_id == city_id).order_by(rel.GapRow.id.desc()).limit(12)).scalars()]
     evidence: list[dict] = []
     seen_claims: set[str] = set()
 
     for f in facts:                                           # 1. graph facts, backed by their claims in SQL
-        backing = _claims_for_episodes(f["episode_uuids"])
+        backing = sorted({cid for ep in f["episode_uuids"] for cid in by_episode.get(ep, [])})
         evidence.append({"kind": "graph_fact", "text": f["fact"],
                          "relation": f"({f['source_type']}) {f['source_entity']} -[{f['relation']}]-> ({f['target_type']}) {f['target_entity']}",
                          "geo_level": None, "verdict": "VERIFIED_CLAIMS", "year": (f["valid_at"] or "")[:4] or None,
@@ -126,9 +150,6 @@ def retrieve(city_id: str, question: str, k_graph: int = 8, k_claims: int = 8, k
     for i, e in enumerate(evidence, 1):
         e["n"] = i
 
-    with rel.SessionLocal() as s:
-        gaps = [{"category": g.category, "severity": g.severity, "description": g.description, "suggestion": g.suggestion}
-                for g in s.execute(select(rel.GapRow).where(rel.GapRow.city_id == city_id).order_by(rel.GapRow.id.desc()).limit(12)).scalars()]
     timings["sql_s"] = round(time.time() - t, 2)
     return {"evidence": evidence, "gaps": gaps, "timings": timings,
             "counts": {"graph_facts": len(facts), "claims": len(seen_claims), "passages": len(passage_hits)}}

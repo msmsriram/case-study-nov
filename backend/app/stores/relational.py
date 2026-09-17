@@ -152,7 +152,8 @@ def _url() -> str:
     return url
 
 
-engine = create_engine(_url(), pool_pre_ping=True, future=True)
+# pool_recycle: serverless Postgres (Neon) drops idle connections; recycle before it does.
+engine = create_engine(_url(), pool_pre_ping=True, pool_recycle=240, pool_size=5, max_overflow=5, future=True)
 SessionLocal = sessionmaker(engine, expire_on_commit=False)
 Base.metadata.create_all(engine)
 
