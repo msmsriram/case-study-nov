@@ -60,6 +60,23 @@ class Settings(BaseSettings):
     max_claims_per_document: int = 8
     verify_batch_size: int = 6
 
+    # --- Datastores ----------------------------------------------------------
+    # Relational: any SQLAlchemy URL. Empty = local SQLite file (dev). Neon/Postgres in production.
+    database_url: str | None = None
+    # Vector: Qdrant Cloud when URL is set, embedded on-disk Qdrant otherwise.
+    qdrant_url: str | None = None
+    qdrant_api_key: str | None = None
+    qdrant_collection: str = "city_evidence"
+    embedding_model: str = "BAAI/bge-small-en-v1.5"      # 384-dim, ONNX (no PyTorch) - fits small hosts
+    # Graph: Neo4j (Aura) as the Graphiti backend.
+    neo4j_uri: str | None = None
+    neo4j_username: str | None = None
+    neo4j_password: str | None = None
+    neo4j_database: str = "neo4j"
+    graph_llm_provider: Literal["ollama", "groq"] = "ollama"
+    graph_claims_per_episode: int = 5
+    graph_max_episodes_per_run: int = 16
+
     cache_dir: Path = BACKEND_DIR / ".cache"
     data_dir: Path = BACKEND_DIR / "data"
 

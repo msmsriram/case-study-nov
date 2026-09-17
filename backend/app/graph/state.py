@@ -129,13 +129,15 @@ class VerifyInput(TypedDict):
 
 # -------------------------------------------------------------------------- state
 Stage = Literal["planning", "searching", "checking_sources", "extracting", "verifying",
-                "analysing_gaps", "storing", "reporting", "done", "failed"]
+                "analysing_gaps", "storing", "building_graph", "reporting", "done", "failed"]
 
 
 class ResearchState(TypedDict, total=False):
     run_id: str
     city_input: str
+    city_id: str                                        # slug, set by the persist node; namespace in all three stores
     stage: Stage
+    graph_status: str                                   # pending | building | ready | failed | skipped
 
     plan: ResearchPlan
     queries: list[str]

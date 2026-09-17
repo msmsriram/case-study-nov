@@ -2,8 +2,8 @@
 
     START -> plan -> search -> crawl_check -> fetch
           -> [Send per document] extract_claims -> collect_claims
-          -> [Send per batch]    fact_check     -> detect_conflicts -> gap_analysis -> END
-          (store -> report to follow)
+          -> [Send per batch]    fact_check     -> detect_conflicts -> gap_analysis
+          -> persist (relational + vector) -> build_graph (Graphiti / Neo4j) -> END
 
 Nodes are synchronous (thread-pooled I/O with HTTP-level timeouts); LangGraph per-node
 timeouts are async-only, so retry policies guard the idempotent steps instead. Fan-out
@@ -19,6 +19,7 @@ from langgraph.types import RetryPolicy
 
 from .nodes.extraction import collect_claims_node, extract_claims_node, fan_out_extraction
 from .nodes.gaps import gap_analysis_node
+from .nodes.persist import build_graph_node, persist_node
 from .nodes.planner import plan_node
 from .nodes.research import crawl_check_node, fetch_node, search_node
 from .nodes.verification import detect_conflicts_node, fact_check_node, fan_out_verification
@@ -63,6 +64,8 @@ def build_graph(checkpointer=None):
     g.add_node("fact_check", fact_check_node)
     g.add_node("detect_conflicts", detect_conflicts_node)
     g.add_node("gap_analysis", gap_analysis_node)
+    g.add_node("persist", persist_node)
+    g.add_node("build_graph", build_graph_node)
 
     g.add_edge(START, "plan")
     g.add_edge("plan", "search")
@@ -73,7 +76,9 @@ def build_graph(checkpointer=None):
     g.add_conditional_edges("collect_claims", _route_after_collect, ["fact_check", "gap_analysis"])
     g.add_edge("fact_check", "detect_conflicts")
     g.add_edge("detect_conflicts", "gap_analysis")
-    g.add_edge("gap_analysis", END)
+    g.add_edge("gap_analysis", "persist")
+    g.add_edge("persist", "build_graph")
+    g.add_edge("build_graph", END)
     return g.compile(checkpointer=checkpointer or InMemorySaver(serde=state_serde()))
 
 

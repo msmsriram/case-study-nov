@@ -1,0 +1,47 @@
+
+================================================================================================
+1. RELATIONAL
+================================================================================================
+persisted in 0.2s -> {'city_id': 'nairobi-ke', 'sources': 69, 'verified': 71, 'not_verified': 9, 'rejected_grounding': 3, 'conflicts': 0, 'gaps': 9, 'backend': 'sqlite'}
+claims by status: {'missing': 5, 'rejected_grounding': 3, 'unsupported': 4, 'verified': 69}
+verified by geo : {'city': 6, 'district': 3, 'global': 3, 'national': 57}
+sources by crawl: {False: 32, True: 37}
+
+'where did this come from?' join:
+  claim   : In Nairobi County, the population exceeds 4 million, creating significant demand for health services.
+  quote   : Nairobi County has the highest population at over 4 million followed by Kiambu and
+  verdict : PARTIALLY_SUPPORTED by gpt-oss:120b - The excerpt confirms Nairobi County’s population is over 4 million, but it does not mentio
+  source  : Health Labour Market Analysis for Kenya [government] https://labourmarket.go.ke/media/resources/Final_Kenya_HLMA_Report_202
+  crawl   : allowed=True (permitted), robots=no_robots, fetched=2026-09-17 15:06:18.542543
+
+================================================================================================
+2. VECTOR
+================================================================================================
+C:\Users\SriramM\Desktop\case_study\backend\app\stores\vector.py:57: UserWarning: Payload indexes have no effect in the local Qdrant. Please use server Qdrant if you need payload indexes.
+  c.create_payload_index(name, field_name=field, field_schema=qm.PayloadSchemaType.KEYWORD)
+indexed in 40.6s -> {'indexed_claims': 71, 'indexed_passages': 168, 'backend': 'qdrant-embedded'}
+
+Q: hypertension screening programmes in informal settlements  (0.08s)
+   0.766 [passage] Amref Health Africa has been implementing the Healthy Heart Africa Project since September 2014 within th  <ngo>
+   0.760 [claim  ] The Healthy Heart Africa Project has reached more than 100,000 clients with hypertension screening and st  <ngo>
+   0.748 [claim  ] Amref Health Africa has been implementing the Healthy Heart Africa Project in Kibera Informal settlement   <ngo>
+   0.747 [claim  ] In Kenya, over 90% of people diagnosed with hypertension have not attained control of the disease.  <intergovernmental>
+
+Q: air pollution and heart disease risk  (0.02s)
+   0.847 [passage] Traditional cooking practices continue to expose women in impoverished regions of the world to a high ris  <academic>
+   0.835 [passage] Exposure to household air pollution from burning biomass fuels is a major environmental risk factor contr  <academic>
+   0.824 [passage] This study has several limitations. First, it may be challenging to detect an association between househo  <academic>
+   0.821 [passage] Echocardiographic measures of cardiac function reveal greater dysfunction among participants with the hig  <academic>
+
+================================================================================================
+3. GRAPH (Graphiti on Neo4j)
+================================================================================================
+48 relationship claims -> 15 episodes (0 claims already in graph)
+    episode 1/15: 10 entities, 6 relationships (33s)
+    episode 2/15: 4 entities, 4 relationships (18s)
+    episode 3/15: 9 entities, 4 relationships (21s)
+    episode 4/15: 5 entities, 3 relationships (17s)
+    episode 5/15: 8 entities, 6 relationships (27s)
+    episode 6/15: 8 entities, 5 relationships (33s)
+    episode 7/15: 6 entities, 3 relationships (19s)
+    episode 8/15: 3 entities, 2 relationships (14s)
