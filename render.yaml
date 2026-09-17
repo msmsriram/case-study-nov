@@ -6,7 +6,8 @@ services:
   - type: web
     name: cardio4cities-api
     runtime: python
-    plan: free
+    plan: standard        # 2 GB RAM. The API idles at ~460 MB, so the 512 MB free/starter instances get OOM-killed mid-run
+    region: ohio          # next to the Neon database (us-east-2)
     rootDir: backend
     buildCommand: pip install -r requirements.txt && python -c "from app.embeddings import embed_one; embed_one('warm the model cache')"
     startCommand: uvicorn app.api:app --host 0.0.0.0 --port $PORT
@@ -39,7 +40,7 @@ services:
 
   - type: web
     name: cardio4cities
-    runtime: static
+    runtime: static       # static sites are free
     rootDir: frontend
     buildCommand: npm ci && npm run build
     staticPublishPath: dist
