@@ -376,8 +376,8 @@ def health():
 
 
 # --------------------------------------------------------------------------- built frontend (container deployments)
-_DIST = BACKEND_DIR.parent / "frontend_dist"
-if _DIST.exists():
+_DIST = next((d for d in (BACKEND_DIR / "frontend_dist", BACKEND_DIR.parent / "frontend_dist") if d.exists()), None)
+if _DIST is not None:
     app.mount("/assets", StaticFiles(directory=_DIST / "assets"), name="assets")
 
     @app.get("/{path:path}", include_in_schema=False)

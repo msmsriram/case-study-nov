@@ -1,5 +1,6 @@
 # One image, one URL: FastAPI serves the API and the built React app.
-# Runs on Hugging Face Spaces (Docker SDK, port 7860) and on any container host (uses $PORT when set).
+# For any container host (uses $PORT when set, 7860 otherwise). Note: Hugging Face Spaces only allow outbound
+# traffic on ports 80/443/8080, so they cannot reach Postgres (5432) or Neo4j Bolt (7687); use another host.
 
 # ---- 1. build the frontend -------------------------------------------------
 FROM node:22-alpine AS web
@@ -19,7 +20,7 @@ WORKDIR /app
 COPY backend/requirements.txt backend/requirements.txt
 RUN pip install -r backend/requirements.txt
 COPY backend/ backend/
-COPY --from=web /web/dist frontend_dist/
+COPY --from=web /web/dist backend/frontend_dist/
 # bake the embedding model into the image so the first request is not a download
 RUN cd backend && python -c "from app.embeddings import embed_one; print(len(embed_one('warm-up')))"
 # Spaces run as a non-root user: make runtime dirs writable

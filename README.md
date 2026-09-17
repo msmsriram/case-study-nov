@@ -1,13 +1,3 @@
----
-title: CARDIO4Cities City Intelligence
-emoji: 🫀
-colorFrom: blue
-colorTo: green
-sdk: docker
-app_port: 7860
-pinned: false
----
-
 # CARDIO4Cities City Intelligence
 
 An AI research system that prepares a City Lead for a city nobody has researched before. Name any city: it
@@ -33,7 +23,7 @@ datastores** (relational, vector, and a **Graphiti** knowledge graph), and answe
 | Three datastores | `backend/app/stores/relational.py`, `vector.py`, `graph.py` |
 | Evidence on every fact | quote + evidence window + source + crawl record per claim; "Where did this come from?" in the UI |
 | No fabrication | code-level quote check, geography levels with checker correction, citation validation, explicit gaps |
-| Deployed | `render.yaml` (API + static frontend) |
+| Deployed | `render.yaml`: one Render service serving the API and the UI |
 
 ## Run locally
 
@@ -60,11 +50,14 @@ python scripts/test_qa.py kisumu-ke "Who runs hypertension programmes?"
 python scripts/rebuild_graph.py kisumu-ke        # rebuild the knowledge graph from the relational store
 ```
 
-## Deploy (Render, free tier)
+## Deploy (Render)
 
-`render.yaml` defines both services from this one repo. Create a Blueprint from the repo, then set the
-secrets listed in the file on the backend service: Serper and Ollama keys, `DATABASE_URL` (Neon Postgres),
-`QDRANT_URL` + `QDRANT_API_KEY` (Qdrant Cloud), and the Neo4j Aura credentials.
+`render.yaml` defines a single web service: FastAPI serves both the API and the prebuilt UI, so there is one URL.
+In Render choose **New > Blueprint**, pick this repo, and fill in the secrets it asks for (the values from
+`backend/.env`). The service needs the **Standard** instance (2 GB): the API idles at about 460 MB, which does
+not leave room for a research run on a 512 MB instance.
+
+After changing the frontend, rebuild the committed bundle with `npm run build:deploy` in `frontend/`.
 
 ## Repository layout
 

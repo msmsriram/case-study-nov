@@ -1,12 +1,11 @@
-# Render blueprint: one repo, two services.
-#   backend  - FastAPI (LangGraph workflow, three datastores)      -> https://<name>-api.onrender.com
-#   frontend - static Vite build that talks to the backend          -> https://<name>.onrender.com
-# Secrets are NOT in this file: set them in the Render dashboard (Environment) for the backend service.
+# Render blueprint: ONE service, ONE URL. FastAPI serves the API and the prebuilt React UI
+# (backend/frontend_dist, produced by `npm run build:deploy` in frontend/).
+# Secrets are NOT in this file: Render asks for them when the blueprint is applied.
 services:
   - type: web
-    name: cardio4cities-api
+    name: cardio4cities
     runtime: python
-    plan: standard        # 2 GB RAM. The API idles at ~460 MB, so the 512 MB free/starter instances get OOM-killed mid-run
+    plan: standard        # 2 GB RAM. The API idles at ~460 MB, so 512 MB instances get OOM-killed mid-run
     region: ohio          # next to the Neon database (us-east-2)
     rootDir: backend
     buildCommand: pip install -r requirements.txt && python -c "from app.embeddings import embed_one; embed_one('warm the model cache')"
@@ -14,21 +13,24 @@ services:
     healthCheckPath: /api/health
     envVars:
       - key: PYTHON_VERSION
-        value: 3.12.7
+        value: 3.13.3        # the version everything was tested on
       - key: LLM_PROVIDER
         value: ollama
       - key: SEARCH_PROVIDER
         value: auto
       - key: RESEARCH_CACHE_TTL_HOURS
-        value: "0"
-      - key: MAX_DOCUMENTS_PER_RUN
-        value: "20"
-      # set in dashboard (sync: false = never stored in the repo):
+        value: "0"           # always research live
+      - key: FASTEMBED_CACHE_PATH
+        value: /opt/render/project/src/backend/.fastembed
       - { key: SERPER_API_KEY_1, sync: false }
       - { key: SERPER_API_KEY_2, sync: false }
+      - { key: SERPER_API_KEY_3, sync: false }
+      - { key: SERPER_API_KEY_4, sync: false }
       - { key: OLLAMA_API_KEY_1, sync: false }
       - { key: OLLAMA_API_KEY_2, sync: false }
       - { key: OLLAMA_API_KEY_3, sync: false }
+      - { key: OLLAMA_API_KEY_4, sync: false }
+      - { key: OLLAMA_API_KEY_5, sync: false }
       - { key: GROQ_API_KEY, sync: false }
       - { key: DATABASE_URL, sync: false }        # Neon Postgres
       - { key: QDRANT_URL, sync: false }          # Qdrant Cloud
@@ -37,13 +39,3 @@ services:
       - { key: NEO4J_USERNAME, sync: false }
       - { key: NEO4J_PASSWORD, sync: false }
       - { key: NEO4J_DATABASE, sync: false }
-
-  - type: web
-    name: cardio4cities
-    runtime: static       # static sites are free
-    rootDir: frontend
-    buildCommand: npm ci && npm run build
-    staticPublishPath: dist
-    envVars:
-      - key: VITE_API_URL
-        value: https://cardio4cities-api.onrender.com
