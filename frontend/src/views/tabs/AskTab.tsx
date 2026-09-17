@@ -4,9 +4,13 @@ import { api, GEO_LABEL, TIER_LABEL, isLocal, type Answer, type ConversationSumm
 
 const KIND: Record<Evidence['kind'], string> = { graph_fact: 'Knowledge graph', claim: 'Verified fact', passage: 'Source passage' }
 
+// tolerate citation styles in answers stored before server-side normalisation
+const canon = (t: string) => t.replace(/【/g, '[').replace(/】/g, ']')
+const citedOf = (a: Answer) => (a.cited.length ? a.cited : [...canon(a.answer).matchAll(/\[E(\d+)\]/g)].map(m => Number(m[1])))
+
 function AnswerBody({ a, onCite }: { a: Answer; onCite: (n: number) => void }) {
   const html = useMemo(() => {
-    const md = a.answer.replace(/\[E(\d+)\]/g, (_, n) => `<button class="cite" data-n="${n}">${n}</button>`)
+    const md = canon(a.answer).replace(/\[E(\d+)\]/g, (_, n) => `<button class="cite" data-n="${n}">${n}</button>`)
     return marked.parse(md, { async: false }) as string
   }, [a.answer])
   return <div className="answer" dangerouslySetInnerHTML={{ __html: html }}
@@ -130,7 +134,7 @@ export default function AskTab({ cityId, cityName, ready, status }: { cityId: st
           {shown && <span className="small faint">{shown.retrieval.graph_facts} graph · {shown.retrieval.claims} facts · {shown.retrieval.passages} passages retrieved</span>}</div>
         {!shown && <div className="card pad muted small">The evidence behind each answer appears here. Click a citation number to jump to its source.</div>}
         {shown?.evidence.map(e => {
-          const cited = shown.cited.includes(e.n)
+          const cited = citedOf(shown).includes(e.n)
           return (
             <div key={e.n} className={`ev ${active === e.n ? 'on' : ''} ${!cited ? 'dim' : ''}`} onMouseEnter={() => cited && setActive(e.n)}
               ref={el => { if (el && active === e.n) el.scrollIntoView({ behavior: 'smooth', block: 'nearest' }) }}>
