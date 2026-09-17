@@ -104,7 +104,9 @@ def build_report(city_id: str, with_summary: bool = True) -> dict:
                                      f"City: {city.name}, {city.country}\n\nFINDINGS\n{listing}\n\nRECORDED GAPS\n{gap_txt}",
                                      max_tokens=900, reasoning_effort="low")
             valid = set(ref_no.values())
-            ok = [b for b in res.bullets if (nums := {int(n) for n in re.findall(r"\[(\d+)\]", b)}) and nums <= valid]
+            bullets = [re.sub(r"\[(\d+(?:\s*,\s*\d+)+)\]", lambda m: "".join(f"[{n.strip()}]" for n in m.group(1).split(",")),
+                              b.replace("【", "[").replace("】", "]")) for b in res.bullets]
+            ok = [b for b in bullets if (nums := {int(n) for n in re.findall(r"\[(\d+)\]", b)}) and nums <= valid]
             if ok:
                 summary_md = "\n".join(f"- {b}" for b in ok)
         except Exception:  # noqa: BLE001 - the report must still be produced

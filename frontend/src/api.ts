@@ -54,6 +54,12 @@ export interface Answer {
   question: string; answer: string; confidence: 'high' | 'medium' | 'low'; caveats: string[]
   insufficient_evidence: boolean; cited: number[]; stores_used_in_answer: string[]; evidence: Evidence[]; gaps: Gap[]
   retrieval: { graph_facts: number; claims: number; passages: number }; timings: Record<string, number>
+  conversation_id: string; turn: number; resolved_question: string; rewritten: boolean
+}
+export interface ConversationSummary { conversation_id: string; title: string; updated_at: string; turns: number }
+export interface ConversationDetail {
+  conversation_id: string; city_id: string; title: string
+  messages: { role: 'user' | 'assistant'; content: string; answer?: Answer }[]
 }
 export interface RunEvent {
   t: number; type: 'progress' | 'node_done' | 'complete' | 'failed'; stage?: string; message?: string; node?: string
@@ -77,8 +83,10 @@ export const api = {
   claims: (id: string, status = 'verified') => j<Claim[]>(`/api/cities/${id}/claims?status=${status}`),
   sources: (id: string) => j<Source[]>(`/api/cities/${id}/sources`),
   graph: (id: string) => j<GraphData>(`/api/cities/${id}/graph`),
-  ask: (id: string, question: string) =>
-    j<Answer>(`/api/cities/${id}/ask`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ question }) }),
+  ask: (id: string, question: string, conversationId?: string | null) =>
+    j<Answer>(`/api/cities/${id}/ask`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ question, conversation_id: conversationId ?? null }) }),
+  conversations: (id: string) => j<ConversationSummary[]>(`/api/cities/${id}/conversations`),
+  conversation: (cid: string) => j<ConversationDetail>(`/api/conversations/${cid}`),
   research: (city: string) =>
     j<{ run_id: string; city: string }>('/api/research', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ city }) }),
   reportUrl: (id: string, format: 'md' | 'html') => `${API}/api/cities/${id}/report?format=${format}`,

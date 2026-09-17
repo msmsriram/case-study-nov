@@ -32,6 +32,17 @@ from .stores import vector
 log = logging.getLogger(__name__)
 
 
+class ResolvedQuestion(BaseModel):
+    standalone_question: str = Field(description="the latest question rewritten so it can be understood with no conversation context")
+    is_follow_up: bool = Field(description="true if the latest question depended on the earlier turns")
+
+
+RESOLVE_SYSTEM = """You rewrite the user's latest question into a standalone question for a search system.
+Use the conversation only to resolve references (it, they, that programme, the second one, what about funding?).
+Keep names exactly as they appeared. Do not answer the question. Do not add facts, assumptions or constraints
+that the user did not express. If the latest question is already self-contained, return it unchanged."""
+
+
 class AnswerResult(BaseModel):
     answer: str = Field(description="Markdown. Every factual sentence ends with one or more citations like [E3] or [E1][E4].")
     confidence: Literal["high", "medium", "low"] = Field(description="high only if several independent, city-level, SUPPORTED items agree")
@@ -171,15 +182,61 @@ def _format(evidence: list[dict]) -> str:
     return "\n".join(lines)
 
 
-def answer(city_id: str, question: str) -> dict:
+def normalize_citations(text: str, prefix: str = "E") -> str:
+    """Models vary how they write citations: 【E3】, (E3), [E3, E7], [E3-E5]. Canonicalise to [E3][E7] so that
+    validation and the UI's clickable markers see every one of them."""
+    text = text.replace("【", "[").replace("】", "]")
+    p = re.escape(prefix)
+
+    def expand(m: re.Match) -> str:
+        body = m.group(1)
+        nums: list[int] = []
+        for part in re.split(r"[,;\s]+(?:and\s+)?", body):
+            rng = re.fullmatch(rf"{p}?(\d+)\s*[-–]\s*{p}?(\d+)", part)
+            one = re.fullmatch(rf"{p}?(\d+)", part)
+            if rng and int(rng.group(2)) - int(rng.group(1)) < 12:
+                nums += list(range(int(rng.group(1)), int(rng.group(2)) + 1))
+            elif one:
+                nums.append(int(one.group(1)))
+            elif part:
+                return m.group(0)                      # not a citation list: leave untouched
+        return "".join(f"[{prefix}{n}]" for n in nums) if nums else m.group(0)
+
+    text = re.sub(rf"\[({p}\d+(?:\s*[,;\-–]\s*(?:and\s+)?{p}?\d+)+)\]", expand, text)
+    return re.sub(rf"\(({p}\d+)\)", r"[\1]", text)
+
+
+def resolve_question(question: str, history: list[dict], city_name: str) -> tuple[str, bool]:
+    """Conversational retrieval: turn a follow-up into a standalone query. Memory shapes the QUESTION only;
+    evidence is always retrieved fresh, so nothing from an earlier answer can be reused as a fact."""
+    turns = [m for m in history if m.get("content")][-6:]
+    if not turns:
+        return question, False
+    convo = "\n".join(f"{m['role'].upper()}: {m['content'][:500]}" for m in turns)
+    try:
+        res, _ = structured_call("extractor", ResolvedQuestion, RESOLVE_SYSTEM,
+                                 f"City: {city_name}\n\nCONVERSATION\n{convo}\n\nLATEST QUESTION: {question}",
+                                 max_tokens=300, reasoning_effort="low")
+        sq = res.standalone_question.strip()
+        return (sq, res.is_follow_up and sq.lower() != question.strip().lower()) if sq else (question, False)
+    except Exception as e:  # noqa: BLE001 - never block an answer on the rewrite
+        log.warning("question rewrite failed: %s", e)
+        return question, False
+
+
+def answer(city_id: str, question: str, history: list[dict] | None = None) -> dict:
     status = city_status(city_id)
     if status is None:
         return {"error": "unknown_city", "message": f"No research found for '{city_id}'. Research the city first."}
     t0 = time.time()
+    asked = question
+    question, rewritten = resolve_question(asked, history or [], status["name"])
+    t_resolve = round(time.time() - t0, 2)
     got = retrieve(city_id, question)
+    got["timings"]["resolve_s"] = t_resolve
     ev = got["evidence"]
     if not ev:
-        return {"city": status, "question": question, "answer": "I found no stored evidence relevant to this question.",
+        return {"city": status, "question": asked, "resolved_question": question, "rewritten": rewritten, "answer": "I found no stored evidence relevant to this question.", "cited": [], "stores_used_in_answer": [],
                 "insufficient_evidence": True, "confidence": "low", "caveats": [], "evidence": [], "gaps": got["gaps"],
                 "retrieval": got["counts"], "timings": got["timings"]}
 
@@ -190,6 +247,7 @@ def answer(city_id: str, question: str) -> dict:
     res, usage = structured_call("answer", AnswerResult, SYSTEM, user, max_tokens=1200, reasoning_effort="low")
     got["timings"]["llm_s"] = round(time.time() - t, 2)
 
+    res.answer = normalize_citations(res.answer)
     valid = {e["n"] for e in ev}
     cited = {int(x) for x in re.findall(r"\[E(\d+)\]", res.answer)}
     invalid = sorted(cited - valid)
@@ -199,7 +257,7 @@ def answer(city_id: str, question: str) -> dict:
     used = sorted(cited & valid)
     kinds = {e["kind"] for e in ev if e["n"] in used}
     got["timings"]["total_s"] = round(time.time() - t0, 2)
-    return {"city": status, "question": question, "answer": text, "confidence": res.confidence, "caveats": res.caveats,
+    return {"city": status, "question": asked, "resolved_question": question, "rewritten": rewritten, "answer": text, "confidence": res.confidence, "caveats": res.caveats,
             "insufficient_evidence": res.insufficient_evidence, "cited": used, "invalid_citations_removed": invalid,
             "stores_used_in_answer": sorted(kinds), "evidence": ev, "gaps": got["gaps"] if res.insufficient_evidence else [],
             "retrieval": got["counts"], "timings": got["timings"], "tokens": usage.get("total_tokens")}

@@ -285,17 +285,69 @@ def city_graph(city_id: str, limit: int = Query(250, le=600)):
 
 class AskRequest(BaseModel):
     question: str = Field(min_length=3, max_length=500)
+    conversation_id: str | None = Field(default=None, description="omit to start a new conversation")
 
 
 @app.post("/api/cities/{city_id}/ask")
 def ask(city_id: str, req: AskRequest):
+    """One conversational turn. History is loaded from the relational store, the follow-up is resolved into a
+    standalone question, evidence is retrieved fresh from all three stores, and both messages are saved."""
     status = qa.city_status(city_id)
     if not status:
         raise HTTPException(404, f"city '{city_id}' has not been researched")
     if graph_store.is_configured() and status["graph_status"] in ("pending", "building"):
         raise HTTPException(409, "The knowledge graph for this city is still being built. Findings and the report are "
                                  "available now; questions open as soon as the graph is ready.")
-    return qa.answer(city_id, req.question)
+    history: list[dict] = []
+    cid = req.conversation_id
+    with rel.SessionLocal() as s:
+        conv = s.get(rel.Conversation, cid) if cid else None
+        if conv is None or conv.city_id != city_id:
+            cid = uuid.uuid4().hex[:16]
+            s.add(rel.Conversation(id=cid, city_id=city_id, title=req.question[:120]))
+            s.commit()
+        else:
+            history = [{"role": m.role, "content": m.content} for m in s.execute(
+                select(rel.Message).where(rel.Message.conversation_id == cid).order_by(rel.Message.id)).scalars()]
+
+    result = qa.answer(city_id, req.question, history=history)
+    result["conversation_id"] = cid
+    result["turn"] = len(history) // 2 + 1
+
+    with rel.SessionLocal() as s:
+        s.add(rel.Message(conversation_id=cid, role="user", content=req.question, payload={}))
+        s.add(rel.Message(conversation_id=cid, role="assistant", content=result.get("answer", ""),
+                          payload=json.loads(json.dumps(result, default=str))))
+        conv = s.get(rel.Conversation, cid)
+        if conv:
+            conv.updated_at = rel.utcnow()
+        s.commit()
+    return result
+
+
+@app.get("/api/cities/{city_id}/conversations")
+def conversations(city_id: str, limit: int = Query(20, le=100)):
+    with rel.SessionLocal() as s:
+        _city_or_404(s, city_id)
+        rows = s.execute(select(rel.Conversation).where(rel.Conversation.city_id == city_id)
+                         .order_by(rel.Conversation.updated_at.desc()).limit(limit)).scalars().all()
+        counts = dict(s.execute(select(rel.Message.conversation_id, func.count()).where(
+            rel.Message.conversation_id.in_([c.id for c in rows])).group_by(rel.Message.conversation_id)).all()) if rows else {}
+        return [{"conversation_id": c.id, "title": c.title, "updated_at": c.updated_at, "turns": counts.get(c.id, 0) // 2}
+                for c in rows]
+
+
+@app.get("/api/conversations/{conversation_id}")
+def conversation(conversation_id: str):
+    with rel.SessionLocal() as s:
+        conv = s.get(rel.Conversation, conversation_id)
+        if not conv:
+            raise HTTPException(404, "unknown conversation")
+        msgs = s.execute(select(rel.Message).where(rel.Message.conversation_id == conversation_id)
+                         .order_by(rel.Message.id)).scalars().all()
+        return {"conversation_id": conv.id, "city_id": conv.city_id, "title": conv.title, "created_at": conv.created_at,
+                "messages": [{"role": m.role, "content": m.content, "created_at": m.created_at,
+                              **({"answer": m.payload} if m.role == "assistant" else {})} for m in msgs]}
 
 
 @app.get("/api/cities/{city_id}/report")
