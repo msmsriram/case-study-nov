@@ -84,6 +84,9 @@ class ClaimVerdict(BaseModel):
     rationale: str = Field(description="one or two sentences; say what in the evidence supports or fails the statement")
     geo_mismatch: bool = Field(description="true if the statement presents broader-level (state/national) data as if it were city data")
     corrected_geo_level: GeoLevel = Field(description="the geographic level the evidence actually supports")
+    supported_statement: str = Field(description="the statement rewritten to contain ONLY what the evidence supports. "
+                                                 "SUPPORTED: copy the statement unchanged. PARTIALLY_SUPPORTED: drop every "
+                                                 "unsupported clause, name, number or expansion. Otherwise: empty string.")
     checker_confidence: float = Field(ge=0, le=1)
 
 
@@ -158,3 +161,31 @@ class ResearchState(TypedDict, total=False):
     report_markdown: str
     stats: Annotated[dict, merge_dicts]
     errors: Annotated[list[str], operator.add]
+
+
+# ------------------------------------------------------------------ what the user is shown
+def _tokens_added(new: str, allowed: str) -> list[str]:
+    """Numbers and capitalised names in `new` that appear nowhere in `allowed`."""
+    import re
+    low = allowed.lower()
+    added = [n for n in re.findall(r"\d[\d.,]*%?", new) if n.rstrip(".,") not in allowed]
+    added += [w for w in re.findall(r"\b[A-Z][A-Za-z]{3,}\b", new) if w.lower() not in low]
+    return added
+
+
+def effective_statement(claim: "Claim", verification: "Verification | None") -> tuple[str, bool]:
+    """(statement to show / index / ingest, was_rewritten).
+
+    A PARTIALLY_SUPPORTED claim is shown as the checker's trimmed rewrite, so its unsupported clause never
+    reaches the user. The rewrite is accepted only if code confirms it introduces no number or name that is
+    absent from the original statement, the quote and the evidence window; otherwise the original is kept
+    (still flagged as partially supported). The original always stays in the audit trail.
+    """
+    if verification is None or verification.verdict != "PARTIALLY_SUPPORTED":
+        return claim.statement, False
+    new = (verification.supported_statement or "").strip()
+    if len(new) < 15 or new == claim.statement or len(new) > len(claim.statement) * 1.25:
+        return claim.statement, False
+    if _tokens_added(new, f"{claim.statement} {claim.quote} {claim.evidence_window}"):
+        return claim.statement, False
+    return new, True

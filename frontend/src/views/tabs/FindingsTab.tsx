@@ -27,6 +27,7 @@ export function ClaimCard({ c }: { c: Claim }) {
         <VerdictBadge c={c} />
         <span className={`badge ${isLocal(c.geo_level) ? 'local' : 'broad'}`}>{GEO_LABEL[c.geo_level] ?? c.geo_level}</span>
         {c.geo_mismatch && <span className="badge warn" title={`The extractor labelled this "${c.extractor_geo_level}"; the fact checker corrected it.`}>geography corrected</span>}
+        {c.original_statement && <span className="badge warn" title="The fact checker removed a clause the evidence did not support.">trimmed to what the evidence supports</span>}
         {c.in_conflict && <span className="badge bad">conflicts with another source</span>}
         {c.year && <span className="badge plain">{c.year}</span>}
         <span className="small muted">{TIER_LABEL[c.source.tier ?? ''] ?? ''}{c.source.publisher ? ` · ${c.source.publisher}` : ''}</span>
@@ -35,6 +36,12 @@ export function ClaimCard({ c }: { c: Claim }) {
       </div>
       {open && (
         <div className="evidence">
+          {c.original_statement && (
+            <div className="notice" style={{ marginBottom: 12 }}>
+              <b>Trimmed by the fact checker.</b> The extractor originally wrote: “{c.original_statement}”. Only the part the
+              evidence supports is shown above; the rest was removed.
+            </div>
+          )}
           <blockquote>“{c.quote}”</blockquote>
           {c.evidence_window && <p className="small muted" style={{ marginBottom: 12 }}><b>In context:</b> <Highlighted text={c.evidence_window} quote={c.quote} /></p>}
           <dl>

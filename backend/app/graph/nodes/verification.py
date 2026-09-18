@@ -21,6 +21,7 @@ from langgraph.types import Send
 
 from ...config import settings
 from ...llm import LLMParseError, model_for, structured_call
+from ..geo import enforce_level
 from ..state import Claim, Conflict, ConflictReport, ResearchState, Verification, VerificationBatch, VerifyInput
 
 log = logging.getLogger(__name__)
@@ -39,6 +40,19 @@ Geography check: if the statement presents state/national/global data as if it w
 (or names the city where the evidence names a broader area), set geo_mismatch=true and give the level
 the evidence actually supports in corrected_geo_level. Otherwise geo_mismatch=false and corrected_geo_level
 = the level the evidence supports.
+
+Two geography traps to check explicitly:
+- the administrative region that contains the city (e.g. "Greater Accra Region", a state, a province) is NOT the
+  city: its level is "state" (regional);
+- the place where an event or launch was held is not the geography of its findings: a continental report launched
+  in the city is "global", not "city".
+
+Names: if the statement expands or translates an acronym, a job title or an institution name that the evidence
+does not spell out that way, that part is unsupported.
+
+supported_statement: for SUPPORTED copy the statement unchanged. For PARTIALLY_SUPPORTED rewrite it so that it
+contains ONLY what the evidence supports: delete the unsupported clause, name, number or expansion; add nothing;
+keep names exactly as the evidence writes them. For UNSUPPORTED or MISSING return an empty string.
 
 Be strict about numbers and dates. Be concise in the rationale. Never use outside knowledge to rescue a claim."""
 
@@ -84,8 +98,22 @@ def fact_check_node(inp: VerifyInput) -> dict:
     missing = ids - {v.claim_id for v in verdicts}
     for cid in missing:  # the checker skipped it: treat as not verified, never as verified
         verdicts.append(Verification(claim_id=cid, verdict="MISSING", rationale="checker returned no verdict",
-                                     geo_mismatch=False, corrected_geo_level="unknown", checker_confidence=0.0,
-                                     checker_model=model_for("checker")))
+                                     geo_mismatch=False, corrected_geo_level="unknown", supported_statement="",
+                                     checker_confidence=0.0, checker_model=model_for("checker")))
+
+    # Code has the last word on one geography question: region-only evidence is never city-level.
+    by_id = {c.id: c for c in batch}
+    n_geo = 0
+    for v in verdicts:
+        c = by_id[v.claim_id]
+        current = v.corrected_geo_level if v.geo_mismatch and v.corrected_geo_level != "unknown" else c.geo_level
+        level, changed = enforce_level(current, c.statement, c.quote, city=plan.city, aliases=plan.aliases,
+                                       admin_region=plan.admin_region)
+        if changed:
+            v.geo_mismatch, v.corrected_geo_level = True, level
+            v.rationale = (v.rationale + f" Geography set to regional by rule: the evidence names {plan.admin_region}, "
+                           f"not {plan.city} itself.").strip()
+            n_geo += 1
     counts: dict[str, int] = {}
     for v in verdicts:
         counts[v.verdict] = counts.get(v.verdict, 0) + 1

@@ -16,7 +16,7 @@ from sqlalchemy import select
 
 from ...stores import graph as graph_store
 from ...stores import relational, vector
-from ..state import ResearchState
+from ..state import ResearchState, effective_statement
 
 log = logging.getLogger(__name__)
 
@@ -42,7 +42,10 @@ def build_graph_node(state: ResearchState) -> dict:
         return {"graph_status": "skipped", "stage": "done"}
 
     verified = set(state.get("verified_claim_ids", []))
-    claims = [c for c in state.get("claims", []) if c.id in verified]
+    vmap = {v.claim_id: v for v in state.get("verifications", [])}
+    # the graph must never learn the unsupported half of a partially supported claim
+    claims = [c.model_copy(update={"statement": effective_statement(c, vmap.get(c.id))[0]})
+              for c in state.get("claims", []) if c.id in verified]
     with relational.SessionLocal() as s:
         already = {cid for cid, ep in s.execute(
             select(relational.ClaimRow.id, relational.ClaimRow.graph_episode_uuid)

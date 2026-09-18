@@ -253,6 +253,7 @@ def city_claims(city_id: str, category: str | None = None, status: str = "verifi
         out = []
         for c, src in s.execute(q.limit(limit)).all():
             out.append({"id": c.id, "category": c.category, "claim_type": c.claim_type, "statement": c.statement,
+                        "original_statement": c.original_statement,
                         "quote": c.quote, "evidence_window": c.evidence_window, "quote_verified": c.quote_verified,
                         "geo_level": c.geo_level, "extractor_geo_level": c.extractor_geo_level, "geo_mismatch": c.geo_mismatch,
                         "year": c.year, "entities": c.entities, "status": c.status, "verdict": c.verdict,

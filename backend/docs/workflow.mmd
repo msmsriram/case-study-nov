@@ -14,6 +14,8 @@ graph TD;
 	fact_check(fact_check)
 	detect_conflicts(detect_conflicts)
 	gap_analysis(gap_analysis)
+	persist(persist)
+	build_graph(build_graph)
 	__end__([<p>__end__</p>]):::last
 	__start__ --> plan;
 	collect_claims -.-> fact_check;
@@ -24,10 +26,12 @@ graph TD;
 	fact_check --> detect_conflicts;
 	fetch -.-> extract_claims;
 	fetch -.-> gap_analysis;
+	gap_analysis --> persist;
+	persist --> build_graph;
 	plan --> search;
 	search -.-> __end__;
 	search -.-> crawl_check;
-	gap_analysis --> __end__;
+	build_graph --> __end__;
 	classDef default fill:#f2f0ff,line-height:1.2
 	classDef first fill-opacity:0
 	classDef last fill:#bfb6fc

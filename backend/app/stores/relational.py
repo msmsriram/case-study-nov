@@ -99,7 +99,8 @@ class ClaimRow(Base):
     source_url: Mapped[str] = mapped_column(Text)
     category: Mapped[str] = mapped_column(String(40), index=True)
     claim_type: Mapped[str] = mapped_column(String(30))
-    statement: Mapped[str] = mapped_column(Text)
+    statement: Mapped[str] = mapped_column(Text)                            # what the user is shown
+    original_statement: Mapped[str | None] = mapped_column(Text)            # extractor's wording, when the checker trimmed it
     quote: Mapped[str] = mapped_column(Text)
     evidence_window: Mapped[str] = mapped_column(Text, default="")
     quote_verified: Mapped[bool] = mapped_column(Boolean, default=False)
@@ -178,6 +179,22 @@ SessionLocal = sessionmaker(engine, expire_on_commit=False)
 Base.metadata.create_all(engine)
 
 
+def _ensure_columns() -> None:
+    """create_all() never alters an existing table, so add columns introduced after first deployment."""
+    from sqlalchemy import inspect, text
+    wanted = {"claims": {"original_statement": "TEXT"}}
+    insp = inspect(engine)
+    with engine.begin() as c:
+        for table, cols in wanted.items():
+            have = {col["name"] for col in insp.get_columns(table)}
+            for name, ddl in cols.items():
+                if name not in have:
+                    c.execute(text(f"ALTER TABLE {table} ADD COLUMN {name} {ddl}"))
+
+
+_ensure_columns()
+
+
 def backend_name() -> str:
     return engine.url.get_backend_name()
 
@@ -192,6 +209,7 @@ def persist_run(state: dict) -> dict:
     verified = set(state.get("verified_claim_ids", []))
     conflicts = state.get("conflicts", []) or []
     in_conflict = {cid for k in conflicts for cid in k.claim_ids}
+    from ..graph.state import effective_statement
     from ..llm import model_for
 
     with SessionLocal() as s:
@@ -224,10 +242,12 @@ def persist_run(state: dict) -> dict:
 
         def row(c, status: str) -> ClaimRow:
             v = verdicts.get(c.id)
+            shown, rewritten = effective_statement(c, v)
             final_geo = v.corrected_geo_level if v and v.geo_mismatch and v.corrected_geo_level != "unknown" else c.geo_level
             return ClaimRow(
                 id=c.id, city_id=city_id, run_id=run_id, source_id=final_to_source.get(c.source_url),
-                source_url=c.source_url, category=c.category, claim_type=c.claim_type, statement=c.statement,
+                source_url=c.source_url, category=c.category, claim_type=c.claim_type, statement=shown,
+                original_statement=c.statement if rewritten else None,
                 quote=c.quote, evidence_window=c.evidence_window, quote_verified=c.quote_verified,
                 entities=c.entities, year=c.year, extractor_geo_level=c.geo_level, geo_level=final_geo,
                 geo_mismatch=bool(v and v.geo_mismatch), extractor_confidence=c.confidence,

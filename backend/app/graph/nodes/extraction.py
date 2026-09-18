@@ -43,6 +43,12 @@ Hard rules:
   (e.g. "In Kenya, 24% of adults aged 18-69 have hypertension (STEPS 2015)", not "prevalence is 24%").
 - Prefer fewer, precise claims over many vague ones. Maximum {max_claims} claims.
 - If the source is irrelevant (e.g. a clinic advert with no facts), return no claims and source_relevance "none".
+- The administrative region that CONTAINS the city is not the city. Evidence about "Greater Accra Region",
+  "Maharashtra" or "Dakar Region" is geo_level "state" (meaning regional), never "city".
+- Where an event took place is not the geography of its findings. A continental report launched at a forum held
+  in the city is about the continent: geo_level "global", and do not present it as a fact about the city.
+- Never expand, translate or guess an acronym, job title or institution name. Write names exactly as the passage
+  writes them. If the passage says "UWRH", the statement says "UWRH".
 - Relevance comes before extraction. The source must actually be about health, healthcare, health policy or
   cardiovascular risk factors. Acronyms collide: "NCD" can be an organisation's name (for example a conservation
   NGO), "HTA" or "CVD" can mean unrelated things. If the passage is about another subject, a true and well-quoted

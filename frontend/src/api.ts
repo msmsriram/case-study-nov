@@ -28,7 +28,8 @@ export interface SourceRef {
   published_date?: string | null; retrieved_at?: string | null; robots_status?: string | null
 }
 export interface Claim {
-  id: string; category: string; claim_type: string; statement: string; quote: string; evidence_window: string
+  id: string; category: string; claim_type: string; statement: string; original_statement?: string | null
+  quote: string; evidence_window: string
   quote_verified: boolean; geo_level: GeoLevel; extractor_geo_level: GeoLevel; geo_mismatch: boolean; year: number | null
   entities: string[]; status: string; verdict: string | null; verdict_rationale: string | null
   checker_confidence: number | null; extractor_model: string | null; checker_model: string | null
@@ -96,7 +97,7 @@ export const api = {
 }
 
 export const GEO_LABEL: Record<string, string> = {
-  city: 'City-level', metro: 'Metro-level', district: 'County / district', state: 'State-level',
+  city: 'City-level', metro: 'Metro-level', district: 'County / district', state: 'Regional, not city-specific',
   national: 'National, not city-specific', global: 'Global, not city-specific', unknown: 'Geography unclear',
 }
 export const isLocal = (g: string | null) => g === 'city' || g === 'metro' || g === 'district'

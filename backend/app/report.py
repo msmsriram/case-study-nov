@@ -17,11 +17,46 @@ from sqlalchemy import select
 from .stores import relational as rel
 
 GEO_ORDER = ["city", "metro", "district", "state", "national", "global", "unknown"]
-GEO_LABEL = {"city": "City-level", "metro": "Metro-level", "district": "County / district-level", "state": "State-level",
+GEO_LABEL = {"city": "City-level", "metro": "Metro-level", "district": "County / district-level", "state": "Regional-level (state / province / region, not city-specific)",
              "national": "National-level (not city-specific)", "global": "Global / regional (not city-specific)",
              "unknown": "Geography unclear"}
 TIER_LABEL = {"government": "Government", "intergovernmental": "Intergovernmental", "academic": "Academic", "ngo": "NGO",
               "reference": "Reference", "news": "News", "commercial": "Commercial", "other": "Other"}
+
+
+_JUNK_TITLE = re.compile(r"^(link_icon\b.*|links?|home|index|untitled|pdf|document|page|download|welcome)$", re.I)
+
+
+def clean_title(title: str | None, url: str) -> str:
+    """Pages often expose a useless <title> ("link_icon Links", "Home"); fall back to something readable."""
+    from urllib.parse import unquote, urlsplit
+    t = (title or "").replace(" ", " ").replace("Â ", " ").replace("Â", "")
+    t = re.sub(r"\s+", " ", t).strip(" -|·")
+    if len(t) >= 4 and not _JUNK_TITLE.match(t):
+        return t
+    parts = urlsplit(url)
+    tail = unquote(parts.path.rstrip("/").rsplit("/", 1)[-1])
+    tail = re.sub(r"\.(pdf|html?|aspx|php)$", "", tail, flags=re.I)
+    tail = re.sub(r"[-_+]+", " ", tail).strip()
+    host = parts.netloc.removeprefix("www.")
+    return f"{tail[:80]} ({host})" if len(tail) >= 6 else host
+
+
+def fmt_date(value: str | None) -> str | None:
+    """Dates arrive as ISO strings from page metadata or as free text from the search engine ("19 Apr 2023").
+    Never slice them: a truncated year is worse than no date."""
+    if not value:
+        return None
+    v = value.strip()
+    m = re.match(r"^(\d{4})-(\d{2})-(\d{2})", v)
+    if m:
+        try:
+            return datetime(int(m.group(1)), int(m.group(2)), int(m.group(3))).strftime("%d %b %Y")
+        except ValueError:
+            return None
+    if re.search(r"\b(19|20)\d{2}\b", v) and len(v) <= 40:      # free text that at least carries a full year
+        return v
+    return None
 
 
 class ExecSummary(BaseModel):
@@ -122,7 +157,6 @@ def build_report(city_id: str, with_summary: bool = True) -> dict:
         + (f" (run `{run.id}`, {run.finished_at:%d %b %Y})" if run and run.finished_at else "") + ".*\n",
         "| | |\n|---|---|",
         f"| Administrative region | {city.admin_region or 'not established'} |",
-        f"| Population (planner's hint, unverified) | {city.population_hint or 'not established'} |",
         f"| Sources discovered / read | {n_src} / {n_read} |",
         f"| Claims extracted / verified | {len(claims)} / {len(verified)} |",
         f"| Claims rejected by the fact checker or grounding check | {len(not_verified)} |",
@@ -157,7 +191,7 @@ def build_report(city_id: str, with_summary: bool = True) -> dict:
                "unreachable, or platform terms). They may be worth opening manually.\n")
     off = [x for x in denied if x.source_tier in ("government", "intergovernmental", "academic")]
     for x in off[:15]:
-        out.append(f"- [{x.title[:90] or x.url}]({x.url}) - {TIER_LABEL.get(x.source_tier, x.source_tier)}; {x.crawl_reason}")
+        out.append(f"- [{clean_title(x.title, x.url)[:90]}]({x.url}) - {TIER_LABEL.get(x.source_tier, x.source_tier)}; {x.crawl_reason}")
     if len(denied) > len(off[:15]):
         out.append(f"- ...and {len(denied) - len(off[:15])} more (see the Sources view).")
 
@@ -172,9 +206,9 @@ def build_report(city_id: str, with_summary: bool = True) -> dict:
         x = url_to_source.get(url)
         meta = []
         if x:
-            meta = [TIER_LABEL.get(x.source_tier, x.source_tier), x.publisher or "", f"published {x.published_date[:10]}" if x.published_date else "publication date unknown",
+            meta = [TIER_LABEL.get(x.source_tier, x.source_tier), x.publisher or "", f"published {fmt_date(x.published_date)}" if fmt_date(x.published_date) else "publication date unknown",
                     f"retrieved {x.fetched_at:%d %b %Y}" if x.fetched_at else ""]
-        title = (x.title if x and x.title else url)[:120]
+        title = clean_title(x.title if x else "", url)[:120]
         out.append(f"{n}. [{title}]({url}) - " + "; ".join(m for m in meta if m))
 
     md = "\n".join(out) + "\n"

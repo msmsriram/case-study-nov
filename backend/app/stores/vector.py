@@ -22,6 +22,7 @@ from qdrant_client import models as qm
 from ..config import settings
 from ..embeddings import EMBEDDING_DIM, embed, embed_one
 from ..graph.passages import select_passages
+from ..graph.state import effective_statement
 from ..research.models import ResearchItem
 from .relational import city_id_for, source_id_for
 
@@ -79,10 +80,11 @@ def index_run(state: dict, max_passages_per_doc: int = 10) -> dict:
         v = verdicts.get(c.id)
         geo = v.corrected_geo_level if v and v.geo_mismatch and v.corrected_geo_level != "unknown" else c.geo_level
         key = final_to_key.get(c.source_url)
-        texts.append(f"{c.statement}\n{c.quote}")
+        shown, _ = effective_statement(c, v)      # never index the unsupported half of a partially supported claim
+        texts.append(f"{shown}\n{c.quote}")
         points.append((_pid(f"claim|{c.id}"), {
             "kind": "claim", "city_id": city_id, "claim_id": c.id, "category": c.category, "claim_type": c.claim_type,
-            "geo_level": geo, "verdict": v.verdict if v else None, "year": c.year, "text": c.statement,
+            "geo_level": geo, "verdict": v.verdict if v else None, "year": c.year, "text": shown,
             "quote": c.quote, "source_url": c.source_url, "source_title": c.source_title, "source_tier": c.source_tier,
             "source_id": source_id_for(city_id, key) if key else None}))
 
